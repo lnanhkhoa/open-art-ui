@@ -4,6 +4,6 @@ export const icons = {
   attach: require("./attach.png"),
   "back-arrow": require("./back-arrow.png"),
   back: require("./back.png"),
-}
+};
 
-export type IconTypes = keyof typeof icons
+export type IconTypes = keyof typeof icons;

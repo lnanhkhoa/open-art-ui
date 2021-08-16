@@ -1,4 +1,4 @@
-import * as Font from "expo-font"
+import * as Font from "expo-font";
 
 export const initFonts = async () => {
   // Refer to ./assets/fonts/custom-fonts.md for instructions.
@@ -13,5 +13,5 @@ export const initFonts = async () => {
     // EpilogueSemiBold: require("../../../assets/fonts/Epilogue-SemiBold.ttf"),
     EpilogueBold: require("../../../assets/fonts/Epilogue-Bold.ttf"),
     // EpilogueBlack: require("../../../assets/fonts/Epilogue-Black.ttf"),
-  })
-}
+  });
+};

@@ -36,4 +36,4 @@ export const palette = {
     "200": "#F8F8F8",
     "100": "#FCFCFC",
   },
-}
+};

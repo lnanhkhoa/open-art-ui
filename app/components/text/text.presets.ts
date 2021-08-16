@@ -1,5 +1,5 @@
-import { TextStyle } from "react-native"
-import { colors, typography } from "../../theme"
+import { TextStyle } from "react-native";
+import { colors, typography } from "../../theme";
 
 /**
  * All text will start off looking like this.
@@ -9,7 +9,7 @@ const BASE: TextStyle = {
   color: colors.text,
   fontSize: 16,
   lineHeight: 22,
-}
+};
 
 const TEXT_STYLES = {
   xsmall: {
@@ -31,7 +31,7 @@ const TEXT_STYLES = {
     fontSize: 20,
     lineHeight: 28,
   } as TextStyle,
-}
+};
 const DISPLAY_STYLES = {
   small: {
     fontFamily: typography.EpilogueRegular,
@@ -51,7 +51,7 @@ const DISPLAY_STYLES = {
     fontSize: 40,
     lineHeight: 48,
   } as TextStyle,
-}
+};
 /**
  * All the variations of text styling within the app.
  *
@@ -73,9 +73,9 @@ export const presets = {
   headerSmallBold: { ...DISPLAY_STYLES.small, fontFamily: typography.EpilogueBold } as TextStyle,
   headerMediumBold: { ...DISPLAY_STYLES.medium, fontFamily: typography.EpilogueBold } as TextStyle,
   headerLargeBold: { ...DISPLAY_STYLES.large, fontFamily: typography.EpilogueBold } as TextStyle,
-}
+};
 
 /**
  * A list of preset names.
  */
-export type TextPresets = keyof typeof presets
+export type TextPresets = keyof typeof presets;

@@ -1,9 +1,9 @@
-import * as React from "react"
-import { Text as ReactNativeText } from "react-native"
-import { presets } from "./text.presets"
-import { TextProps } from "./text.props"
-import { translate } from "../../i18n"
-import { colors } from "../../theme"
+import * as React from "react";
+import { Text as ReactNativeText } from "react-native";
+import { presets } from "./text.presets";
+import { TextProps } from "./text.props";
+import { translate } from "../../i18n";
+import { colors } from "../../theme";
 
 /**
  * For your text displaying needs.
@@ -21,19 +21,19 @@ export function Text(props: TextProps) {
     color = colors.text,
     style: styleOverride,
     ...rest
-  } = props
+  } = props;
 
   // figure out which content to use
-  const i18nText = tx && translate(tx, txOptions)
-  const content = i18nText || text || children
+  const i18nText = tx && translate(tx, txOptions);
+  const content = i18nText || text || children;
 
-  const style = presets[preset] || presets.default
-  const colorText = { color }
-  const styles = [style, colorText, styleOverride]
+  const style = presets[preset] || presets.default;
+  const colorText = { color };
+  const styles = [style, colorText, styleOverride];
 
   return (
     <ReactNativeText {...rest} style={styles}>
       {content}
     </ReactNativeText>
-  )
+  );
 }

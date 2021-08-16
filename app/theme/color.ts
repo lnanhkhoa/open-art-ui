@@ -1,4 +1,4 @@
-import { palette } from "./palette"
+import { palette } from "./palette";
 
 /**
  * Roles for colors.  Prefer using these over the palette.  It makes it easier
@@ -11,6 +11,8 @@ import { palette } from "./palette"
  */
 export const colors = {
   transparent: "rgba(0, 0, 0, 0)",
+  offWhite: palette.grayscale[100],
+  white: "#fff",
   primary: palette.blue.default,
   primaryDark: palette.blue.dark,
   secondary: palette.yellow.default,
@@ -56,4 +58,4 @@ export const colors = {
       to: "#9041FF",
     },
   },
-}
+};

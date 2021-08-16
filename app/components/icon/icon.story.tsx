@@ -1,12 +1,12 @@
-import * as React from "react"
-import { storiesOf } from "@storybook/react-native"
-import { View, StyleSheet } from "react-native"
-import { StoryScreen, Story, UseCase } from "../../../storybook/views"
-import { Text } from "../text/text"
-import { Icon } from "./icon"
-import { icons } from "./icons/index"
+import * as React from "react";
+import { storiesOf } from "@storybook/react-native";
+import { View, StyleSheet } from "react-native";
+import { StoryScreen, Story, UseCase } from "../../../storybook/views";
+import { Text } from "../text/text";
+import { Icon } from "./icon";
+import { icons } from "./icons/index";
 
-declare let module
+declare let module;
 
 const styles = StyleSheet.create({
   row: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
   },
-})
+});
 
 storiesOf("Icon", module)
   .addDecorator((fn) => <StoryScreen>{fn()}</StoryScreen>)
@@ -33,9 +33,9 @@ storiesOf("Icon", module)
                   <Text text={name} color="black" />
                 </View>
               </View>
-            )
+            );
           })}
         </View>
       </UseCase>
     </Story>
-  ))
+  ));
