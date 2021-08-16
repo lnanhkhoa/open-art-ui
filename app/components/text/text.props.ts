@@ -31,6 +31,11 @@ export interface TextProps extends TextProperties {
   style?: StyleProp<TextStyle>
 
   /**
+   * color
+   */
+  color?: string
+
+  /**
    * One of the different types of text presets.
    */
   preset?: TextPresets

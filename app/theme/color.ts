@@ -6,59 +6,54 @@ import { palette } from "./palette"
  *
  * The only roles we need to place in here are the ones that span through the app.
  *
- * If you have a specific use-case, like a spinner color.  It makes more sense to
+ * If you have a specific use-case, like a spinner colors.  It makes more sense to
  * put that in the <Spinner /> component.
  */
-export const color = {
-  /**
-   * The palette is available to use, but prefer using the name.
-   */
-  palette,
-  /**
-   * A helper for making something see-thru. Use sparingly as many layers of transparency
-   * can cause older Android devices to slow down due to the excessive compositing required
-   * by their under-powered GPUs.
-   */
+export const colors = {
   transparent: "rgba(0, 0, 0, 0)",
-  /**
-   * The screen background.
-   */
-  background: palette.white,
-  /**
-   * The main tinting color.
-   */
-  primary: palette.orange,
-  /**
-   * The main tinting color, but darker.
-   */
-  primaryDarker: palette.orangeDarker,
-  /**
-   * A subtle color used for borders and lines.
-   */
-  line: palette.offWhite,
-  /**
-   * The default color of text in many components.
-   */
-  text: palette.white,
-  /**
-   * Secondary information.
-   */
-  dim: palette.lightGrey,
-  /**
-   * Error messages and icons.
-   */
-  error: palette.angry,
+  primary: palette.blue.default,
+  primaryDark: palette.blue.dark,
+  secondary: palette.yellow.default,
+  secondaryDark: palette.yellow.dark,
+  error: palette.red.default,
+  errorDark: palette.red.dark,
+  success: palette.green.default,
+  successDark: palette.green.dark,
+  warning: palette.orange.default,
+  warningDark: palette.orange.dark,
 
-  /**
-   * Storybook background for Text stories, or any stories where
-   * the text color is color.text, which is white by default, and does not show
-   * in Stories against the default white background
-   */
-  storybookDarkBg: palette.black,
+  titleActive: palette.grayscale[800],
+  text: palette.grayscale[700],
+  label: palette.grayscale[600],
+  placeholder: palette.grayscale[500],
+  line: palette.grayscale[400],
+  bgInput: palette.grayscale[300],
+  background: palette.grayscale[200],
+  offwhite: palette.grayscale[100],
 
   /**
    * Storybook text color for stories that display Text components against the
    * white background
    */
+  storybookDarkBg: palette.black,
   storybookTextColor: palette.black,
+
+  /**
+   * gradient
+   */
+
+  gradient: {
+    primary: {
+      from: "#0000C5",
+      to: "#0046FF",
+    },
+    secondary: {
+      from: "#FF8200",
+      to: "#FFFF02",
+    },
+    accent: {
+      from: "#0000F6",
+      to: "#9041FF",
+    },
+  },
 }

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
 import { observer } from "mobx-react-lite"
-import { color, typography } from "../../theme"
+import { colors, typography } from "../../theme"
 import { Text } from "../"
 import { flatten } from "ramda"
 
@@ -12,7 +12,7 @@ const CONTAINER: ViewStyle = {
 const TEXT: TextStyle = {
   fontFamily: typography.primary,
   fontSize: 14,
-  color: color.primary,
+  color: colors.primary,
 }
 
 export interface <%= props.pascalCaseName %>Props {

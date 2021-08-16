@@ -5,14 +5,14 @@ import * as React from "react"
 import { View, ViewStyle } from "react-native"
 import { storiesOf } from "@storybook/react-native"
 import { StoryScreen, Story, UseCase } from "../../../storybook/views"
-import { color } from "../../theme"
+import { colors } from "../../theme"
 import { Text } from "./text"
 
 declare let module
 
 const VIEWSTYLE = {
   flex: 1,
-  backgroundColor: color.storybookDarkBg,
+  backgroundColor: colors.storybookDarkBg,
 }
 const viewStyleArray: ViewStyle[] = [VIEWSTYLE, { backgroundColor: "#7fff00" }]
 
@@ -20,7 +20,7 @@ storiesOf("Text", module)
   .addDecorator((fn) => <StoryScreen>{fn()}</StoryScreen>)
   .add("Style Presets", () => (
     <Story>
-      <UseCase text="default" usage="Used for normal body text.">
+      {/* <UseCase text="default" usage="Used for normal body text.">
         <View style={VIEWSTYLE}>
           <Text>Hello!</Text>
           <Text style={{ paddingTop: 10 }}>
@@ -87,6 +87,6 @@ storiesOf("Text", module)
             Hello <Text preset="bold">bolded</Text> World.
           </Text>
         </View>
-      </UseCase>
+      </UseCase> */}
     </Story>
   ))

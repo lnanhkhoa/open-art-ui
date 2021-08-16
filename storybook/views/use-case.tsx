@@ -40,7 +40,7 @@ export interface UseCaseProps {
   style?: ViewStyle
   /** Don't use any padding because it's important to see the spacing. */
   noPad?: boolean
-  /** Don't use background color because it's important to see the color. */
+  /** Don't use background color because it's important to see the colors. */
   noBackground?: boolean
 }
 

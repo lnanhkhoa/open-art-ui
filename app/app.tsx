@@ -50,7 +50,7 @@ function App() {
 
   // Before we show the app, we have to wait for our state to be ready.
   // In the meantime, don't render anything. This will be the background
-  // color set in native by rootView's background color.
+  // color set in native by rootView's background colors.
   // In iOS: application:didFinishLaunchingWithOptions:
   // In Android: https://stackoverflow.com/a/45838109/204044
   // You can replace with your own loading component if you wish.
