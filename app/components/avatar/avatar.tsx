@@ -8,14 +8,14 @@ import { colors } from "../../theme";
 
 const { AVT_SIZE } = constants;
 
-export interface Props {
+export interface AvatarProps {
   hasSource?: boolean;
   active?: boolean;
   source?: ImageRequireSource | ImageURISource;
   size?: "small" | "normal" | "large";
   containerStyle?: ViewStyle;
   text?: string;
-  type?: "col" | "row";
+  preset?: "col" | "row";
   title?: string;
   statusText?: string;
 }
@@ -33,10 +33,10 @@ export function Avatar({
   source,
   size = "small",
   containerStyle,
-  type = "col",
+  preset = "col",
   title = "",
   statusText = "",
-}: Props) {
+}: AvatarProps) {
   const imgStyle = {
     width: AVT_SIZES[size],
     height: AVT_SIZES[size],
@@ -47,7 +47,7 @@ export function Avatar({
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <View row={type === "row"} style={{ alignItems: "center" }}>
+      <View row={preset === "row"} style={{ alignItems: "center" }}>
         <View style={styles.wrapper}>
           <View style={styles.imageBox}>
             {hasSource && <Image source={source} style={[styles.image, imgStyle]} />}
@@ -64,9 +64,9 @@ export function Avatar({
             {active && <View style={styles.dot} />}
           </View>
         </View>
-        <View style={[styles.textbox, type === "row" && textboxStyle]}>
+        <View style={[styles.textbox, preset === "row" && textboxStyle]}>
           <Text preset="smallBold" text={title} color={colors.titleActive} />
-          {type === "row" && <Text preset="small" text={statusText} color={colors.placeholder} />}
+          {preset === "row" && <Text preset="small" text={statusText} color={colors.placeholder} />}
         </View>
       </View>
     </View>

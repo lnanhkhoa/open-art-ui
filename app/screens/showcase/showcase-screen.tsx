@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Header, Screen, Text, GradientBackground, Avatar } from "../../components";
+import { View, Header, Screen, Text, Tag, Avatar, Checkbox } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
@@ -11,11 +11,11 @@ export const ShowCaseScreen = observer(() => {
     <View testID="ShowCaseScreen" style={styles.full}>
       {/* <GradientBackground colors={["#422443", "#281b34"]} /> */}
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
-        <Header headerText="Avatar" leftIcon="back" style={styles.header} titleStyle={styles.headerTitle} />
+        <Header headerText="Showcase" leftIcon="back" style={styles.header} titleStyle={styles.headerTitle} />
         <Text preset="largeBold" text="Avatar" />
         <View row style={styles.box}>
-          <Avatar size="normal" containerStyle={styles.avatar} />
-          <Avatar size="normal" containerStyle={styles.avatar} active />
+          <Avatar size="normal" text="H" containerStyle={styles.avatar} />
+          <Avatar size="normal" text="H" containerStyle={styles.avatar} active />
           <Avatar hasSource source={assets.avatar} size="normal" containerStyle={styles.avatar} />
           <Avatar hasSource source={assets.avatar} size="normal" containerStyle={styles.avatar} active />
         </View>
@@ -35,7 +35,7 @@ export const ShowCaseScreen = observer(() => {
               size="normal"
               containerStyle={styles.avatar}
               active
-              type="row"
+              preset="row"
               title={`First & Last Name`}
             />
           </View>
@@ -45,10 +45,32 @@ export const ShowCaseScreen = observer(() => {
             size="normal"
             containerStyle={styles.avatar}
             active
-            type="row"
+            preset="row"
             title="First Name"
             statusText="Status"
           />
+        </View>
+        <Text preset="largeBold" text="Tag" />
+        <View row style={styles.box}>
+          <Tag status="success" containerStyle={styles.tag} />
+          <Tag status="alert" containerStyle={styles.tag} />
+          <Tag status="warning" containerStyle={styles.tag} />
+          <Tag status="info" containerStyle={styles.tag} />
+        </View>
+        <Text preset="largeBold" text="CheckBox" />
+        <View style={styles.box}>
+          <View row>
+            <Checkbox value={false} style={styles.checkbox} />
+            <Checkbox value={true} style={styles.checkbox} />
+          </View>
+          <View row>
+            <Checkbox value={false} style={styles.checkbox} onToggle={() => null} />
+            <Checkbox value={true} style={styles.checkbox} onToggle={() => null} />
+          </View>
+          <View row>
+            <Checkbox isActive value={false} style={styles.checkbox} onToggle={() => null} />
+            <Checkbox isActive value={true} style={styles.checkbox} onToggle={() => null} />
+          </View>
         </View>
       </Screen>
     </View>
@@ -79,6 +101,10 @@ const styles = StyleSheet.create({
     padding: 8,
     marginVertical: 4,
     borderColor: colors.line,
+    alignItems: "flex-start",
+    // backgroundColor: colors.black,
   },
   avatar: { margin: 4 },
+  tag: { margin: 4 },
+  checkbox: { margin: 4 },
 });

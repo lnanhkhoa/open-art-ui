@@ -12,9 +12,11 @@ import { palette } from "./palette";
 export const colors = {
   transparent: "rgba(0, 0, 0, 0)",
   offWhite: palette.grayscale[100],
-  white: "#fff",
+  white: palette.white,
+  black: palette.black,
   primary: palette.blue.default,
   primaryDark: palette.blue.dark,
+  primaryDarkMode: palette.blue.darkMode,
   secondary: palette.yellow.default,
   secondaryDark: palette.yellow.dark,
   error: palette.red.default,

@@ -23,3 +23,10 @@ export const RATING_ICON_SIZE = {
 };
 
 export const IS_SMALL_DEVICE = SCREEN_WIDTH < 375;
+
+export const STATUS = {
+  SUCCESS: "success",
+  ALERT: "alert",
+  WARNING: "warning",
+  INFO: "info",
+};

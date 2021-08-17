@@ -12,4 +12,4 @@ export * from "./text-field/text-field";
 export * from "./wallpaper/wallpaper";
 export * from "./view";
 export * from "./avatar/avatar";
-
+export * from "./tag/tag";

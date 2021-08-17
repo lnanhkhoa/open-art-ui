@@ -1,14 +1,44 @@
 import * as React from "react";
-import { TouchableOpacity } from "react-native";
+import { StyleProp, TouchableOpacity, StyleSheet, TextStyle, TouchableOpacityProps, ViewStyle } from "react-native";
+import {LinearGradient} from 'expo-linear-gradient'
 import { Text } from "../text/text";
-import { viewPresets, textPresets } from "./button.presets";
-import { ButtonProps } from "./button.props";
+import { viewPresets, textPresets, ButtonPresetNames } from "./button.presets";
+import { TxKeyPath } from "../../i18n";
 
-/**
- * For your text displaying needs.
- *
- * This component is a HOC over the built-in React Native one.
- */
+
+
+export interface ButtonProps extends TouchableOpacityProps {
+  /**
+   * Text which is looked up via i18n.
+   */
+  tx?: TxKeyPath;
+
+  /**
+   * The text to display if not using `tx` or nested components.
+   */
+  text?: string;
+
+  /**
+   * An optional style override useful for padding & margin.
+   */
+  style?: StyleProp<ViewStyle>;
+
+  /**
+   * An optional style override useful for the button text.
+   */
+  textStyle?: StyleProp<TextStyle>;
+
+  /**
+   * One of the different types of text presets.
+   */
+  preset?: ButtonPresetNames;
+
+  /**
+   * One of the different types of text presets.
+   */
+  children?: React.ReactNode;
+}
+
 export function Button(props: ButtonProps) {
   // grab the props
   const { preset = "primary", tx, text, style: styleOverride, textStyle: textStyleOverride, children, ...rest } = props;
@@ -26,3 +56,7 @@ export function Button(props: ButtonProps) {
     </TouchableOpacity>
   );
 }
+
+// const styles = StyleSheet.create({
+//   container: {}
+// });

@@ -22,33 +22,29 @@ const BASE_TEXT: TextStyle = {
  * You want to customize these to whatever you need in your app.
  */
 export const viewPresets: Record<string, ViewStyle> = {
-  /**
-   * A smaller piece of secondard information.
-   */
-  primary: { ...BASE_VIEW, backgroundColor: colors.primary } as ViewStyle,
-
-  /**
-   * A button without extras.
-   */
-  link: {
+  primary: {
     ...BASE_VIEW,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    alignItems: "flex-start",
+    backgroundColor: colors.primary,
+  } as ViewStyle,
+  secondary: {
+    ...BASE_VIEW,
+    backgroundColor: colors.primary,
+  } as ViewStyle,
+  subtle: {
+    ...BASE_VIEW,
+    backgroundColor: colors.primary,
+  } as ViewStyle,
+  text: {
+    ...BASE_VIEW,
+    backgroundColor: colors.primary,
   } as ViewStyle,
 };
 
 export const textPresets: Record<ButtonPresetNames, TextStyle> = {
   primary: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
-  link: {
-    ...BASE_TEXT,
-    color: colors.text,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-  } as TextStyle,
+  secondary: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
+  subtle: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
+  text: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
 };
 
-/**
- * A list of preset names.
- */
 export type ButtonPresetNames = keyof typeof viewPresets;

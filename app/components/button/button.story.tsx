@@ -14,7 +14,7 @@ storiesOf("Button", module)
   .addDecorator((fn) => <StoryScreen>{fn()}</StoryScreen>)
   .add("Style Presets", () => (
     <Story>
-      <UseCase text="Primary" usage="The primary button.">
+      {/* <UseCase text="Primary" usage="The primary button.">
         <Button text="Click It" preset="primary" onPress={() => Alert.alert("pressed")} />
       </UseCase>
       <UseCase text="Disabled" usage="The disabled behaviour of the primary button.">
@@ -28,6 +28,6 @@ storiesOf("Button", module)
           style={buttonStyleArray}
           textStyle={buttonTextStyleArray}
         />
-      </UseCase>
+      </UseCase> */}
     </Story>
   ));
