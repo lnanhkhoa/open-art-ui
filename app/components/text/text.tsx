@@ -26,6 +26,7 @@ export function Text(props: TextProps) {
   // figure out which content to use
   const i18nText = tx && translate(tx, txOptions);
   const content = i18nText || text || children;
+  if (!content) return null;
 
   const style = presets[preset] || presets.default;
   const colorText = { color };

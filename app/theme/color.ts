@@ -31,6 +31,7 @@ export const colors = {
   line: palette.grayscale[400],
   bgInput: palette.grayscale[300],
   background: palette.grayscale[200],
+  bgDim: palette.grayscale[300],
   offwhite: palette.grayscale[100],
 
   /**
@@ -50,8 +51,8 @@ export const colors = {
       to: "#0046FF",
     },
     secondary: {
-      from: "#FF8200",
-      to: "#FFFF02",
+      from: "#FF9C00",
+      to: "#FFDB03",
     },
     accent: {
       from: "#0000F6",

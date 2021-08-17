@@ -17,7 +17,7 @@ import { initFonts } from "./theme/fonts"; // expo
 import * as storage from "./utils/storage";
 import { useBackButtonHandler, AppNavigator, canExit, useNavigationPersistence } from "./navigators";
 import { RootStore, RootStoreProvider, setupRootStore } from "./models";
-import { WelcomeScreen } from "./screens";
+import { ShowCaseScreen } from "./screens";
 import { ToggleStorybook } from "../storybook/toggle-storybook";
 
 // This puts screens in a native ViewController or Activity. If you want fully native
@@ -32,7 +32,7 @@ export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
  * This is the root component of our app.
  */
 function App() {
-  // const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined)
+  const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
 
   useBackButtonHandler(canExit);
   // const {
@@ -45,7 +45,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await initFonts(); // expo
-      // setupRootStore().then(setRootStore)
+      setupRootStore().then(setRootStore);
     })();
   }, []);
 
@@ -55,14 +55,14 @@ function App() {
   // In iOS: application:didFinishLaunchingWithOptions:
   // In Android: https://stackoverflow.com/a/45838109/204044
   // You can replace with your own loading component if you wish.
-  // if (!rootStore || !isNavigationStateRestored) return null
+  if (!rootStore) return null;
 
   // otherwise, we're ready to render the app
   return (
     <ToggleStorybook>
       {/* <RootStoreProvider value={rootStore}> */}
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <WelcomeScreen />
+        <ShowCaseScreen />
         {/* <AppNavigator
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
