@@ -11,11 +11,38 @@ export const ButtonScreen = observer(function ButtonScreen() {
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
         <Text preset="largeBold" text="Buttons" />
         <View style={styles.box}>
-          <View style={styles.button}>
-            <Button preset="primary" text="Button" />
+          <View row>
+            <View style={styles.button}>
+              <Button preset="primary" text="Button" />
+            </View>
+            <View style={styles.button}>
+              <Button preset="primary" isLoading text="Button" />
+            </View>
+            <View style={styles.button}>
+              <Button preset="primary" text="Button" disabled />
+            </View>
           </View>
-          <View style={styles.button}>
-            <Button preset="secondary" text="Button" />
+          <View row>
+            <View style={styles.button}>
+              <Button preset="secondary" text="Button" />
+            </View>
+            <View style={styles.button}>
+              <Button preset="secondary" isLoading text="Button" />
+            </View>
+            <View style={styles.button}>
+              <Button preset="secondary" text="Button" disabled />
+            </View>
+          </View>
+          <View row>
+            <View style={styles.button}>
+              <Button preset="subtle" text="Button" />
+            </View>
+            <View style={styles.button}>
+              <Button preset="subtle" isLoading text="Button" />
+            </View>
+            <View style={styles.button}>
+              <Button preset="subtle" text="Button" disabled />
+            </View>
           </View>
         </View>
       </Screen>

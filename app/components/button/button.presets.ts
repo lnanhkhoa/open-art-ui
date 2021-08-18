@@ -16,7 +16,7 @@ const BASE_VIEW: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
   borderWidth: 1,
-  borderColor: colors.transparent
+  borderColor: colors.transparent,
 };
 
 const BASE_TEXT: TextStyle = presets.mediumBold;
@@ -26,7 +26,7 @@ const BASE_TEXT: TextStyle = presets.mediumBold;
  *
  * You want to customize these to whatever you need in your app.
  */
-export const viewPresets: Record<string, ViewStyle> = {
+export const viewPresets = {
   primary: BASE_VIEW,
   secondary: {
     ...BASE_VIEW,
@@ -35,7 +35,10 @@ export const viewPresets: Record<string, ViewStyle> = {
   } as ViewStyle,
   subtle: {
     ...BASE_VIEW,
-    backgroundColor: colors.primary,
+    borderColor: colors.transparent,
+    backgroundColor: colors.transparent,
+    paddingVertical: PADDING_VERTICAL - 1,
+    paddingHorizontal: PADDING_HORIZONTAL - 1,
   } as ViewStyle,
   text: {
     ...BASE_VIEW,
@@ -46,7 +49,7 @@ export const viewPresets: Record<string, ViewStyle> = {
 export const textPresets: Record<ButtonPresetNames, TextStyle> = {
   primary: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
   secondary: { ...BASE_TEXT, color: colors.text } as TextStyle,
-  subtle: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
+  subtle: { ...BASE_TEXT, color: colors.text } as TextStyle,
   text: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
 };
 
