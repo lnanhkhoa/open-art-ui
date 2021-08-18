@@ -4,11 +4,11 @@ import { colors, typography } from "../../theme";
 /**
  * All text will start off looking like this.
  */
-const BASE: TextStyle = {
+const medium: TextStyle = {
   fontFamily: typography.EpilogueRegular,
   color: colors.text,
   fontSize: 16,
-  lineHeight: 22,
+  lineHeight: 24,
 };
 
 const TEXT_STYLES = {
@@ -24,7 +24,7 @@ const TEXT_STYLES = {
     fontSize: 14,
     lineHeight: 20,
   } as TextStyle,
-  medium: BASE,
+  medium,
   large: {
     fontFamily: typography.EpilogueRegular,
     color: colors.text,
@@ -58,7 +58,7 @@ const DISPLAY_STYLES = {
  * You want to customize these to whatever you need in your app.
  */
 export const presets = {
-  default: BASE,
+  default: medium,
   xsmall: TEXT_STYLES.xsmall,
   small: TEXT_STYLES.small,
   medium: TEXT_STYLES.medium,

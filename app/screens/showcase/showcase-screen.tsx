@@ -1,17 +1,17 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Header, Screen, Text, Tag, Avatar, Checkbox } from "../../components";
+import { View, Header, Screen, Text, Tag, Avatar, Checkbox, Button } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 
-export const ShowCaseScreen = observer(() => {
+export const ShowCaseScreen = observer(function ShowCaseScreen() {
   return (
     <View testID="ShowCaseScreen" style={styles.full}>
       {/* <GradientBackground colors={["#422443", "#281b34"]} /> */}
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
-        <Header headerText="Showcase" leftIcon="back" style={styles.header} titleStyle={styles.headerTitle} />
+        {/* <Header headerText="Showcase" leftIcon="back" style={styles.header} titleStyle={styles.headerTitle} /> */}
         <Text preset="largeBold" text="Avatar" />
         <View row style={styles.box}>
           <Avatar size="normal" text="H" containerStyle={styles.avatar} />
@@ -107,4 +107,5 @@ const styles = StyleSheet.create({
   avatar: { margin: 4 },
   tag: { margin: 4 },
   checkbox: { margin: 4 },
+  button: { margin: 4 },
 });

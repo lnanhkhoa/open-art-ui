@@ -25,8 +25,6 @@ import { navigationRef } from "./navigation-utilities";
  */
 export type NavigatorParamList = {
   welcome: undefined;
-  demo: undefined;
-  demoList: undefined;
 };
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/

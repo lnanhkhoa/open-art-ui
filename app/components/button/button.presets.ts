@@ -1,20 +1,25 @@
 import { ViewStyle, TextStyle } from "react-native";
+import { presets } from "../text/text.presets";
 import { colors, spacing } from "../../theme";
 
 /**
  * All text will start off looking like this.
  */
+
+const PADDING_VERTICAL = spacing[2];
+const PADDING_HORIZONTAL = spacing[5];
+
 const BASE_VIEW: ViewStyle = {
-  paddingVertical: spacing[2],
-  paddingHorizontal: spacing[2],
-  borderRadius: 4,
+  paddingVertical: PADDING_VERTICAL,
+  paddingHorizontal: PADDING_HORIZONTAL,
+  borderRadius: 8,
   justifyContent: "center",
   alignItems: "center",
+  borderWidth: 1,
+  borderColor: colors.transparent
 };
 
-const BASE_TEXT: TextStyle = {
-  paddingHorizontal: spacing[3],
-};
+const BASE_TEXT: TextStyle = presets.mediumBold;
 
 /**
  * All the variations of text styling within the app.
@@ -22,13 +27,11 @@ const BASE_TEXT: TextStyle = {
  * You want to customize these to whatever you need in your app.
  */
 export const viewPresets: Record<string, ViewStyle> = {
-  primary: {
-    ...BASE_VIEW,
-    backgroundColor: colors.primary,
-  } as ViewStyle,
+  primary: BASE_VIEW,
   secondary: {
     ...BASE_VIEW,
-    backgroundColor: colors.primary,
+    borderColor: colors.line,
+    backgroundColor: colors.transparent,
   } as ViewStyle,
   subtle: {
     ...BASE_VIEW,
@@ -41,10 +44,10 @@ export const viewPresets: Record<string, ViewStyle> = {
 };
 
 export const textPresets: Record<ButtonPresetNames, TextStyle> = {
-  primary: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
-  secondary: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
-  subtle: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
-  text: { ...BASE_TEXT, fontSize: 9, color: colors.text } as TextStyle,
+  primary: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
+  secondary: { ...BASE_TEXT, color: colors.text } as TextStyle,
+  subtle: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
+  text: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
 };
 
 export type ButtonPresetNames = keyof typeof viewPresets;
