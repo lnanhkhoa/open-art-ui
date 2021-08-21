@@ -8,7 +8,6 @@ const medium: TextStyle = {
   fontFamily: typography.EpilogueRegular,
   color: colors.text,
   fontSize: 16,
-  textAlign: "center",
 };
 
 const TEXT_STYLES = {

@@ -16,7 +16,7 @@ export const ButtonScreen = observer(function ButtonScreen() {
             value=""
             onChangeText={() => null}
             rightIcon={() => (
-              <Icon icon={"microphone"} size={16} onPress={() => {}} containerStyle={{ padding: spacing[2] }} />
+              <Icon icon={"microphone"} size={16} onPress={() => null} containerStyle={{ padding: spacing[2] }} />
             )}
           />
         </View>
@@ -67,17 +67,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.transparent,
     paddingHorizontal: spacing[4],
-  },
-  header: {
-    paddingTop: spacing[3],
-    paddingBottom: spacing[5] - 1,
-    paddingHorizontal: 0,
-  },
-  headerTitle: {
-    fontSize: 24,
-    textAlign: "center",
-    letterSpacing: 1.5,
-    color: colors.text,
   },
   box: {
     borderRadius: 6,

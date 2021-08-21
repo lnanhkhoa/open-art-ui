@@ -7,6 +7,8 @@ import {
   TextInput,
   TextInputProps,
   ImageURISource,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
 } from "react-native";
 import { View } from "../view";
 import { Text } from "../text/text";
@@ -17,17 +19,27 @@ import { colors, spacing, timing } from "../../theme";
 
 const { AVT_SIZE } = constants;
 
-export interface SearchBarProps {
+export interface SearchBarProps extends TextInputProps {
   containerStyle?: ViewStyle;
   inputStyle?: ViewStyle;
   value: string;
   rightIcon?: () => React.ReactNode;
   onChangeText?: (text: string) => void;
+  onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 }
 
-export function SearchBar({ containerStyle, rightIcon, inputStyle, value = "", onChangeText }: SearchBarProps) {
+export function SearchBar({
+  containerStyle,
+  rightIcon,
+  inputStyle,
+  value = "",
+  onChangeText,
+  onFocus,
+  onBlur,
+  ...rest
+}: SearchBarProps) {
   const [isFocus, setIsFocus] = useState(false);
-
   const showCancelButton = isFocus || !!value;
 
   return (
@@ -35,14 +47,20 @@ export function SearchBar({ containerStyle, rightIcon, inputStyle, value = "", o
       <View style={[styles.container, containerStyle]}>
         <Icon icon="search" size={16} containerStyle={styles.searchIcon} />
         <TextInput
-          autoFocus
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
+          onFocus={(e) => {
+            onFocus && onFocus(e);
+            setIsFocus(true);
+          }}
+          onBlur={(e) => {
+            onBlur && onBlur(e);
+            setIsFocus(false);
+          }}
           style={[styles.input, inputStyle]}
           placeholder="Search"
           placeholderTextColor={colors.placeholder}
           onChangeText={onChangeText}
           value={value}
+          {...rest}
         />
         {!showCancelButton && rightIcon && rightIcon()}
       </View>
