@@ -5,6 +5,8 @@ export const icons = {
   "back-arrow": require("./back-arrow.png"),
   back: require("./back.png"),
   check: require("./check.png"),
+  search: require("./search.png"),
+  microphone: require("./microphone.png"),
 };
 
 export type IconTypes = keyof typeof icons;

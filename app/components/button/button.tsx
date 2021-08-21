@@ -37,7 +37,7 @@ export function Button({
 }: ButtonProps) {
   const [touching, setTouching] = useState(false);
 
-  const disabledViewStyle = { opacity: 0.4} as ViewStyle;
+  const disabledViewStyle = { opacity: 0.4 } as ViewStyle;
 
   const viewStyle: ViewStyle = viewPresets[preset] || viewPresets.primary;
   const viewStyles: ViewStyle[] = [viewStyle, disabled && disabledViewStyle, styleOverride];
@@ -48,9 +48,9 @@ export function Button({
     children ||
     (isLoading ? (
       <View row>
+        <MaterialIndicator color="white" size={18} style={{ paddingHorizontal: spacing[3] }} />
         <Text style={textStyles} text=" " />
-        <MaterialIndicator color="white" size={20} style={{ paddingHorizontal: spacing[3] }} />
-        <Text style={textStyles} text=" " />
+        <Text tx={tx} style={textStyles} text={text} />
       </View>
     ) : (
       <Text tx={tx} text={text} style={textStyles} />

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { View, ImageStyle, StyleSheet, StyleProp, ViewStyle } from "react-native";
-import { AutoImage as Image } from "../auto-image/auto-image";
+import { TouchableOpacity, ImageStyle, StyleSheet, StyleProp, ViewStyle, Image } from "react-native";
 import { icons, IconTypes } from "./icons";
+import { colors } from "../../theme";
 
 const DEFAULT_SIZE = 24;
 export interface IconProps {
@@ -9,19 +9,22 @@ export interface IconProps {
   containerStyle?: StyleProp<ViewStyle>;
   size?: number;
   icon?: IconTypes;
+  color?: string;
+  onPress?: () => void;
 }
 
 export function Icon(props: IconProps) {
-  const { style: styleOverride, icon, size = DEFAULT_SIZE, containerStyle } = props;
+  const { style: styleOverride, icon, color = colors.text, size = DEFAULT_SIZE, containerStyle, onPress } = props;
   const sizeStyles = {
     width: size,
     height: size,
   } as ImageStyle;
+  const colorStyle = { color };
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <Image style={[styles.image, sizeStyles, styleOverride]} source={icons[icon]} resizeMode="contain" />
-    </View>
+    <TouchableOpacity disabled={!onPress} onPress={onPress} style={[styles.container, containerStyle]}>
+      <Image style={[styles.image, sizeStyles, colorStyle, styleOverride]} source={icons[icon]} resizeMode="contain" />
+    </TouchableOpacity>
   );
 }
 

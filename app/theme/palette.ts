@@ -27,6 +27,7 @@ export const palette = {
     darkMode: "#FF9922",
   },
   grayscale: {
+    "900": "#0E0F0F",
     "800": "#222222",
     "700": "#333333",
     "600": "#555555",

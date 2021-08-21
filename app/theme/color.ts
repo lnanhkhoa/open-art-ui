@@ -35,6 +35,7 @@ export const colors = {
   background: palette.grayscale[200],
   bgDim: palette.grayscale[300],
   offwhite: palette.grayscale[100],
+  inkBase: palette.grayscale[900],
 
   /**
    * Storybook text color for stories that display Text components against the

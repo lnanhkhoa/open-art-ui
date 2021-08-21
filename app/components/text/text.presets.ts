@@ -8,7 +8,7 @@ const medium: TextStyle = {
   fontFamily: typography.EpilogueRegular,
   color: colors.text,
   fontSize: 16,
-  lineHeight: 24,
+  textAlign: "center",
 };
 
 const TEXT_STYLES = {
@@ -16,20 +16,17 @@ const TEXT_STYLES = {
     fontFamily: typography.EpilogueMedium,
     color: colors.text,
     fontSize: 13,
-    lineHeight: 20,
   } as TextStyle,
   small: {
     fontFamily: typography.EpilogueRegular,
     color: colors.text,
     fontSize: 14,
-    lineHeight: 20,
   } as TextStyle,
   medium,
   large: {
     fontFamily: typography.EpilogueRegular,
     color: colors.text,
     fontSize: 20,
-    lineHeight: 28,
   } as TextStyle,
 };
 const DISPLAY_STYLES = {
@@ -37,19 +34,16 @@ const DISPLAY_STYLES = {
     fontFamily: typography.EpilogueRegular,
     color: colors.text,
     fontSize: 24,
-    lineHeight: 32,
   } as TextStyle,
   medium: {
     fontFamily: typography.EpilogueRegular,
     color: colors.text,
     fontSize: 32,
-    lineHeight: 36,
   } as TextStyle,
   large: {
     fontFamily: typography.EpilogueRegular,
     color: colors.text,
     fontSize: 40,
-    lineHeight: 48,
   } as TextStyle,
 };
 /**

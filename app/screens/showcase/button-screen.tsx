@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Screen, Text, Button } from "../../components";
+import { View, Screen, Text, Button, SearchBar, Icon } from "../../components";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 
@@ -9,6 +9,17 @@ export const ButtonScreen = observer(function ButtonScreen() {
   return (
     <View testID="ButtonScreen" style={styles.full}>
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
+        <Text preset="largeBold" text="Text Input" />
+
+        <View style={[styles.box, { alignItems: "stretch" }]}>
+          <SearchBar
+            value=""
+            onChangeText={() => null}
+            rightIcon={() => (
+              <Icon icon={"microphone"} size={16} onPress={() => {}} containerStyle={{ padding: spacing[2] }} />
+            )}
+          />
+        </View>
         <Text preset="largeBold" text="Buttons" />
         <View style={styles.box}>
           <View row>

@@ -13,3 +13,4 @@ export * from "./wallpaper/wallpaper";
 export * from "./view";
 export * from "./avatar/avatar";
 export * from "./tag/tag";
+export * from "./search-bar/search-bar";
