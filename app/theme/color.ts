@@ -14,6 +14,7 @@ export const colors = {
   offWhite: palette.grayscale[100],
   white: palette.white,
   black: palette.black,
+  body: palette.grayscale[700],
   primary: palette.blue.default,
   primaryDark: palette.blue.dark,
   primaryDarkMode: palette.blue.darkMode,
@@ -34,7 +35,6 @@ export const colors = {
   bgInput: palette.grayscale[300],
   background: palette.grayscale[200],
   bgDim: palette.grayscale[300],
-  offwhite: palette.grayscale[100],
   inkBase: palette.grayscale[900],
 
   /**

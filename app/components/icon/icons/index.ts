@@ -9,6 +9,10 @@ export const icons = {
   microphone: require("./microphone.png"),
   tag: require("./tag.png"),
   close: require("./close.png"),
+  heart: require("./heart.png"),
+  menu: require("./menu.png"),
+  "arrow-left": require("./arrow-left.png"),
+  "forward-arrow": require("./forward-arrow.png"),
 };
 
 export type IconTypes = keyof typeof icons;

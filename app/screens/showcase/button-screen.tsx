@@ -55,6 +55,10 @@ export const ButtonScreen = observer(function ButtonScreen() {
               <Button preset="subtle" text="Button" disabled />
             </View>
           </View>
+
+          <View>
+            <Button preset="text" text="Sold" />
+          </View>
         </View>
       </Screen>
     </View>

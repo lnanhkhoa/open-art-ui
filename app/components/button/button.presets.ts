@@ -30,7 +30,7 @@ export const viewPresets = {
   primary: BASE_VIEW,
   secondary: {
     ...BASE_VIEW,
-    borderColor: colors.line,
+    borderColor: colors.primary,
     backgroundColor: colors.transparent,
   } as ViewStyle,
   subtle: {
@@ -48,7 +48,7 @@ export const viewPresets = {
 
 export const textPresets: Record<ButtonPresetNames, TextStyle> = {
   primary: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
-  secondary: { ...BASE_TEXT, color: colors.text } as TextStyle,
+  secondary: { ...BASE_TEXT } as TextStyle,
   subtle: { ...BASE_TEXT, color: colors.text } as TextStyle,
   text: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
 };

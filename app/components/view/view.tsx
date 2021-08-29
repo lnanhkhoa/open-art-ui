@@ -14,6 +14,7 @@ export function View({
   tint,
   ...rest
 }: ViewProps) {
+
   const backgroundColor = bgColor || colors.transparent;
   const rowStyles = { flexDirection: "row", alignItems: "center" } as ViewStyle;
 

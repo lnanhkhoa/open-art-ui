@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource } from "react-native";
+import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource, useColorScheme } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { View } from "../view";
 import { Text } from "../text/text";
 import { constants } from "../../config";
-import { colors } from "../../theme";
+import { colors, spacing, shadow } from "../../theme";
 
 const { AVT_SIZE } = constants;
 
@@ -25,6 +25,22 @@ const AVT_SIZES = {
   normal: AVT_SIZE.NORMAL,
   large: AVT_SIZE.LARGE,
 };
+const DOT_STYLES = {
+  small: {
+    top: 1,
+    right: -1,
+  },
+  normal: {
+    top: 3,
+    right: 0,
+  },
+  large: {
+    top: 4,
+    right: 0,
+    width: 18,
+    height: 18,
+  },
+};
 
 export function Avatar({
   active = false,
@@ -37,13 +53,17 @@ export function Avatar({
   title = "",
   statusText = "",
 }: AvatarProps) {
+  const colorScheme = useColorScheme();
+  const isDarkMode = colorScheme === "dark";
+
   const imgStyle = {
     width: AVT_SIZES[size],
     height: AVT_SIZES[size],
     borderRadius: AVT_SIZES[size] / 2,
   };
-
   const textboxStyle = { marginLeft: 8 } as ViewStyle;
+  const dotStyle = [styles.dot, isDarkMode && darkStyles.dot, DOT_STYLES[size]];
+  const statusTextColor = isDarkMode ? colors.offWhite : colors.placeholder;
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -61,20 +81,30 @@ export function Avatar({
                 <Text preset="headerMediumBold" text={text} color={colors.background} style={{ paddingTop: 6 }} />
               </LinearGradient>
             )}
-            {active && <View style={styles.dot} />}
+            {active && <View style={dotStyle} />}
           </View>
         </View>
         <View style={[styles.textbox, preset === "row" && textboxStyle]}>
-          <Text preset="smallBold" text={title} color={colors.titleActive} />
-          {preset === "row" && <Text preset="small" text={statusText} color={colors.placeholder} />}
+          <Text preset="mediumBold" text={title} />
+          {preset === "row" && (
+            <Text preset="small" text={statusText} color={statusTextColor} style={{ paddingVertical: spacing[1] }} />
+          )}
         </View>
       </View>
     </View>
   );
 }
 
+const darkStyles = StyleSheet.create({
+  dot: {
+    borderColor: colors.transparent,
+  },
+});
+
 const styles = StyleSheet.create({
-  container: { alignItems: "flex-start" },
+  container: {
+    alignItems: "flex-start",
+  },
   wrapper: { alignItems: "flex-start" },
   imageBox: {
     alignItems: "flex-start",
@@ -86,7 +116,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 14,
     width: 14,
-    borderRadius: 6,
+    borderRadius: 50,
     borderColor: colors.white,
     borderWidth: 2,
 

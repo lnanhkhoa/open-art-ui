@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Header, Screen, Text, Tag, Avatar, Checkbox, Button } from "../../components";
+import { View, Header, Screen, Text, Tag, Avatar, Checkbox, Button, TextField } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
@@ -71,6 +71,16 @@ export const ShowCaseScreen = observer(function ShowCaseScreen() {
             <Checkbox isActive value={false} style={styles.checkbox} onToggle={() => null} />
             <Checkbox isActive value={true} style={styles.checkbox} onToggle={() => null} />
           </View>
+        </View>
+        <Text preset="largeBold" text="TextField" />
+        <View style={styles.box}>
+          <TextField
+            label=""
+            // notice="Enter your name"
+            disabled
+            placeholder="abc"
+            showCloseIcon
+          />
         </View>
       </Screen>
     </View>

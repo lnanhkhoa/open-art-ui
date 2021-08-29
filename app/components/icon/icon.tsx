@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity, ImageStyle, StyleSheet, StyleProp, ViewStyle, Image } from "react-native";
+import { TouchableOpacity, ImageStyle, StyleSheet, StyleProp, ViewStyle, Image, useColorScheme } from "react-native";
 import { icons, IconTypes } from "./icons";
 import { colors } from "../../theme";
 
@@ -14,12 +14,17 @@ export interface IconProps {
 }
 
 export function Icon(props: IconProps) {
-  const { style: styleOverride, icon, color = colors.text, size = DEFAULT_SIZE, containerStyle, onPress } = props;
+  const { style: styleOverride, icon, size = DEFAULT_SIZE, containerStyle, onPress } = props;
+  const colorScheme = useColorScheme();
+  const isDarkMode = colorScheme === "dark";
+  const color = props.color ? props.color : isDarkMode ? colors.offWhite : colors.text;
+
+  //
   const sizeStyles = {
     width: size,
     height: size,
   } as ImageStyle;
-  const colorStyle = { color };
+  const colorStyle = { tintColor: color } as ImageStyle;
 
   return (
     <TouchableOpacity disabled={!onPress} onPress={onPress} style={[styles.container, containerStyle]}>

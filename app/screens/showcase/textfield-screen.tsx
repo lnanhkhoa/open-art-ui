@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Screen, Text, TextField } from "../../components";
+import { View, Screen, Text, TextField, ListItem, HeaderLogo } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 // import { assets, constants } from "../../config";
@@ -10,15 +10,9 @@ export const TextFieldScreen = observer(function TextFieldScreen() {
   return (
     <View testID="TextFieldScreen" style={styles.full}>
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
-        <Text preset="largeBold" text="TextField" />
+        <Text preset="largeBold" text="Header" />
         <View style={styles.box}>
-          <TextField
-            label=""
-            // notice="Enter your name"
-            disabled
-            placeholder="abc"
-            showCloseIcon
-          />
+          <HeaderLogo rightIcon="menu"/>
         </View>
       </Screen>
     </View>

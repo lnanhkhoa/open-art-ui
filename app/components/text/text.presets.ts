@@ -1,48 +1,46 @@
 import { TextStyle } from "react-native";
-import { colors, typography } from "../../theme";
+import { typography } from "../../theme";
 
 /**
  * All text will start off looking like this.
  */
 const medium: TextStyle = {
   fontFamily: typography.EpilogueRegular,
-  color: colors.text,
   fontSize: 16,
+  letterSpacing: 0.5,
 };
 
 const TEXT_STYLES = {
   xsmall: {
     fontFamily: typography.EpilogueMedium,
-    color: colors.text,
     fontSize: 13,
   } as TextStyle,
   small: {
-    fontFamily: typography.EpilogueRegular,
-    color: colors.text,
+    fontFamily: typography.EpilogueMedium,
     fontSize: 14,
   } as TextStyle,
   medium,
   large: {
     fontFamily: typography.EpilogueRegular,
-    color: colors.text,
     fontSize: 20,
   } as TextStyle,
 };
+
 const DISPLAY_STYLES = {
   small: {
     fontFamily: typography.EpilogueRegular,
-    color: colors.text,
     fontSize: 24,
+    letterSpacing: 0.5,
   } as TextStyle,
   medium: {
     fontFamily: typography.EpilogueRegular,
-    color: colors.text,
     fontSize: 32,
+    letterSpacing: 0.5,
   } as TextStyle,
   large: {
     fontFamily: typography.EpilogueRegular,
-    color: colors.text,
     fontSize: 40,
+    letterSpacing: 0.5,
   } as TextStyle,
 };
 /**

@@ -12,12 +12,13 @@
 import "./i18n";
 import "./utils/ignore-warnings";
 import React, { useState, useEffect } from "react";
+import { AppearanceProvider } from "react-native-appearance";
 import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
 import { initFonts } from "./theme/fonts"; // expo
 import * as storage from "./utils/storage";
 import { useBackButtonHandler, AppNavigator, canExit, useNavigationPersistence } from "./navigators";
 import { RootStore, RootStoreProvider, setupRootStore } from "./models";
-import { TextFieldScreen } from "./screens";
+import { HomeScreen, ButtonScreen } from "./screens";
 import { ToggleStorybook } from "../storybook/toggle-storybook";
 
 // This puts screens in a native ViewController or Activity. If you want fully native
@@ -60,14 +61,16 @@ function App() {
   // otherwise, we're ready to render the app
   return (
     <ToggleStorybook>
-      {/* <RootStoreProvider value={rootStore}> */}
-      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <TextFieldScreen />
-        {/* <AppNavigator
+      <AppearanceProvider>
+        {/* <RootStoreProvider value={rootStore}> */}
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <HomeScreen />
+          {/* <AppNavigator
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}
           /> */}
-      </SafeAreaProvider>
+        </SafeAreaProvider>
+      </AppearanceProvider>
       {/* </RootStoreProvider> */}
     </ToggleStorybook>
   );
