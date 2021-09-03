@@ -49,8 +49,8 @@ export function SearchBar({
   const placeholderTextColors = placeholderTextColor || (isDarkMode ? colors.offWhite : colors.placeholder);
 
   return (
-    <View row style={wrapperStyles}>
-      <View style={containerStyles}>
+    <View row alignCenter style={wrapperStyles}>
+      <View alignCenter style={containerStyles}>
         <Icon icon="search" size={16} containerStyle={styles.searchIcon} />
         <TextInput
           onFocus={(e) => {
@@ -79,11 +79,12 @@ export function SearchBar({
 }
 
 const styles = StyleSheet.create({
-  wrapper: { alignItems: "center", backgroundColor: colors.background },
+  wrapper: {
+    backgroundColor: colors.background,
+  },
   container: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "center",
     backgroundColor: colors.bgInput,
     borderRadius: 8,
   },

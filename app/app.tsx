@@ -18,7 +18,7 @@ import { initFonts } from "./theme/fonts"; // expo
 import * as storage from "./utils/storage";
 import { useBackButtonHandler, AppNavigator, canExit, useNavigationPersistence } from "./navigators";
 import { RootStore, RootStoreProvider, setupRootStore } from "./models";
-import { HomeScreen, ButtonScreen } from "./screens";
+import { HomeScreen, ItemDetailScreen } from "./screens";
 import { ToggleStorybook } from "../storybook/toggle-storybook";
 
 // This puts screens in a native ViewController or Activity. If you want fully native
@@ -64,7 +64,8 @@ function App() {
       <AppearanceProvider>
         {/* <RootStoreProvider value={rootStore}> */}
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <HomeScreen />
+          {/* <HomeScreen /> */}
+          <ItemDetailScreen />
           {/* <AppNavigator
             initialState={initialNavigationState}
             onStateChange={onNavigationStateChange}

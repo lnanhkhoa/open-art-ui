@@ -10,4 +10,7 @@ export default {
   card4: require("../../assets/images/card4/card4.png"),
   card5: require("../../assets/images/card5/card5.png"),
   card6: require("../../assets/images/card6/card6.png"),
+  card7: require("../../assets/images/card7/card7.png"),
+  etherscan: require("../../assets/images/etherscan/etherscan.png"),
+  star: require("../../assets/images/star/star.png"),
 };

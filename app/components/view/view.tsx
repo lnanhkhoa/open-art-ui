@@ -9,12 +9,13 @@ export function View({
   children,
   style: styleOverride,
   flexible,
+  alignCenter,
+  justifySpaceBetween,
   row,
   intensity,
   tint,
   ...rest
 }: ViewProps) {
-
   const backgroundColor = bgColor || colors.transparent;
   const rowStyles = { flexDirection: "row", alignItems: "center" } as ViewStyle;
 
@@ -23,6 +24,8 @@ export function View({
       backgroundColor,
       flex: flexible ? 1 : undefined,
     },
+    alignCenter && ({ alignItems: "center" } as ViewStyle),
+    justifySpaceBetween && ({ justifyContent: "space-between" } as ViewStyle),
     row && rowStyles,
     styleOverride,
   ];

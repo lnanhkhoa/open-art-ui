@@ -29,7 +29,6 @@ storiesOf("Icon", module)
             return (
               <View key={name} style={styles.row}>
                 <View style={styles.wrap}>
-                  <Icon icon={name} />
                   <Text text={name} color="black" />
                 </View>
               </View>

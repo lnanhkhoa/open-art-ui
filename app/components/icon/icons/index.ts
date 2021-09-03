@@ -13,6 +13,11 @@ export const icons = {
   menu: require("./menu.png"),
   "arrow-left": require("./arrow-left.png"),
   "forward-arrow": require("./forward-arrow.png"),
+  export: require("./export.png"),
+  external: require("./external.png"),
+  edit: require("./edit.png"),
+  "chart-pie": require("./chart-pie.png"),
+  star: require("./star.png"),
 };
 
 export type IconTypes = keyof typeof icons;

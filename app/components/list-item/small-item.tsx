@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource } from "react-native";
 import { View } from "../view";
 import { Text } from "../text/text";
-import { constants } from "../../config";
-import assets from "../../config/assets";
-import { colors, spacing, shadow } from "../../theme";
+import { colors, spacing } from "../../theme";
 
 export interface ListItemProps {
   source: ImageRequireSource | ImageURISource;
@@ -29,11 +27,12 @@ export function SmallListItem({
 }: ListItemProps) {
   return (
     <View style={StyleSheet.flatten([styles.container, containerStyle])}>
-      <View style={{ marginVertical: spacing[3], alignItems: "center" }}>
+      <View alignCenter style={{ marginVertical: spacing[3] }}>
         <Image source={source} style={styles.image} resizeMode="contain" />
         <View style={styles.avatarBox}>
           {avtSources.map((avtSrc, index) => {
-            return <Image key={String(index)} source={avtSrc} style={styles.avatar} />;
+            const imgStyles = [styles.avatar, { left: index * 20 }];
+            return <Image key={String(index)} source={avtSrc} style={imgStyles} />;
           })}
         </View>
       </View>
@@ -80,6 +79,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   avatar: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
     height: 30,
     width: 30,
     borderRadius: 99,

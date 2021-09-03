@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   SmallListItem,
 } from "../../components";
+import { Footer } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets } from "../../config";
@@ -78,10 +79,10 @@ export const HomeScreen = observer(function HomeScreen(props) {
   const viewBidStyles = [styles.viewBid, isDarkMode && darkStyles.viewBid];
   const colorText = isDarkMode ? colors.offWhite : colors.label;
   const placeholderText = isDarkMode ? colors.offWhite : colors.placeholder;
-  const buttonSoldStyles = [styles.buttonSold, darkStyles.buttonSold];
+  const buttonSoldStyles = [styles.buttonSold, isDarkMode && darkStyles.buttonSold];
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <HeaderLogo rightIcon="menu" onRightPress={onPressMenu} containerStyle={styles.header} />
       <ScrollView style={constainerStyles} contentContainerStyle={{ paddingBottom: spacing[7] }}>
         <View style={styles.header}>
@@ -171,7 +172,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 status="Creator"
               />
               <View row style={viewBidStyles}>
-                <View flexible style={{ marginVertical: spacing[4], alignItems: "center" }}>
+                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Current bid" />
                   <Text
                     preset="largeBold"
@@ -180,7 +181,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                     style={{ paddingVertical: spacing[1] }}
                   />
                 </View>
-                <View flexible style={{ marginVertical: spacing[4], alignItems: "center" }}>
+                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Ending in" />
                   <Text
                     preset="largeBold"
@@ -201,7 +202,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 status="Creator"
               />
               <View row style={viewBidStyles}>
-                <View flexible style={{ marginVertical: spacing[4], alignItems: "center" }}>
+                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Current bid" />
                   <Text
                     preset="largeBold"
@@ -210,7 +211,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                     style={{ paddingVertical: spacing[1] }}
                   />
                 </View>
-                <View flexible style={{ marginVertical: spacing[4], alignItems: "center" }}>
+                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Ending in" />
                   <Text
                     preset="largeBold"
@@ -224,8 +225,8 @@ export const HomeScreen = observer(function HomeScreen(props) {
           </View>
           {/* Hot bid */}
           <View style={styles.hotBid}>
-            <View row style={{ alignItems: "center", justifyContent: "space-between" }}>
-              <View row style={{ alignItems: "center", paddingLeft: spacing[3] }}>
+            <View row alignCenter justifySpaceBetween>
+              <View row alignCenter style={{ paddingLeft: spacing[3] }}>
                 <Image source={assets.fire} style={{ width: 24, height: 24, marginRight: spacing[2] }} />
                 <Text text="Hot bid" preset="headerSmallBold" />
               </View>
@@ -235,7 +236,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
               </View>
             </View>
             <FlatList
-              horizontal
+              horizontal={true}
               ref={hotbidRef}
               data={HOT_BID_LIST}
               contentContainerStyle={{ paddingRight: 30 }}
@@ -252,26 +253,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
           />
         </View>
         <View style={styles.bottom}>
-          <View style={{ alignItems: "center" }}>
-            <Image source={assets.logo} />
-            <Text style={{ paddingVertical: spacing[2] }}>
-              <Text preset="headerSmall" text="The New " />
-              <Text preset="headerSmallBold" text="Creative Economy" />
-            </Text>
-          </View>
-          <Button
-            preset="primary"
-            text="Earn now"
-            textStyle={{ paddingVertical: spacing[2] }}
-            style={{ paddingVertical: spacing[3] }}
-            containerStyle={{ marginHorizontal: spacing[4], marginTop: spacing[4] }}
-          />
-          <Button
-            preset="secondary"
-            text="Discover more"
-            textStyle={{ paddingVertical: spacing[3] }}
-            containerStyle={{ marginHorizontal: spacing[4], marginTop: spacing[4] }}
-          />
+          <Footer />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -295,7 +277,6 @@ const darkStyles = StyleSheet.create({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
-    // flex: 1,
   },
   header: {
     paddingHorizontal: spacing[4],

@@ -19,7 +19,7 @@ const BASE_VIEW: ViewStyle = {
   borderColor: colors.transparent,
 };
 
-const BASE_TEXT: TextStyle = presets.mediumBold;
+const BASE_TEXT: TextStyle = presets.largeBold;
 
 /**
  * All the variations of text styling within the app.

@@ -15,6 +15,7 @@ export const BUTTON_SIZE = {
 export const AVT_SIZE = {
   SMALL: 35,
   NORMAL: 48,
+  MEDIUM: 52,
   LARGE: 80,
 };
 

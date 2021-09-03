@@ -106,7 +106,7 @@ storiesOf("TextField", module)
             />
           )}
         </State>
-        <Text text="* attention designers:  i am so sorry" preset="secondary" />
+        <Text text="* attention designers:  i am so sorry" preset="default" />
       </UseCase>
 
       <UseCase text="Style array" usage="Useful for 1-off exceptions, but using style arrays.">
@@ -121,7 +121,7 @@ storiesOf("TextField", module)
             />
           )}
         </State>
-        <Text text="* attention designers:  i am so sorry" preset="secondary" />
+        <Text text="* attention designers:  i am so sorry" preset="default" />
       </UseCase>
     </Story>
   ))
@@ -153,7 +153,7 @@ storiesOf("TextField", module)
             />
           )}
         </State>
-        <Text text="* attention designers:  i am so sorry" preset="secondary" />
+        <Text text="* attention designers:  i am so sorry" preset="default" />
       </UseCase>
     </Story>
   ));

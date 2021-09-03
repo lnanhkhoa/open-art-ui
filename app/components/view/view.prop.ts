@@ -13,6 +13,9 @@ export interface ViewProps extends RNViewProps {
   style?: ViewStyle | ViewStyle[];
   flexible?: boolean;
   row?: boolean;
+  alignCenter?: boolean;
+  justifySpaceBetween?: boolean;
+
   // blur props
   tint?: BlurTint;
   intensity?: number;

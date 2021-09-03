@@ -1,23 +1,9 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  ViewStyle,
-  Image,
-  ImageRequireSource,
-  TextInput,
-  TextInputProps,
-  ImageURISource,
-  NativeSyntheticEvent,
-  TextInputFocusEventData,
-  useColorScheme,
-} from "react-native";
+import React from "react";
+import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource, useColorScheme } from "react-native";
 import { View } from "../view";
 import { Text } from "../text/text";
 import { Avatar } from "../avatar/avatar";
-import { presets } from "../text/text.presets";
 import { Icon } from "../icon/icon";
-import { constants } from "../../config";
-import assets from "../../config/assets";
 import { colors, spacing, shadow } from "../../theme";
 
 export interface ListItemProps {
@@ -38,7 +24,7 @@ export function ListItem({ source, avtSource, title, subtitle, status, isActive,
 
   return (
     <View style={containerStyles}>
-      <View style={{ marginVertical: spacing[3], alignItems: "center" }}>
+      <View alignCenter style={{ marginVertical: spacing[3] }}>
         <Image source={source} style={styles.image} resizeMode="contain" />
       </View>
       <Text text={title} preset="headerSmallBold" style={{ paddingHorizontal: spacing[4], paddingTop: spacing[2] }} />

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIndicator } from "react-native-indicators";
-import MaskedView from "@react-native-community/masked-view";
+// import MaskedView from "@react-native-community/masked-view";
 import { View } from "../view";
 import { Text } from "../text/text";
 import { viewPresets, textPresets, ButtonPresetNames } from "./button.presets";
