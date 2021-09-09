@@ -29,26 +29,6 @@ const AVT_SIZES = {
   medium: AVT_SIZE.MEDIUM,
 };
 const DOT_SIZE = 14;
-const DOT_STYLES = {
-  small: {
-    top: 1,
-    right: -1,
-  },
-  normal: {
-    top: 3,
-    right: 0,
-  },
-  medium: {
-    top: 3,
-    right: 0,
-  },
-  large: {
-    top: 4,
-    right: 0,
-    width: 18,
-    height: 18,
-  },
-};
 
 export function Avatar({
   active = false,
@@ -71,7 +51,7 @@ export function Avatar({
     borderRadius: AVT_SIZES[size] / 2,
   };
   const textboxStyle = { marginLeft: 8 } as ViewStyle;
-  const dotStyle = [styles.dot, isDarkMode && darkStyles.dot, DOT_STYLES[size]];
+  const dotStyle = [styles.dot, isDarkMode && darkStyles.dot, dotStyles[size]];
   const statusTextColor = isDarkMode ? colors.offWhite : colors.placeholder;
 
   return (
@@ -103,6 +83,27 @@ export function Avatar({
     </View>
   );
 }
+
+const dotStyles = StyleSheet.create({
+  small: {
+    top: 1,
+    right: -1,
+  },
+  normal: {
+    top: 3,
+    right: 0,
+  },
+  medium: {
+    top: 3,
+    right: 0,
+  },
+  large: {
+    top: 4,
+    right: 0,
+    width: 18,
+    height: 18,
+  },
+});
 
 const darkStyles = StyleSheet.create({
   dot: {

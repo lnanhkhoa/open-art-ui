@@ -19,7 +19,7 @@ const BASE_VIEW: ViewStyle = {
   borderColor: colors.transparent,
 };
 
-const BASE_TEXT: TextStyle = presets.largeBold;
+// const BASE_TEXT: TextStyle = presets.largeBold;
 
 /**
  * All the variations of text styling within the app.
@@ -46,11 +46,11 @@ export const viewPresets = {
   } as ViewStyle,
 };
 
-export const textPresets: Record<ButtonPresetNames, TextStyle> = {
-  primary: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
-  secondary: { ...BASE_TEXT } as TextStyle,
-  subtle: { ...BASE_TEXT, color: colors.text } as TextStyle,
-  text: { ...BASE_TEXT, color: colors.offWhite } as TextStyle,
+export const colorTextPresets: Record<ButtonPresetNames, TextStyle> = {
+  primary: { color: colors.offWhite, paddingVertical: spacing[1] } as TextStyle,
+  secondary: { paddingVertical: spacing[1] } as TextStyle,
+  subtle: { color: colors.text, paddingVertical: spacing[1] } as TextStyle,
+  text: { color: colors.offWhite, paddingVertical: spacing[1] } as TextStyle,
 };
 
 export type ButtonPresetNames = keyof typeof viewPresets;

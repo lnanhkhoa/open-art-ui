@@ -1,6 +1,6 @@
 export const typography = {
-  // EpilogueLight: "EpilogueLight",
   primary: "EpilogueRegular",
+  EpilogueLight: "EpilogueLight",
   EpilogueRegular: "EpilogueRegular",
   EpilogueItalic: "EpilogueItalic",
   EpilogueMedium: "EpilogueMedium",

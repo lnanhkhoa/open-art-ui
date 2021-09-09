@@ -1,17 +1,28 @@
 import React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, useColorScheme } from "react-native";
 import { Text, View, Button } from "../../components";
 import { assets } from "../../config";
-import { spacing, colors } from "../../theme";
+import { spacing, typography, colors } from "../../theme";
 
 export function Footer() {
+  const colorScheme = useColorScheme();
+  const isDarkMode = colorScheme === "dark";
+  const colorText = isDarkMode ? colors.offWhite : colors.titleActive;
+  const logoSrc = isDarkMode ? assets.logo2Dark : assets.logo2;
   return (
     <View flexible>
       <View alignCenter>
-        <Image source={assets.logo} />
+        <Image source={logoSrc} />
         <Text style={{ paddingVertical: spacing[2] }}>
-          <Text preset="headerSmall" text="The New " />
-          <Text preset="headerSmallBold" text="Creative Economy" />
+          <Text preset="headerSmall" color={colorText} text="The " style={{ fontFamily: typography.EpilogueLight }} />
+          <Text preset="headerSmall" color={colorText} text="New " />
+          <Text
+            preset="headerSmall"
+            color={colorText}
+            text="Creative "
+            style={{ fontFamily: typography.EpilogueMedium }}
+          />
+          <Text preset="headerSmallBold" color={colorText} text="Economy" />
         </Text>
       </View>
       <Button

@@ -2,6 +2,8 @@ export default {
   fire: require("../../assets/images/fire/fire.png"),
   logo: require("../../assets/images/logo/logo.png"),
   logoDark: require("../../assets/images/logo/logo-dark.png"),
+  logo2: require("../../assets/images/logo/logo2.png"),
+  logo2Dark: require("../../assets/images/logo/logo2-dark.png"),
   avatar: require("../../assets/images/avatar/avatar.png"),
   avatar2: require("../../assets/images/avatar2/avatar2.png"),
   card: require("../../assets/images/card/card.png"),

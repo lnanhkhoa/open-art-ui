@@ -21,6 +21,7 @@ import { Footer, TagNameButton } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
+import { createStyles } from "../../utils/function";
 
 const { SCREEN_WIDTH } = constants;
 
@@ -113,45 +114,39 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
   const isDarkMode = colorScheme === "dark";
   //
   // const navigation = useNavigation();
-  const [mode, setMode] = useState(MODE.SOLD);
+  const [mode, setMode] = useState(MODE.CURRENT_BID);
 
   const onPressMenu = () => null;
   const onPressTagName = () => null;
+  const onPressIcon = () => null;
   //
-  const constainerStyles = [styles.container, isDarkMode && darkStyles.container];
-  const boldColors = isDarkMode ? colors.offWhite : colors.titleActive;
-  const placeholderColors = isDarkMode ? colors.offWhite : colors.placeholder;
 
+  const styles = createStyles(lightStyles, darkStyles, isDarkMode);
+  const colorStyles = createColorStyles(isDarkMode);
   return (
     <SafeAreaView>
       <HeaderLogo rightIcon="menu" onRightPress={onPressMenu} containerStyle={styles.header} />
-      <ScrollView
-        style={constainerStyles}
-        contentContainerStyle={{
-          paddingBottom: spacing[7],
-          paddingTop: spacing[7],
-        }}
-      >
+      <ScrollView style={styles.container} contentContainerStyle={{ paddingVertical: spacing[7] }}>
         <View style={styles.imageBox}>
           <Image source={assets.card7} style={styles.image} />
         </View>
-        <View
-          row
-          alignCenter
-          justifySpaceBetween
-          style={{
-            paddingHorizontal: spacing[6],
-            paddingTop: spacing[4],
-          }}
-        >
-          <Text
-            preset="headerSmallBold"
-            color={isDarkMode ? colors.offWhite : colors.titleActive}
-            text="Silent Color"
-          />
+        <View row alignCenter justifySpaceBetween style={{ paddingHorizontal: spacing[6], paddingTop: spacing[4] }}>
+          <Text preset="headerSmallBold" color={colorStyles.bold} text="Silent Color" />
           <View row>
-            <Icon icon="heart" size={20} color={boldColors} containerStyle={styles.roundIcon} onPress={() => null} />
-            <Icon icon="export" size={20} color={boldColors} containerStyle={styles.roundIcon} onPress={() => null} />
+            <Icon
+              icon="heart"
+              size={20}
+              color={colorStyles.bold}
+              containerStyle={styles.roundIcon}
+              onPress={onPressIcon}
+            />
+            <Icon
+              icon="export"
+              size={20}
+              color={colorStyles.bold}
+              containerStyle={styles.roundIcon}
+              onPress={onPressIcon}
+            />
           </View>
         </View>
         <View style={{ alignItems: "flex-start", paddingHorizontal: spacing[6] }}>
@@ -160,14 +155,14 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
             preset="small"
             text="Together with my design team, we designed this futuristic Cyberyacht concept artwork. We wanted to create something that has not been created yet, so we started to collect ideas of how we imagine the Cyberyacht could look like in the future."
             style={{ lineHeight: 20, paddingVertical: spacing[2] }}
-            color={colors.label}
+            color={colorStyles.label}
           />
           <View row>
             {HASHTAG_NAMES.map((name) => {
               return (
                 <TouchableOpacity key={name} disabled>
                   <View style={styles.hashtag}>
-                    <Text text={`#${name}`} color={colors.placeholder} />
+                    <Text text={`#${name}`} color={colorStyles.placeholder} />
                   </View>
                 </TouchableOpacity>
               );
@@ -175,7 +170,7 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
           </View>
         </View>
         {/*  */}
-        <View style={{ paddingHorizontal: spacing[4], marginTop: spacing[4] }}>
+        <View style={{ paddingHorizontal: spacing[4], paddingTop: spacing[4] }}>
           {TOUCH_ACTIONS.map((item) => {
             return (
               <TouchableOpacity key={item.text} onPress={() => null}>
@@ -184,13 +179,13 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
                     {item.isImage ? (
                       <Image source={item.image} style={{ width: 28, height: 28 }} />
                     ) : (
-                      <Icon icon={item.icon} size={24} color={boldColors} />
+                      <Icon icon={item.icon} size={24} color={colorStyles.bold} />
                     )}
                   </View>
                   <View flexible>
-                    <Text preset="mediumBold" text={item.text} color={boldColors} />
+                    <Text preset="mediumBold" text={item.text} color={colorStyles.bold} />
                   </View>
-                  <Icon icon="external" color={placeholderColors} />
+                  <Icon icon="external" color={colorStyles.placeholder} />
                 </View>
               </TouchableOpacity>
             );
@@ -206,9 +201,9 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
               <Text style={{ paddingRight: spacing[4], paddingVertical: spacing[3] }}>
                 <Text preset="large" text="Sold for" />
                 <Text text=" " />
-                <Text preset="largeBold" text="1.50 ETH" color={boldColors} />
+                <Text preset="largeBold" text="1.50 ETH" color={colorStyles.bold} />
                 <Text text="  " />
-                <Text preset="mediumBold" text="$2,683.73" color={placeholderColors} />
+                <Text preset="mediumBold" text="$2,683.73" color={colorStyles.placeholder} />
               </Text>
               <View row style={{ paddingVertical: spacing[3] }}>
                 <Text preset="large" text="Owner by" />
@@ -217,9 +212,65 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
             </View>
           </View>
         )}
+        {mode === MODE.AUCTION && (
+          <View style={styles.auctionInfo}>
+            <Text preset="large" text="Reserve Price" />
+            <Text style={{ paddingVertical: spacing[2] }}>
+              <Text preset="headerSmallBold" text="1.50 ETH" color={colorStyles.bold} />
+              <Text text="  " />
+              <Text preset="mediumBold" text="$2,683.73" color={colorStyles.placeholder} />
+            </Text>
+            <Text
+              preset="medium"
+              color={colorStyles.label}
+              text="Once a bid has been placed and the reserve price has been met, a 24 hour auction for this artwork will begin."
+              style={{ lineHeight: 20 }}
+            />
+            <Button
+              presetText="mediumBold"
+              preset="primary"
+              text="Place a bid"
+              style={{ marginVertical: spacing[2] }}
+              containerStyle={{ marginTop: spacing[4] }}
+            />
+          </View>
+        )}
+        {mode === MODE.CURRENT_BID && (
+          <View style={styles.auctionInfo}>
+            <Text preset="large" text="Current Bid" />
+            <Text style={{ paddingTop: spacing[2], paddingBottom: spacing[5] }}>
+              <Text preset="headerSmallBold" text="0.50 ETH" color={colorStyles.bold} />
+              <Text text="  " />
+              <Text preset="mediumBold" text="$2,683.73" color={colorStyles.placeholder} />
+            </Text>
+            <Text preset="large" color={colorStyles.bold} text="Auction ending in" style={{ lineHeight: 20 }} />
+            <View row style={{ paddingTop: spacing[4], paddingBottom: spacing[5] }}>
+              <View style={{ paddingRight: spacing[4] }}>
+                <Text text="12" preset="headerSmallBold" />
+                <Text text="hours" preset="small" />
+              </View>
+              <View style={{ paddingRight: spacing[4] }}>
+                <Text text="30" preset="headerSmallBold" />
+                <Text text="minutes" preset="small" />
+              </View>
+              <View style={{ paddingRight: spacing[4] }}>
+                <Text text="25" preset="headerSmallBold" />
+                <Text text="seconds" preset="small" />
+              </View>
+            </View>
+
+            <Button
+              presetText="mediumBold"
+              preset="primary"
+              text="Place a bid"
+              style={{ marginVertical: spacing[2] }}
+              containerStyle={{ marginTop: spacing[4] }}
+            />
+          </View>
+        )}
         {/*  */}
         <View style={styles.activityBox}>
-          <Text text="Activity" preset="large" />
+          <Text text="Activity" preset="large" style={{ marginVertical: spacing[2] }} />
           <FlatList
             nestedScrollEnabled
             data={ACTIVITY_ACTIONS}
@@ -260,13 +311,14 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
   );
 });
 
-const darkStyles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.titleActive,
-  },
+const createColorStyles = (isDarkMode) => ({
+  bold: isDarkMode ? colors.offWhite : colors.titleActive,
+  body: isDarkMode ? colors.offWhite : colors.body,
+  label: isDarkMode ? colors.offWhite : colors.label,
+  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
 });
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
   },
@@ -313,6 +365,13 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     ...shadow.lightButton,
   },
+  auctionInfo: {
+    backgroundColor: colors.offWhite,
+    margin: spacing[4],
+    padding: spacing[5],
+    borderRadius: 24,
+    ...shadow.lightButton,
+  },
   activityBox: {
     paddingHorizontal: spacing[4],
     paddingTop: spacing[4],
@@ -327,5 +386,27 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingVertical: spacing[7],
+  },
+});
+
+const darkStyles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.titleActive,
+  },
+  roundIcon: {
+    backgroundColor: colors.body,
+    shadowColor: colors.offWhite,
+  },
+  hashtag: {
+    borderColor: colors.background,
+  },
+  btnAction: {
+    backgroundColor: colors.body,
+  },
+  auctionInfo: {
+    backgroundColor: colors.body,
+  },
+  activityBtn: {
+    backgroundColor: colors.body,
   },
 });

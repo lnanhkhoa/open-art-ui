@@ -13,12 +13,10 @@ import { MaterialIndicator } from "react-native-indicators";
 // import MaskedView from "@react-native-community/masked-view";
 import { View } from "../view";
 import { Text } from "../text/text";
-import { viewPresets, textPresets, ButtonPresetNames } from "./button.presets";
+import { TextPresets, presets } from "../text/text.presets";
+import { viewPresets, colorTextPresets, ButtonPresetNames } from "./button.presets";
 import { TxKeyPath } from "../../i18n";
 import { colors, spacing } from "../../theme";
-
-const LINEAR_COLORS = [colors.gradient.accent.from, colors.gradient.accent.to];
-
 export interface ButtonProps extends TouchableOpacityProps {
   disabled?: boolean;
   isLoading?: boolean;
@@ -27,12 +25,16 @@ export interface ButtonProps extends TouchableOpacityProps {
   style?: ViewStyle;
   containerStyle?: ViewStyle;
   textStyle?: TextStyle;
+  presetText?: TextPresets;
   preset?: ButtonPresetNames;
   children?: React.ReactNode;
 }
 
+const LINEAR_COLORS = [colors.gradient.accent.from, colors.gradient.accent.to];
+
 export function Button({
   preset = "primary",
+  presetText = "largeBold",
   tx,
   text,
   style: styleOverride,
@@ -53,8 +55,8 @@ export function Button({
   const disabledViewStyle = { opacity: 0.4 } as ViewStyle;
   const viewStyle: ViewStyle = viewPresets[preset] || viewPresets.primary;
   const viewStyles: ViewStyle[] = [viewStyle, disabled && disabledViewStyle, styleOverride];
-  const textStyle = textPresets[preset] || textPresets.primary;
-  const textStyles = [textStyle, textStyleOverride];
+  const textStyle = presets[presetText];
+  const textStyles = [textStyle, colorTextPresets[preset], textStyleOverride];
 
   const content =
     children ||
@@ -146,9 +148,6 @@ interface MaskedButtonProps extends TouchableOpacityProps {
   onPress?: (event: GestureResponderEvent) => void;
 }
 
-
-
-
 // function MaskedButton({ children }: MaskedButtonProps) {
 //   const [layout, setlayout] = useState({ width: 0, height: 0 });
 //   const [isReady, setIsReady] = useState(false);
@@ -177,5 +176,3 @@ interface MaskedButtonProps extends TouchableOpacityProps {
 //     </MaskedView>
 //   );
 // }
-
-const styles = StyleSheet.create({});

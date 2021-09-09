@@ -1,4 +1,5 @@
 import { Dimensions, Platform } from "react-native";
+import { colors } from "../theme";
 export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get("screen");
 
 export const IS_IOS = Platform.OS === "ios";
@@ -30,4 +31,13 @@ export const STATUS = {
   ALERT: "alert",
   WARNING: "warning",
   INFO: "info",
+};
+
+export type STATUS_TYPE = "success" | "alert" | "warning" | "info";
+
+export const STATUS_COLORS = {
+  [STATUS.SUCCESS]: colors.success,
+  [STATUS.ALERT]: colors.error,
+  [STATUS.WARNING]: colors.warning,
+  [STATUS.INFO]: colors.primary,
 };

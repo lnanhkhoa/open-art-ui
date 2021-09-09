@@ -14,11 +14,13 @@ import {
   SafeAreaView,
   TouchableOpacity,
   SmallListItem,
+  DotIcon,
 } from "../../components";
 import { Footer } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets } from "../../config";
+import { createStyles } from "../../utils/function";
 
 const HOT_BID_LIST = [
   {
@@ -32,7 +34,7 @@ const HOT_BID_LIST = [
   {
     id: "2",
     source: assets.card6,
-    avtSources: [assets.avatar, assets.avatar2],
+    avtSources: [assets.avatar2, assets.avatar, assets.avatar2],
     title: "Inside Kings Cross",
     highestBid: "1.00 ETH",
     price: "2.3 ETH",
@@ -75,16 +77,15 @@ export const HomeScreen = observer(function HomeScreen(props) {
   };
 
   //
-  const constainerStyles = [styles.container, isDarkMode && darkStyles.container];
-  const viewBidStyles = [styles.viewBid, isDarkMode && darkStyles.viewBid];
+
   const colorText = isDarkMode ? colors.offWhite : colors.label;
-  const placeholderText = isDarkMode ? colors.offWhite : colors.placeholder;
-  const buttonSoldStyles = [styles.buttonSold, isDarkMode && darkStyles.buttonSold];
+  const styles = createStyles(lightStyles, darkStyles, isDarkMode);
+  const colorStyles = createColorStyles(isDarkMode);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <HeaderLogo rightIcon="menu" onRightPress={onPressMenu} containerStyle={styles.header} />
-      <ScrollView style={constainerStyles} contentContainerStyle={{ paddingBottom: spacing[7] }}>
+      <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: spacing[7] }}>
         <View style={styles.header}>
           <View style={styles.headerTitle}>
             <Text preset="mediumBold" text="Discover, collect, and sell" />
@@ -124,7 +125,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 <Text text=" " />
                 <Text preset="headerSmallBold" text="1.50 ETH" />
                 <Text text=" " />
-                <Text preset="mediumBold" color={placeholderText} text="$2,683.73" />
+                <Text preset="mediumBold" color={colorStyles.placeholder} text="$2,683.73" />
               </Text>
               <Button
                 preset="primary"
@@ -154,7 +155,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 subtitle="Pawel Czerwinski"
                 status="Creator"
               />
-              <TouchableOpacity style={buttonSoldStyles} onPress={() => null}>
+              <TouchableOpacity style={styles.buttonSold} onPress={() => null}>
                 <Text color={colorText} style={{ marginVertical: spacing[4] }}>
                   <Text preset={"large"} text="Sold For" />
                   <Text text=" " />
@@ -171,9 +172,12 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 subtitle="Pawel Czerwinski"
                 status="Creator"
               />
-              <View row style={viewBidStyles}>
+              <View row style={styles.viewBid}>
                 <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
-                  <Text preset={"medium"} color={colorText} text="Current bid" />
+                  <View row alignCenter>
+                    <DotIcon status="success" />
+                    <Text preset={"medium"} color={colorText} text="Current bid" />
+                  </View>
                   <Text
                     preset="largeBold"
                     color={isDarkMode ? colors.offWhite : colors.titleActive}
@@ -201,7 +205,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 subtitle="Pawel Czerwinski"
                 status="Creator"
               />
-              <View row style={viewBidStyles}>
+              <View row style={styles.viewBid}>
                 <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Current bid" />
                   <Text
@@ -260,6 +264,12 @@ export const HomeScreen = observer(function HomeScreen(props) {
   );
 });
 
+const createColorStyles = (isDarkMode) => ({
+  bold: isDarkMode ? colors.offWhite : colors.titleActive,
+  label: isDarkMode ? colors.offWhite : colors.label,
+  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
+});
+
 const darkStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.titleActive,
@@ -274,7 +284,7 @@ const darkStyles = StyleSheet.create({
   },
 });
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
   },

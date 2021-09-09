@@ -4,7 +4,7 @@ import { View } from "../view";
 import { Text } from "../text/text";
 import { colors, spacing } from "../../theme";
 
-export interface ListItemProps {
+export interface SmallListItemProps {
   source: ImageRequireSource | ImageURISource;
   avtSources?: ImageRequireSource[] | ImageURISource[];
   title?: string;
@@ -12,7 +12,6 @@ export interface ListItemProps {
   highestBid?: string;
   subtitle?: string;
   status?: string;
-  isActive?: boolean;
   containerStyle?: ViewStyle | ViewStyle[];
 }
 
@@ -22,9 +21,8 @@ export function SmallListItem({
   title,
   price,
   highestBid,
-  isActive,
   containerStyle = {},
-}: ListItemProps) {
+}: SmallListItemProps) {
   return (
     <View style={StyleSheet.flatten([styles.container, containerStyle])}>
       <View alignCenter style={{ marginVertical: spacing[3] }}>

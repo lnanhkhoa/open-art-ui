@@ -1,6 +1,5 @@
 import * as React from "react";
 import { TouchableOpacity, StyleSheet, View, ViewStyle, StyleProp } from "react-native";
-import { Text } from "../text/text";
 import { Icon } from "../icon/icon";
 import { colors, spacing } from "../../theme";
 import { TxKeyPath } from "../../i18n";
@@ -12,13 +11,11 @@ export interface CheckboxProps {
   value?: boolean;
   text?: string;
   tx?: TxKeyPath;
-  multiline?: boolean;
   onToggle?: (newValue: boolean) => void;
   isActive?: boolean;
 }
 
 export function Checkbox({
-  multiline,
   style,
   outlineStyle: outlineOvrStyle,
   fillStyle: fillOvdStyle,
@@ -26,11 +23,9 @@ export function Checkbox({
   isActive = false,
   value,
 }: CheckboxProps) {
-  const numberOfLines = multiline ? 0 : 1;
   const disabled = !onToggle;
   const onPress = onToggle ? () => onToggle(!value) : null;
 
-  // const activeStyle =
   const rootStyle = [styles.root, style];
   const outlineStyle = [
     styles.outline,
@@ -55,7 +50,6 @@ export function Checkbox({
           </View>
         )}
       </View>
-      {/* <Text text={props.text} tx={props.tx} numberOfLines={numberOfLines} style={styles.label} /> */}
     </TouchableOpacity>
   );
 }
@@ -69,7 +63,6 @@ const styles = StyleSheet.create({
   },
   outline: {
     ...DIMENSIONS,
-    // marginTop: 2,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1.5,
@@ -79,10 +72,6 @@ const styles = StyleSheet.create({
   check: {
     position: "absolute",
     flex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
-    // top: 2,
-    // left: 2,
   },
   fill: {
     width: DIMENSIONS.width,
@@ -90,5 +79,4 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryDarkMode,
     borderRadius: 4,
   },
-  // label: { paddingLeft: spacing[2] },
 });

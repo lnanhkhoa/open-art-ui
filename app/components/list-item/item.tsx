@@ -5,6 +5,7 @@ import { Text } from "../text/text";
 import { Avatar } from "../avatar/avatar";
 import { Icon } from "../icon/icon";
 import { colors, spacing, shadow } from "../../theme";
+import { createStyles } from "../../utils/function";
 
 export interface ListItemProps {
   source: ImageRequireSource | ImageURISource;
@@ -19,8 +20,10 @@ export interface ListItemProps {
 export function ListItem({ source, avtSource, title, subtitle, status, isActive, containerStyle = {} }) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  const containerStyles = [styles.container, isDarkMode && darkStyles.container, containerStyle];
-  const rightIconColor = isDarkMode ? colors.offWhite : colors.placeholder;
+  //
+  const styles = createStyles(lightStyles, darkStyles, isDarkMode);
+  const containerStyles = [styles.container, containerStyle];
+  const colorStyles = createColorStyles(isDarkMode);
 
   return (
     <View style={containerStyles}>
@@ -38,19 +41,25 @@ export function ListItem({ source, avtSource, title, subtitle, status, isActive,
           title={subtitle}
           statusText={status}
         />
-        <Icon icon="heart" color={rightIconColor} />
+        <Icon icon="heart" color={colorStyles.rightIcon} />
       </View>
     </View>
   );
 }
 
+const createColorStyles = (isDarkMode) => ({
+  rightIcon: isDarkMode ? colors.offWhite : colors.placeholder,
+});
+
 const darkStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.body,
   },
+  image: {},
+  bottom: {},
 });
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     borderRadius: 32,
     backgroundColor: colors.offWhite,

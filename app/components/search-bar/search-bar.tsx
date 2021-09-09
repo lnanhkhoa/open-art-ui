@@ -13,6 +13,7 @@ import { Text } from "../text/text";
 import { presets } from "../text/text.presets";
 import { Icon } from "../icon/icon";
 import { colors, spacing } from "../../theme";
+import { createStyles } from "../../utils/function";
 
 export interface SearchBarProps extends TextInputProps {
   containerStyle?: ViewStyle;
@@ -43,14 +44,15 @@ export function SearchBar({
   const showCancelButton = isFocus || !!value;
 
   // styles
-  const wrapperStyles = [styles.wrapper, isDarkMode && darkStyles.wrapper];
-  const containerStyles = [styles.container, isDarkMode && darkStyles.container];
-  const inputStyles = [styles.input, isDarkMode && darkStyles.input, inputStyle];
+
+  const styles = createStyles(lightStyles, darkStyles, isDarkMode);
+
+  const inputStyles = [styles.input, inputStyle];
   const placeholderTextColors = placeholderTextColor || (isDarkMode ? colors.offWhite : colors.placeholder);
 
   return (
-    <View row alignCenter style={wrapperStyles}>
-      <View alignCenter style={containerStyles}>
+    <View row alignCenter style={styles.wrapper}>
+      <View alignCenter style={styles.container}>
         <Icon icon="search" size={16} containerStyle={styles.searchIcon} />
         <TextInput
           onFocus={(e) => {
@@ -61,7 +63,7 @@ export function SearchBar({
             onBlur && onBlur(e);
             setIsFocus(false);
           }}
-          style={inputStyles}
+          style={styles.input}
           placeholder="Search"
           placeholderTextColor={placeholderTextColors}
           onChangeText={onChangeText}
@@ -78,7 +80,7 @@ export function SearchBar({
   );
 }
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   wrapper: {
     backgroundColor: colors.background,
   },

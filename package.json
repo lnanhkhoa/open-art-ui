@@ -203,7 +203,8 @@
       "react/prop-types": "off",
       "space-before-function-paren": 0,
       "react-native/sort-styles": 0,
-      "react-native/no-inline-styles": 0
+      "react-native/no-inline-styles": 0,
+      "react-native/no-unused-styles": 0
     }
   },
   "main": "node_modules/expo/AppEntry.js"

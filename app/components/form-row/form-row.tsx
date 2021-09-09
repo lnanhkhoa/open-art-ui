@@ -8,6 +8,5 @@ import { FormRowProps } from "./form-row.props";
  */
 export function FormRow(props: FormRowProps) {
   const viewStyle = [PRESETS[props.preset], props.style];
-
   return <View style={viewStyle}>{props.children}</View>;
 }

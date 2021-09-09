@@ -1,16 +1,12 @@
 import React from "react";
-import { View, ViewStyle, StyleProp, StyleSheet, Image, useColorScheme } from "react-native";
-import { Button } from "../button/button";
-import { Text } from "../text/text";
+import { View, ViewStyle, StyleSheet, Image, useColorScheme } from "react-native";
 import { Icon } from "../icon/icon";
 import { IconTypes } from "../icon/icons";
 //
 import { colors, spacing } from "../../theme";
-import { translate } from "../../i18n";
 import assets from "../../config/assets";
 import { SCREEN_WIDTH } from "../../config/constants";
 import { TouchableOpacity } from "../view";
-
 export interface HeaderProps {
   onLogoPress?(): void;
   rightIcon?: IconTypes;
@@ -24,7 +20,7 @@ export function HeaderLogo(props: HeaderProps) {
   const isDarkMode = colorScheme === "dark";
   const logoSrc = isDarkMode ? assets.logoDark : assets.logo;
 
-  const containerStyles = StyleSheet.flatten([styles.container, isDarkMode && darkStyles.container, containerStyle]);
+  const containerStyles = [styles.container, isDarkMode && darkStyles.container, containerStyle];
 
   return (
     <View style={containerStyles}>

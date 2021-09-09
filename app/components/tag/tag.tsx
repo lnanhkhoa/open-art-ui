@@ -5,21 +5,12 @@ import { View } from "../view";
 import { Text } from "../text/text";
 import { constants } from "../../config";
 import { colors } from "../../theme";
-
-const { STATUS } = constants;
-
+const { STATUS, STATUS_COLORS } = constants;
 interface TagProps {
-  status: "success" | "alert" | "warning" | "info";
+  status: constants.STATUS_TYPE;
   style?: ViewStyle;
   containerStyle?: ViewStyle | ViewStyle[];
 }
-
-const STATUS_COLORS = {
-  [STATUS.SUCCESS]: colors.success,
-  [STATUS.ALERT]: colors.error,
-  [STATUS.WARNING]: colors.warning,
-  [STATUS.INFO]: colors.primary,
-};
 
 export function Tag({ status, style, containerStyle }: TagProps) {
   const statusText = _.upperFirst(status);

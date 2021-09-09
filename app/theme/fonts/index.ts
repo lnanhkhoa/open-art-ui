@@ -6,7 +6,7 @@ export const initFonts = async () => {
   // Welcome back! Just uncomment this and replace/append with your font file names!
   // ⬇
   await Font.loadAsync({
-    // EpilogueLight: require("../../../assets/fonts/Epilogue-Light.ttf"),
+    EpilogueLight: require("../../../assets/fonts/Epilogue-Light.ttf"),
     EpilogueRegular: require("../../../assets/fonts/Epilogue-Regular.ttf"),
     EpilogueItalic: require("../../../assets/fonts/Epilogue-Italic.ttf"),
     EpilogueMedium: require("../../../assets/fonts/Epilogue-Medium.ttf"),

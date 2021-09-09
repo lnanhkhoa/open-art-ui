@@ -23,42 +23,20 @@ export const ButtonScreen = observer(function ButtonScreen() {
         <Text preset="largeBold" text="Buttons" />
         <View style={styles.box}>
           <View row>
-            <View style={styles.button}>
-              <Button preset="primary" text="Button" />
-            </View>
-            <View style={styles.button}>
-              <Button preset="primary" isLoading text="Button" />
-            </View>
-            <View style={styles.button}>
-              <Button preset="primary" text="Button" disabled />
-            </View>
+            <Button preset="primary" text="Button" containerStyle={styles.button} />
+            <Button preset="primary" isLoading text="Button" containerStyle={styles.button} />
           </View>
+          <Button preset="primary" text="Button" disabled containerStyle={styles.button} />
           <View row>
-            <View style={styles.button}>
-              <Button preset="secondary" text="Button" />
-            </View>
-            <View style={styles.button}>
-              <Button preset="secondary" isLoading text="Button" />
-            </View>
-            <View style={styles.button}>
-              <Button preset="secondary" text="Button" disabled />
-            </View>
+            <Button preset="secondary" text="Button" containerStyle={styles.button} />
+            <Button preset="secondary" isLoading text="Button" containerStyle={styles.button} />
           </View>
+          <Button preset="secondary" text="Button" disabled containerStyle={styles.button} />
           <View row>
-            <View style={styles.button}>
-              <Button preset="subtle" text="Button" />
-            </View>
-            <View style={styles.button}>
-              <Button preset="subtle" isLoading text="Button" />
-            </View>
-            <View style={styles.button}>
-              <Button preset="subtle" text="Button" disabled />
-            </View>
+            <Button preset="subtle" text="Button" containerStyle={styles.button} />
+            <Button preset="subtle" isLoading text="Button" containerStyle={styles.button} />
           </View>
-
-          <View>
-            <Button preset="text" text="Sold" />
-          </View>
+          <Button preset="subtle" text="Button" disabled containerStyle={styles.button} />
         </View>
       </Screen>
     </View>

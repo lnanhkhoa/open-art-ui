@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { Avatar, View, Text } from "../../components";
+import { StyleSheet, useColorScheme } from "react-native";
+import { Avatar, View, Text, TouchableOpacity } from "../../components";
 import { spacing, shadow, colors } from "../../theme";
 
 interface TagNameButtonProps {
@@ -10,9 +10,14 @@ interface TagNameButtonProps {
 }
 
 export function TagNameButton({ onPress, text, title }: TagNameButtonProps) {
+  const colorScheme = useColorScheme();
+  const isDarkMode = colorScheme === "dark";
+
+  //
+  const containerStyle = [styles.container, isDarkMode && darkStyles.container];
   return (
     <TouchableOpacity onPress={onPress}>
-      <View row style={styles.container}>
+      <View row style={containerStyle}>
         <Avatar
           text={title}
           presetText="headerSmallBold"
@@ -27,7 +32,9 @@ export function TagNameButton({ onPress, text, title }: TagNameButtonProps) {
 }
 
 const darkStyles = StyleSheet.create({
-  // container: {},
+  container: {
+    backgroundColor: colors.body,
+  },
 });
 
 const styles = StyleSheet.create({
