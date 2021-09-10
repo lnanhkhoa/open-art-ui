@@ -1,5 +1,6 @@
 export const palette = {
   black: "#0d0e0f",
+  woodsmoke: "#0F0F0F",
   white: "#ffffff",
   blue: {
     default: "#002EF1",

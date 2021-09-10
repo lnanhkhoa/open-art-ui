@@ -92,6 +92,7 @@ export function Button({
           preset === "subtle" && subtleTouchStyle,
           containerStyle,
         ]}
+        {...rest}
       >
         <View style={viewStyles}>{content}</View>
       </TouchableOpacity>

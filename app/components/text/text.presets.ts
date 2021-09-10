@@ -8,21 +8,25 @@ const medium: TextStyle = {
   fontFamily: typography.EpilogueRegular,
   fontSize: 16,
   letterSpacing: 0.5,
+  lineHeight: 16 * 1.25,
 };
 
 const TEXT_STYLES = {
   xsmall: {
     fontFamily: typography.EpilogueMedium,
     fontSize: 13,
+    lineHeight: 13 * 1.25,
   } as TextStyle,
   small: {
     fontFamily: typography.EpilogueMedium,
     fontSize: 14,
+    lineHeight: 14 * 1.25,
   } as TextStyle,
   medium,
   large: {
     fontFamily: typography.EpilogueRegular,
     fontSize: 20,
+    lineHeight: 20 * 1.25,
   } as TextStyle,
 };
 
@@ -31,15 +35,18 @@ const DISPLAY_STYLES = {
     fontFamily: typography.EpilogueRegular,
     fontSize: 24,
     letterSpacing: 0.5,
+    lineHeight: 24 * 1.25,
   } as TextStyle,
   medium: {
     fontFamily: typography.EpilogueRegular,
     fontSize: 32,
+    lineHeight: 32 * 1.25,
     letterSpacing: 0.5,
   } as TextStyle,
   large: {
     fontFamily: typography.EpilogueRegular,
     fontSize: 40,
+    lineHeight: 40 * 1.25,
     letterSpacing: 0.5,
   } as TextStyle,
 };

@@ -13,6 +13,7 @@ export const colors = {
   transparent: "rgba(0, 0, 0, 0)",
   offWhite: palette.grayscale[100],
   white: palette.white,
+  woodsmoke: palette.woodsmoke,
   black: palette.black,
   body: palette.grayscale[700],
   primary: palette.blue.default,

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme } from "react-native";
+import { StyleSheet, Image, useColorScheme, Modal } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import {
   Text,
@@ -19,9 +19,10 @@ import {
 import { Footer } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
-import { assets } from "../../config";
+import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
 
+const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 const HOT_BID_LIST = [
   {
     id: "1",
@@ -40,11 +41,6 @@ const HOT_BID_LIST = [
     price: "2.3 ETH",
   },
 ];
-
-const viewabilityConfig = {
-  itemVisiblePercentThreshold: 70,
-  waitForInteraction: true,
-};
 
 export const HomeScreen = observer(function HomeScreen(props) {
   const colorScheme = useColorScheme();

@@ -15,4 +15,5 @@ export default {
   card7: require("../../assets/images/card7/card7.png"),
   etherscan: require("../../assets/images/etherscan/etherscan.png"),
   star: require("../../assets/images/star/star.png"),
+  "connect-wallet": require("../../assets/images/connect-wallet/connect-wallet.png"),
 };

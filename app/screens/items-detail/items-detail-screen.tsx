@@ -1,34 +1,16 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, ImageRequireSource, ImageURISource } from "react-native";
+import { StyleSheet, Image, useColorScheme, ImageRequireSource, ImageURISource, Modal } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-import {
-  Text,
-  TextPresets,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  Avatar,
-} from "../../components";
+import { Text, HeaderLogo, View, Icon, Button, SafeAreaView, TouchableOpacity, Avatar } from "../../components";
 import { IconTypes } from "../../components/icon/icons";
-import { Footer, TagNameButton } from "../components";
+import { Footer, TagNameButton, PlaceABid, ConnectWallet } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
 
 const { SCREEN_WIDTH } = constants;
-
-const viewabilityConfig = {
-  itemVisiblePercentThreshold: 70,
-  waitForInteraction: true,
-};
 const HASHTAG_NAMES = ["color", "circle", "black", "art"];
 interface ActionProps {
   icon?: IconTypes;
@@ -109,16 +91,26 @@ const MODE = {
   CURRENT_BID: "CURRENT_BID",
 };
 
-export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
+const MODAL_CONTENT = {
+  PLACE_A_BID: "PLACE_A_BID",
+  CONNET_WALLET: "CONNET_WALLET",
+};
+
+export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   //
   // const navigation = useNavigation();
-  const [mode, setMode] = useState(MODE.CURRENT_BID);
+  const [mode, setMode] = useState(MODE.AUCTION);
+  const [visibleModal, setVisibleModal] = useState(false);
+  const [modalContent, setmodalContent] = useState(MODAL_CONTENT.PLACE_A_BID);
 
   const onPressMenu = () => null;
   const onPressTagName = () => null;
   const onPressIcon = () => null;
+  // const onPressButton = () => null;
+  const onOpenModal = () => setVisibleModal(true);
+  const onCloseModal = () => setVisibleModal(false);
   //
 
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
@@ -232,6 +224,7 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
               text="Place a bid"
               style={{ marginVertical: spacing[2] }}
               containerStyle={{ marginTop: spacing[4] }}
+              onPress={onOpenModal}
             />
           </View>
         )}
@@ -258,13 +251,13 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
                 <Text text="seconds" preset="small" />
               </View>
             </View>
-
             <Button
               presetText="mediumBold"
               preset="primary"
               text="Place a bid"
               style={{ marginVertical: spacing[2] }}
               containerStyle={{ marginTop: spacing[4] }}
+              onPress={onOpenModal}
             />
           </View>
         )}
@@ -307,6 +300,22 @@ export const ItemDetailScreen = observer(function ItemDetailScreen(props) {
           <Footer />
         </View>
       </ScrollView>
+      <Modal animationType="fade" transparent={true} visible={visibleModal}>
+        {modalContent === MODAL_CONTENT.PLACE_A_BID ? (
+          <PlaceABid onCloseModal={onCloseModal} onPressConfirm={() => setmodalContent(MODAL_CONTENT.CONNET_WALLET)} />
+        ) : (
+          <ConnectWallet
+            onCloseModal={() => {
+              onCloseModal();
+              setmodalContent(MODAL_CONTENT.PLACE_A_BID);
+            }}
+            onPressConfirm={() => {
+              onCloseModal();
+              setmodalContent(MODAL_CONTENT.PLACE_A_BID);
+            }}
+          />
+        )}
+      </Modal>
     </SafeAreaView>
   );
 });

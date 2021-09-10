@@ -41,3 +41,8 @@ export const STATUS_COLORS = {
   [STATUS.WARNING]: colors.warning,
   [STATUS.INFO]: colors.primary,
 };
+
+export const VIEWABILITY_CONFIG = {
+  itemVisiblePercentThreshold: 70,
+  waitForInteraction: true,
+};
