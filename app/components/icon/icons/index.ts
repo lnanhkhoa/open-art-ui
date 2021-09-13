@@ -16,6 +16,7 @@ export const icons = {
   export: require("./export.png"),
   external: require("./external.png"),
   edit: require("./edit.png"),
+  plus: require("./plus.png"),
   "chart-pie": require("./chart-pie.png"),
   star: require("./star.png"),
 };

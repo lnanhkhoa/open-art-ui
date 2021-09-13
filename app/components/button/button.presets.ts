@@ -50,7 +50,7 @@ export const colorTextPresets: Record<ButtonPresetNames, TextStyle> = {
   primary: { color: colors.offWhite, paddingVertical: spacing[1] } as TextStyle,
   secondary: { paddingVertical: spacing[1] } as TextStyle,
   subtle: { color: colors.text, paddingVertical: spacing[1] } as TextStyle,
-  text: { color: colors.offWhite, paddingVertical: spacing[1] } as TextStyle,
+  text: { color: colors.text, paddingVertical: spacing[1] } as TextStyle,
 };
 
 export type ButtonPresetNames = keyof typeof viewPresets;

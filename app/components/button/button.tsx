@@ -12,16 +12,20 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIndicator } from "react-native-indicators";
 // import MaskedView from "@react-native-community/masked-view";
 import { View } from "../view";
+import { IconTypes } from "../icon/icons";
 import { Text } from "../text/text";
 import { TextPresets, presets } from "../text/text.presets";
 import { viewPresets, colorTextPresets, ButtonPresetNames } from "./button.presets";
 import { TxKeyPath } from "../../i18n";
 import { colors, spacing } from "../../theme";
+import { Icon } from "../icon/icon";
 export interface ButtonProps extends TouchableOpacityProps {
   disabled?: boolean;
   isLoading?: boolean;
   tx?: TxKeyPath;
   text?: string;
+  leftIcon?: IconTypes;
+  leftIconProps?: any;
   style?: ViewStyle;
   containerStyle?: ViewStyle;
   textStyle?: TextStyle;
@@ -44,6 +48,8 @@ export function Button({
   onPressIn,
   onPressOut,
   isLoading = false,
+  leftIcon,
+  leftIconProps,
   disabled = false,
   ...rest
 }: ButtonProps) {
@@ -60,9 +66,13 @@ export function Button({
 
   const content =
     children ||
-    (isLoading ? (
+    (isLoading || leftIcon ? (
       <View row>
-        <MaterialIndicator color="white" size={18} style={{ paddingHorizontal: spacing[3] }} />
+        {leftIcon ? (
+          <Icon icon={leftIcon} size={24} {...leftIconProps} />
+        ) : (
+          <MaterialIndicator color="white" size={18} style={{ paddingHorizontal: spacing[3] }} />
+        )}
         <Text style={textStyles} text=" " />
         <Text tx={tx} style={textStyles} text={text} />
       </View>
@@ -100,21 +110,23 @@ export function Button({
   }
 
   if (preset === "text") {
-    <TouchableOpacity
-      disabled={isLoading || disabled}
-      activeOpacity={0.9}
-      onPressIn={(e) => {
-        onPressIn && onPressIn(e);
-        setTouching(true);
-      }}
-      onPressOut={(e) => {
-        onPressOut && onPressOut(e);
-        setTouching(false);
-      }}
-      style={[{ borderRadius: 8 }, disabled && disabledViewStyle]}
-    >
-      {content}
-    </TouchableOpacity>;
+    return (
+      <TouchableOpacity
+        disabled={isLoading || disabled}
+        activeOpacity={0.9}
+        onPressIn={(e) => {
+          onPressIn && onPressIn(e);
+          setTouching(true);
+        }}
+        onPressOut={(e) => {
+          onPressOut && onPressOut(e);
+          setTouching(false);
+        }}
+        style={[{ borderRadius: 8 }, disabled && disabledViewStyle]}
+      >
+        {content}
+      </TouchableOpacity>
+    );
   }
 
   return (

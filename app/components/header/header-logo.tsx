@@ -1,33 +1,44 @@
 import React from "react";
-import { View, ViewStyle, StyleSheet, Image, useColorScheme } from "react-native";
+import { ViewStyle, StyleSheet, Image, useColorScheme } from "react-native";
 import { Icon } from "../icon/icon";
 import { IconTypes } from "../icon/icons";
+import { TouchableOpacity, View } from "../view";
 //
 import { colors, spacing } from "../../theme";
 import assets from "../../config/assets";
 import { SCREEN_WIDTH } from "../../config/constants";
-import { TouchableOpacity } from "../view";
+import { createStyles } from "../../utils/function";
+
 export interface HeaderProps {
   onLogoPress?(): void;
   rightIcon?: IconTypes;
   onRightPress?(): void;
+  leftIcon?: IconTypes;
+  onLeftPress?(): void;
   containerStyle?: ViewStyle | ViewStyle[];
 }
 
 export function HeaderLogo(props: HeaderProps) {
-  const { onLogoPress, onRightPress, rightIcon, containerStyle } = props;
+  const { onLogoPress, leftIcon, onLeftPress, onRightPress, rightIcon, containerStyle: containerStyleOverride } = props;
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const logoSrc = isDarkMode ? assets.logoDark : assets.logo;
 
-  const containerStyles = [styles.container, isDarkMode && darkStyles.container, containerStyle];
+  const styles = createStyles(lightStyles, darkStyles, isDarkMode);
 
   return (
-    <View style={containerStyles}>
+    <View style={[styles.container, containerStyleOverride]}>
       <TouchableOpacity onPress={onLogoPress}>
         <Image source={logoSrc} style={styles.logo} resizeMode="contain" />
       </TouchableOpacity>
-      {rightIcon ? <Icon icon={rightIcon} size={24} onPress={onRightPress} /> : <View style={styles.rightEmpty} />}
+      <View row>
+        {leftIcon ? (
+          <Icon icon={leftIcon} size={24} onPress={onLeftPress} containerStyle={{ paddingRight: spacing[5] }} />
+        ) : (
+          <View style={styles.rightEmpty} />
+        )}
+        {rightIcon ? <Icon icon={rightIcon} size={24} onPress={onRightPress} /> : <View style={styles.rightEmpty} />}
+      </View>
     </View>
   );
 }
@@ -38,7 +49,7 @@ const darkStyles = StyleSheet.create({
   },
 });
 
-const styles = StyleSheet.create({
+const lightStyles = StyleSheet.create({
   container: {
     paddingVertical: spacing[2],
     alignItems: "center",
