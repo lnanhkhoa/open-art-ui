@@ -19,6 +19,10 @@ export const icons = {
   plus: require("./plus.png"),
   "chart-pie": require("./chart-pie.png"),
   star: require("./star.png"),
+  copy: require("./copy.png"),
+  twitter: require("./twitter.png"),
+  instagram: require("./instagram.png"),
+  link: require("./link.png"),
 };
 
 export type IconTypes = keyof typeof icons;

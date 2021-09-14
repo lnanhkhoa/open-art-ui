@@ -3,6 +3,9 @@ import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource } from
 import { View } from "../view";
 import { Text } from "../text/text";
 import { colors, spacing } from "../../theme";
+import { constants } from "../../config";
+
+const { AVT_SIZE } = constants;
 
 export interface SmallListItemProps {
   source: ImageRequireSource | ImageURISource;
@@ -80,8 +83,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     left: 0,
-    height: 30,
-    width: 30,
+    height: AVT_SIZE.SMALL,
+    width: AVT_SIZE.SMALL,
     borderRadius: 99,
     borderColor: colors.offWhite,
     borderWidth: 1,

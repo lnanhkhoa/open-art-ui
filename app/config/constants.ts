@@ -11,6 +11,7 @@ export const BUTTON_SIZE = {
   SMALL: 35,
   NORMAL: 40,
   LARGE: 80,
+  LARGER: 130,
 };
 
 export const AVT_SIZE = {
@@ -18,6 +19,7 @@ export const AVT_SIZE = {
   NORMAL: 48,
   MEDIUM: 52,
   LARGE: 80,
+  LARGER: 130,
 };
 
 export const RATING_ICON_SIZE = {

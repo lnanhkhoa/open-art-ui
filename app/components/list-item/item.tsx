@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource, useColorScheme } from "react-native";
 import { View } from "../view";
 import { Text } from "../text/text";
@@ -14,12 +14,15 @@ export interface ListItemProps {
   subtitle?: string;
   status?: string;
   isActive?: boolean;
-  containerStyle?: ViewStyle | ViewStyle[];
+  containerStyle?: ViewStyle;
 }
 
 export function ListItem({ source, avtSource, title, subtitle, status, isActive, containerStyle = {} }) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
+  const [reacted, setReacted] = useState(false);
+  const onPressHeart = () => setReacted(!reacted);
+
   //
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
   const containerStyles = [styles.container, containerStyle];
@@ -41,7 +44,11 @@ export function ListItem({ source, avtSource, title, subtitle, status, isActive,
           title={subtitle}
           statusText={status}
         />
-        <Icon icon="heart" color={colorStyles.rightIcon} />
+        <Icon
+          icon="heart"
+          color={reacted ? colorStyles.reacted : colorStyles.rightIcon}
+          onPress={onPressHeart}
+        />
       </View>
     </View>
   );
@@ -49,6 +56,7 @@ export function ListItem({ source, avtSource, title, subtitle, status, isActive,
 
 const createColorStyles = (isDarkMode) => ({
   rightIcon: isDarkMode ? colors.offWhite : colors.placeholder,
+  reacted: colors.error,
 });
 
 const darkStyles = StyleSheet.create({
