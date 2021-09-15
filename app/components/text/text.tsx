@@ -12,7 +12,7 @@ import { colors } from "../../theme";
  */
 export function Text(props: TextProps) {
   // grab the props
-  const { preset = "default", tx, txOptions, text, children, style: styleOverride, ...rest } = props;
+  const { preset = "default", tx, txOptions, text, children, style: styleOverride, lineHeight, ...rest } = props;
 
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
@@ -24,8 +24,9 @@ export function Text(props: TextProps) {
   if (!content) return null;
 
   const style = presets[preset] || presets.default;
+
   const colorText = { color };
-  const styles = [style, colorText, styleOverride];
+  const styles = [style, colorText, lineHeight && { lineHeight }, styleOverride];
 
   return (
     <ReactNativeText {...rest} style={styles}>

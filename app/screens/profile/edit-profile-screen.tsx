@@ -15,7 +15,7 @@ import {
   SmallListItem,
   DotIcon,
 } from "../../components";
-import { Footer, TitleButton, FollowButton, TagNameButton } from "../components";
+import { Footer, TitleButton, FollowButton, TagNameButton, EditButton } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
@@ -51,7 +51,7 @@ function ListCard({ item }) {
   );
 }
 
-export const UserProfileScreen = observer(function UserProfileScreen(props) {
+export const EditProfileScreen = observer(function EditProfileScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -96,14 +96,7 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
             </View>
           </View>
         </View>
-        <View
-          alignCenter
-          style={{
-            paddingHorizontal: spacing[2],
-            marginTop: -AVT_SIZE.LARGER * 0.5,
-            marginBottom: spacing[2],
-          }}
-        >
+        <View alignCenter style={styles.avtImageWrapper}>
           <Image source={assets.avatar8} style={styles.avtImage} />
           <Text preset="mediumBold" text="Gift Habeshaw" style={{ padding: spacing[1] }} />
           <TouchableOpacity onPress={onPressCopy}>
@@ -113,8 +106,14 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
             </View>
           </TouchableOpacity>
         </View>
-        <View row style={{ paddingHorizontal: spacing[4] }}>
-          <View flexible>
+        <View
+          row
+          style={{
+            paddingHorizontal: spacing[4],
+            paddingVertical: spacing[3],
+          }}
+        >
+          <View flexible style={{ paddingLeft: spacing[2] }}>
             <Text preset="headerMediumBold" text="150" color={colorStyles.black} />
             <Text preset="mediumBold" color={colorStyles.label} text="Following" />
           </View>
@@ -122,86 +121,25 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
             <Text preset="headerMediumBold" text="2024" color={colorStyles.black} />
             <Text preset="mediumBold" color={colorStyles.label} text="Followers" />
           </View>
-          <View flexible>
-            <FollowButton onPress={() => null} />
+          <View flexible alignCenter>
+            <EditButton onPress={() => null} />
           </View>
         </View>
-        <View style={{ paddingVertical: spacing[4], paddingHorizontal: spacing[4] }}>
-          <Text preset="large" text="Followed by" />
-          <View row style={{ paddingVertical: spacing[3] }}>
-            {LIST_AVATARS.map((avtSrc, index) => (
-              <View
-                key={String(index)}
-                style={{
-                  borderWidth: 2,
-                  borderColor: colors.white,
-                  borderRadius: 99,
-                  marginLeft: index === 0 ? 0 : -12,
-                }}
-              >
-                <Image source={avtSrc} style={styles.avatar} />
-              </View>
-            ))}
-          </View>
-          <Text
-            preset="small"
-            color={colorStyles.label}
-            text="Trevor Jackson is a multi-disciplinary artist exploring analog + digital realms since 1988. Collaborators inc Apple, BMW, Comme Des Garçons, ICA, NTS, Sonos,  Stone Island, Tate Modern + Warp."
-            style={{ lineHeight: 20, paddingVertical: spacing[4] }}
-          />
-          <Text preset="medium" color={colorStyles.bold} text="Member since  2021" />
-        </View>
-        <View row style={{ paddingHorizontal: spacing[4], flexWrap: "wrap" }}>
-          <TagNameButton
-            isIcon
-            iconName="twitter"
-            text="@openart"
-            onPress={onPressTagName}
-            containerStyle={{ marginHorizontal: spacing[2] }}
-          />
-          <TagNameButton
-            isIcon
-            iconName="instagram"
-            text="@openart.design"
-            onPress={onPressTagName}
-            containerStyle={{ marginHorizontal: spacing[2] }}
-          />
-          <TagNameButton
-            isIcon
-            iconName="link"
-            text="Openart.design"
-            onPress={onPressTagName}
-            containerStyle={{ marginHorizontal: spacing[2] }}
-          />
-        </View>
-
-        <FlatList
-          data={LIST_CARDS}
-          style={{ paddingTop: spacing[2] }}
-          contentContainerStyle={{ paddingHorizontal: spacing[4] }}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <ListCard item={item} />}
-          ListHeaderComponent={() => (
-            <View row>
-              <TouchableOpacity style={styles.tabTitle} onPress={() => onPressTabTitle(0)}>
-                <Text
-                  preset="headerSmallBold"
-                  text="Created"
-                  color={selectedIndex === 0 ? colorStyles.bold : colorStyles.placeholder}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.tabTitle} onPress={() => onPressTabTitle(1)}>
-                <Text
-                  preset="headerSmallBold"
-                  text="Collected"
-                  color={selectedIndex === 1 ? colorStyles.bold : colorStyles.placeholder}
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-          ListFooterComponentStyle={{ paddingHorizontal: spacing[5] }}
-          ListFooterComponent={() => <Button leftIcon="plus" preset="secondary" text="Load more" />}
+        <Text
+          text="Member since  2021"
+          color={colorStyles.bold}
+          style={{ alignSelf: "center", paddingVertical: spacing[3] }}
         />
+        {/* collection is empty */}
+        <View alignCenter style={{ padding: spacing[4] }}>
+          <Text preset="largeBold" text="Your collection is empty." />
+          <Text
+            preset="medium"
+            text="Start building your collection by placing bids on artwork."
+            style={{ textAlign: "center", paddingHorizontal: spacing[4] }}
+          />
+        </View>
+        <Button preset="secondary" text="Explore OpenArt" containerStyle={{ paddingHorizontal: spacing[6] }} />
 
         <View style={styles.bottom}>
           <Footer />
@@ -239,6 +177,11 @@ const lightStyles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: spacing[4],
+  },
+  avtImageWrapper: {
+    paddingHorizontal: spacing[2],
+    marginTop: -AVT_SIZE.LARGER * 0.5,
+    marginBottom: spacing[2],
   },
   avtImage: {
     height: AVT_SIZE.LARGER,

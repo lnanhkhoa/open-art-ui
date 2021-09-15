@@ -1,5 +1,6 @@
 export default {
   fire: require("../../assets/images/fire/fire.png"),
+  globe: require("../../assets/images/globe/globe.png"),
   logo: require("../../assets/images/logo/logo.png"),
   logoDark: require("../../assets/images/logo/logo-dark.png"),
   logo2: require("../../assets/images/logo/logo2.png"),
@@ -31,4 +32,6 @@ export default {
   header3: require("../../assets/images/header/header3.png"),
   header4: require("../../assets/images/header/header4.png"),
   header5: require("../../assets/images/header/header5.png"),
+  processor: require("../../assets/images/processor/processor.png"),
+  trust: require("../../assets/images/trust/trust.png"),
 };

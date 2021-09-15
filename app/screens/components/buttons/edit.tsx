@@ -1,23 +1,15 @@
 import React from "react";
 import { StyleSheet, ViewStyle, useColorScheme } from "react-native";
-import { Text, TouchableOpacity } from "../../../components";
+import { Text, TouchableOpacity, Icon } from "../../../components";
 import { colors, spacing, shadow } from "../../../theme";
 
-export function FollowButton({
-  text = "Follow",
-  onPress,
-  style,
-}: {
-  text?: string;
-  onPress: () => void;
-  style?: ViewStyle;
-}) {
+export function EditButton({ onPress, style }: { text?: string; onPress: () => void; style?: ViewStyle }) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
 
   return (
     <TouchableOpacity style={[styles.container, isDarkMode && styles.containerDark, style]} onPress={onPress}>
-      <Text preset="mediumBold" text={text} />
+      <Icon icon="edit" size={24} />
     </TouchableOpacity>
   );
 }
@@ -29,7 +21,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing[5],
     alignItems: "center",
     borderRadius: 8,
-    maxWidth: 120,
+    maxWidth: 80,
     ...shadow.lightButton,
   },
   containerDark: {

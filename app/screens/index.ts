@@ -5,3 +5,4 @@ export * from "./home";
 export * from "./items-detail";
 export * from "./discover-creator";
 export * from "./profile";
+export * from "./others";

@@ -23,6 +23,8 @@ export const icons = {
   twitter: require("./twitter.png"),
   instagram: require("./instagram.png"),
   link: require("./link.png"),
+  more: require("./more.png"),
+  cut: require("./cut.png"),
 };
 
 export type IconTypes = keyof typeof icons;
