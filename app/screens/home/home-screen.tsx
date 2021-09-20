@@ -80,7 +80,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <HeaderLogo rightIcon="menu" onRightPress={onPressMenu} containerStyle={styles.header} />
+      <HeaderLogo rightIcon="menu" onRightPress={onPressMenu} />
       <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: spacing[7] }}>
         <View style={styles.header}>
           <View style={styles.headerTitle}>

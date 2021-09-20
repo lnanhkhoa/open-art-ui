@@ -4,8 +4,8 @@ import { colors } from "../../theme";
 import { SwitchProps } from "./switch.props";
 
 // dimensions
-const THUMB_SIZE = 30;
-const WIDTH = 56;
+const THUMB_SIZE = 25;
+const WIDTH = 45;
 const MARGIN = 2;
 const OFF_POSITION = -0.5;
 const ON_POSITION = WIDTH - THUMB_SIZE - MARGIN;
@@ -13,9 +13,9 @@ const BORDER_RADIUS = (THUMB_SIZE * 3) / 4;
 
 // colors
 const ON_COLOR = colors.primary;
-const OFF_COLOR = colors.offWhite;
+const OFF_COLOR = colors.placeholder;
 const BORDER_ON_COLOR = ON_COLOR;
-const BORDER_OFF_COLOR = "rgba(0, 0, 0, 0.1)";
+const BORDER_OFF_COLOR = colors.placeholder;
 
 // animation
 const DURATION = 250;
@@ -26,7 +26,7 @@ const TRACK = {
   width: WIDTH,
   borderRadius: BORDER_RADIUS,
   borderWidth: MARGIN / 2,
-  backgroundColor: colors.background,
+  backgroundColor: colors.placeholder,
 };
 
 // the thumb always has these props
@@ -34,10 +34,9 @@ const THUMB: ViewStyle = {
   position: "absolute",
   width: THUMB_SIZE,
   height: THUMB_SIZE,
-  borderColor: BORDER_OFF_COLOR,
   borderRadius: THUMB_SIZE / 2,
   borderWidth: MARGIN / 2,
-  backgroundColor: colors.background,
+  backgroundColor: colors.offWhite,
   shadowColor: BORDER_OFF_COLOR,
   shadowOffset: { width: 1, height: 2 },
   shadowOpacity: 1,
@@ -100,6 +99,7 @@ export function Switch(props: SwitchProps) {
     THUMB,
     {
       transform: [{ translateX }],
+      borderColor: props.value ? ON_COLOR : BORDER_OFF_COLOR,
     },
     props.value ? props.thumbOnStyle : props.thumbOffStyle,
   ];

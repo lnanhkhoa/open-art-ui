@@ -9,15 +9,24 @@ export interface IconProps {
   size?: number;
   icon?: IconTypes;
   color?: string;
+  isKeepColor?: boolean;
   onPress?: () => void;
 }
 
 const DEFAULT_SIZE = 24;
 export function Icon(props: IconProps) {
-  const { style: styleOverride, icon, size = DEFAULT_SIZE, containerStyle, onPress, color: colorProp } = props;
+  const {
+    style: styleOverride,
+    icon,
+    size = DEFAULT_SIZE,
+    containerStyle,
+    onPress,
+    isKeepColor = true,
+    color: colorProp,
+  } = props;
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  const color = colorProp || (isDarkMode ? colors.offWhite : colors.text);
+  const color = colorProp || (!isKeepColor && (isDarkMode ? colors.offWhite : colors.text));
 
   //
   const sizeStyles = { width: size, height: size } as ImageStyle;

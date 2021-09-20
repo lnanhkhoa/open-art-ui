@@ -13,6 +13,7 @@ export default {
   avatar6: require("../../assets/images/avatar/avatar6.png"),
   avatar7: require("../../assets/images/avatar/avatar7.png"),
   avatar8: require("../../assets/images/avatar/avatar8.png"),
+  avatar9: require("../../assets/images/avatar/avatar9.png"),
   card: require("../../assets/images/card/card.png"),
   card2: require("../../assets/images/card/card2.png"),
   card3: require("../../assets/images/card/card3.png"),
@@ -34,4 +35,5 @@ export default {
   header5: require("../../assets/images/header/header5.png"),
   processor: require("../../assets/images/processor/processor.png"),
   trust: require("../../assets/images/trust/trust.png"),
+  triangle: require("../../assets/images/triangle/triangle.png"),
 };

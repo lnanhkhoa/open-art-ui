@@ -12,7 +12,8 @@ export const TextFieldScreen = observer(function TextFieldScreen() {
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
         <Text preset="largeBold" text="Header" />
         <View style={styles.box}>
-          <HeaderLogo rightIcon="menu"/>
+          <HeaderLogo rightIcon="menu" />
+          <TextField placeholder="Name" />
         </View>
       </Screen>
     </View>

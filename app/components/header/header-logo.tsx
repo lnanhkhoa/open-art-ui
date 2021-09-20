@@ -6,7 +6,7 @@ import { TouchableOpacity, View } from "../view";
 //
 import { colors, spacing } from "../../theme";
 import assets from "../../config/assets";
-import { SCREEN_WIDTH } from "../../config/constants";
+import { SCREEN_WIDTH, HEADER_HEIGHT } from "../../config/constants";
 import { createStyles } from "../../utils/function";
 
 export interface HeaderProps {
@@ -33,7 +33,7 @@ export function HeaderLogo(props: HeaderProps) {
       </TouchableOpacity>
       <View row>
         {leftIcon ? (
-          <Icon icon={leftIcon} size={24} onPress={onLeftPress} containerStyle={{ paddingRight: spacing[5] }} />
+          <Icon icon={leftIcon} size={24} onPress={onLeftPress} containerStyle={{ paddingRight: 24 }} />
         ) : (
           <View style={styles.rightEmpty} />
         )}
@@ -56,6 +56,8 @@ const lightStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: colors.background,
+    height: HEADER_HEIGHT,
+    paddingHorizontal: 16,
   },
   logo: {
     maxWidth: SCREEN_WIDTH * 0.34,

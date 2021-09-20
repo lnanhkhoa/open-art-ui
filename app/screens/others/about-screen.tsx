@@ -53,13 +53,7 @@ export const AboutScreen = observer(function AboutScreen(props) {
 
   return (
     <SafeAreaView>
-      <HeaderLogo
-        leftIcon={"search"}
-        onLeftPress={onPressSearch}
-        rightIcon="menu"
-        onRightPress={onPressMenu}
-        containerStyle={styles.header}
-      />
+      <HeaderLogo leftIcon={"search"} onLeftPress={onPressSearch} rightIcon="menu" onRightPress={onPressMenu} />
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}

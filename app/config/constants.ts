@@ -48,3 +48,5 @@ export const VIEWABILITY_CONFIG = {
   itemVisiblePercentThreshold: 70,
   waitForInteraction: true,
 };
+
+export const HEADER_HEIGHT = 54;

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   NativeSyntheticEvent,
   TextInputFocusEventData,
+  useColorScheme,
 } from "react-native";
 import { Text } from "../text/text";
 import { View } from "../view/view";
@@ -42,6 +43,16 @@ const NOTICE_COLORS = {
   error: colors.error,
   success: colors.success,
 };
+const NOTICE_BORDER_COLORS = {
+  default: colors.bgInput,
+  error: colors.error,
+  success: colors.success,
+};
+const NOTICE_DARK_BORDER_COLORS = {
+  default: colors.body,
+  error: colors.error,
+  success: colors.success,
+};
 
 export function TextField({
   placeholderTx,
@@ -63,6 +74,9 @@ export function TextField({
   onBlur,
   ...rest
 }: TextFieldProps) {
+  const colorScheme = useColorScheme();
+  const isDarkMode = colorScheme === "dark";
+
   const [isFocus, setIsFocus] = useState(false);
 
   const isShowNotice = !!notice && !isFocus;
@@ -76,12 +90,13 @@ export function TextField({
   const actualPlaceholder = placeholderTx ? translate(placeholderTx) : placeholder;
   const wrapperInput = [
     styles.wrapperInput,
+    isDarkMode && darkStyles.wrapperInput,
     isFocus && {
       borderColor: colors.label,
       backgroundColor: colors.offWhite,
     },
     isShowNotice && {
-      borderColor: NOTICE_COLORS[noticeType],
+      borderColor: isDarkMode ? NOTICE_DARK_BORDER_COLORS[noticeType] : NOTICE_BORDER_COLORS[noticeType],
     },
   ];
 
@@ -124,32 +139,37 @@ export function TextField({
       <Text
         preset={"xsmall"}
         tx={noticeTx}
-        text={notice || " "}
+        text={notice || ""}
         color={noticeColor}
-        style={{ paddingLeft: spacing[4], paddingVertical: spacing[1] }}
+        style={{ paddingLeft: spacing[4], paddingVertical: spacing[1], lineHeight: 20 }}
       />
     </View>
   );
 }
 
+const darkStyles = StyleSheet.create({
+  wrapperInput: {
+    backgroundColor: colors.body,
+  },
+});
+
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: spacing[3],
-    paddingHorizontal: spacing[3],
+    paddingVertical: spacing[2],
   },
   wrapperInput: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: colors.bgInput,
     paddingLeft: spacing[4],
-    borderRadius: 8,
-    minHeight: 50,
+    borderRadius: 10,
+    minHeight: 56,
     borderWidth: 1,
     borderColor: colors.transparent,
   },
   input: {
-    paddingTop: spacing[1],
-    paddingBottom: spacing[2],
+    // paddingTop: spacing[1],
+    paddingBottom: spacing[3],
     ...TextPresets.medium,
   },
 });

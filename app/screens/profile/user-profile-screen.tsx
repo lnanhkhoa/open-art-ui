@@ -76,13 +76,7 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
 
   return (
     <SafeAreaView>
-      <HeaderLogo
-        leftIcon={"search"}
-        onLeftPress={onPressSearch}
-        rightIcon="menu"
-        onRightPress={onPressMenu}
-        containerStyle={styles.header}
-      />
+      <HeaderLogo leftIcon={"search"} onLeftPress={onPressSearch} rightIcon="menu" onRightPress={onPressMenu} />
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}
@@ -105,7 +99,7 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
           }}
         >
           <Image source={assets.avatar8} style={styles.avtImage} />
-          <Text preset="mediumBold" text="Gift Habeshaw" style={{ padding: spacing[1] }} />
+          <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} style={{ padding: spacing[1] }} />
           <TouchableOpacity onPress={onPressCopy}>
             <View row alignCenter>
               <Text preset="medium" text="52fs5ge5g45sov45a" />
