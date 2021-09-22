@@ -57,10 +57,9 @@ export const DiscoverCreatorScreen = observer(function DiscoverCreatorScreen(pro
   return (
     <SafeAreaView>
       <HeaderLogo
-        leftIcon={"search"}
-        onLeftPress={onPressSearch}
-        rightIcon="menu"
-        onRightPress={onPressMenu}
+        rightIcon={"search"}
+        onRightPress={onPressSearch}
+        onPressMenu={onPressMenu}
         containerStyle={styles.header}
       />
       <ScrollView

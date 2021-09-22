@@ -15,8 +15,17 @@ import {
   TouchableOpacity,
   SmallListItem,
   DotIcon,
+  HeaderLogoSpecs,
 } from "../../components";
-import { Footer, TitleButton, FollowButton, TagNameButton, EditButton, AccountDetail } from "../components";
+import {
+  Footer,
+  TitleButton,
+  FollowButton,
+  TagNameButton,
+  EditButton,
+  AccountDetail,
+  Notification,
+} from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
@@ -30,34 +39,6 @@ const MODE = {
   EMPTY: "EMPTY",
   EDIT: "EDIT",
 };
-
-const SOCIAL_MEDIA_LINKS = [
-  {
-    id: "1",
-    icon: "link-primary" as IconTypes,
-    text: "Website",
-  },
-  {
-    id: "2",
-    icon: "discord-primary" as IconTypes,
-    text: "Discord",
-  },
-  {
-    id: "3",
-    icon: "instagram-primary" as IconTypes,
-    text: "Instagram",
-  },
-  {
-    id: "4",
-    icon: "youtube-fill-primary" as IconTypes,
-    text: "Youtube channel",
-  },
-  {
-    id: "5",
-    icon: "tiktok-primary" as IconTypes,
-    text: "Tiktok",
-  },
-];
 
 export const AccountScreen = observer(function AccountScreen(props) {
   const colorScheme = useColorScheme();
@@ -87,7 +68,7 @@ export const AccountScreen = observer(function AccountScreen(props) {
 
   return (
     <SafeAreaView>
-      <HeaderLogo leftIcon={"search"} onLeftPress={onPressSearch} rightIcon="menu" onRightPress={onPressMenu} />
+      <HeaderLogo rightIcon="search" onRightPress={onOpenModal} onPressMenu={onPressMenu} />
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}
@@ -166,7 +147,7 @@ export const AccountScreen = observer(function AccountScreen(props) {
         </View>
       </ScrollView>
       <Modal animationType="fade" transparent={true} visible={visibleModal}>
-        <AccountDetail onCloseModal={onCloseModal} />
+        <AccountDetail onCloseModal={onCloseModal} iconName="people" iconIndex={0} />
       </Modal>
     </SafeAreaView>
   );

@@ -7,12 +7,13 @@ import { colors, spacing } from "../../theme";
 // import { assets, constants } from "../../config";
 
 export const TextFieldScreen = observer(function TextFieldScreen() {
+  const onPressMenu = () => null;
   return (
     <View testID="TextFieldScreen" style={styles.full}>
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
         <Text preset="largeBold" text="Header" />
         <View style={styles.box}>
-          <HeaderLogo rightIcon="menu" />
+          <HeaderLogo onPressMenu={onPressMenu} />
           <TextField placeholder="Name" />
         </View>
       </Screen>

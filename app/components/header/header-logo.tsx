@@ -10,16 +10,34 @@ import { SCREEN_WIDTH, HEADER_HEIGHT } from "../../config/constants";
 import { createStyles } from "../../utils/function";
 
 export interface HeaderProps {
-  onLogoPress?(): void;
-  rightIcon?: IconTypes;
-  onRightPress?(): void;
+  onLogoPress?: () => void;
   leftIcon?: IconTypes;
-  onLeftPress?(): void;
+  onLeftPress?: () => void;
+  rightIcon?: IconTypes;
+  onRightPress?: () => void;
   containerStyle?: ViewStyle | ViewStyle[];
+  onPressMenu?: () => void;
 }
 
+export const HeaderLogoSpecs = {
+  height: HEADER_HEIGHT,
+  position: {
+    menu: 16,
+    right: 16 + 24 + 10,
+    left: 16 + 24 + 10 * 3 + 24,
+  },
+};
+
 export function HeaderLogo(props: HeaderProps) {
-  const { onLogoPress, leftIcon, onLeftPress, onRightPress, rightIcon, containerStyle: containerStyleOverride } = props;
+  const {
+    onLogoPress,
+    leftIcon,
+    onLeftPress,
+    onRightPress,
+    rightIcon,
+    onPressMenu = () => null,
+    containerStyle: containerStyleOverride,
+  } = props;
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const logoSrc = isDarkMode ? assets.logoDark : assets.logo;
@@ -33,11 +51,16 @@ export function HeaderLogo(props: HeaderProps) {
       </TouchableOpacity>
       <View row>
         {leftIcon ? (
-          <Icon icon={leftIcon} size={24} onPress={onLeftPress} containerStyle={{ paddingRight: 24 }} />
+          <Icon icon={leftIcon} size={24} onPress={onLeftPress} style={{ margin: 10 }} />
         ) : (
           <View style={styles.rightEmpty} />
         )}
-        {rightIcon ? <Icon icon={rightIcon} size={24} onPress={onRightPress} /> : <View style={styles.rightEmpty} />}
+        {rightIcon ? (
+          <Icon icon={rightIcon} size={24} onPress={onRightPress} style={{ margin: 10 }} />
+        ) : (
+          <View style={styles.rightEmpty} />
+        )}
+        <Icon icon={"menu"} size={24} onPress={onPressMenu} style={{ margin: 10, marginRight: 0 }} />
       </View>
     </View>
   );

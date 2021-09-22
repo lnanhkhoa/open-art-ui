@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import { StyleSheet, useColorScheme, Image } from "react-native";
-import { View, Text, Icon, Button, SafeAreaView, TouchableOpacity, Avatar, Switch } from "../../../components";
+import {
+  View,
+  Text,
+  Icon,
+  Button,
+  SafeAreaView,
+  TouchableOpacity,
+  Avatar,
+  Switch,
+  HeaderLogoSpecs,
+} from "../../../components";
 import { IconTypes } from "../../../components/icon/icons";
 
 import { colors, spacing } from "../../../theme";
 import { createStyles } from "../../../utils/function";
 import { constants, assets } from "../../../config";
-const { HEADER_HEIGHT, AVT_SIZE } = constants;
+const { AVT_SIZE } = constants;
+const CIRCLE_SIZE = 42;
 
 const LIST_ACTIONS = [
   {
@@ -33,44 +44,48 @@ const LIST_ACTIONS = [
 
 interface AccountDetailProps {
   onCloseModal: () => void;
+  iconIndex: number;
+  iconName: IconTypes;
 }
-export function AccountDetail({ onCloseModal }: AccountDetailProps) {
+export function AccountDetail({ onCloseModal, iconIndex = 0, iconName = "people" }: AccountDetailProps) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const [darkMode, setDarkMode] = useState(false);
   const onPressCopy = () => null;
-
   //
   const colorStyles = createColorStyles(isDarkMode);
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
   //
   return (
     <SafeAreaView backgroundColor="transparent">
-      <View style={styles.overlay} />
-      <View flexible>
-        <View style={{ height: HEADER_HEIGHT, width: "100%" }}>
-          <View style={styles.circle}>
-            <Icon icon="people" size={24} />
+      <TouchableOpacity style={styles.overlay} onPress={onCloseModal} />
+      <View pointerEvents="box-none" style={{ height: HeaderLogoSpecs.height }}>
+        <TouchableOpacity
+          onPress={onCloseModal}
+          style={[
+            styles.circle,
+            { marginRight: iconIndex === 0 ? HeaderLogoSpecs.position.right : HeaderLogoSpecs.position.left },
+          ]}
+        >
+          <Icon icon={iconName} size={24} />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.modal}>
+        <View row alignCenter style={styles.avtImageWrapper}>
+          <TouchableOpacity onPress={() => null}>
+            <Avatar hasSource size="large" source={assets.avatar9} containerStyle={styles.avtImage} />
+          </TouchableOpacity>
+          <View>
+            <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} />
+            <TouchableOpacity onPress={onPressCopy}>
+              <View row alignCenter>
+                <Text preset="medium" text="52fs5ge5g45sov45a" />
+                <Icon icon="copy" color={colorStyles.placeholder} size={14} style={{ paddingHorizontal: spacing[3] }} />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.modal}>
-          <View row alignCenter style={styles.avtImageWrapper}>
-            <Avatar hasSource size="large" source={assets.avatar9} containerStyle={styles.avtImage} />
-            <View>
-              <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} />
-              <TouchableOpacity onPress={onPressCopy}>
-                <View row alignCenter>
-                  <Text preset="medium" text="52fs5ge5g45sov45a" />
-                  <Icon
-                    icon="copy"
-                    color={colorStyles.placeholder}
-                    size={14}
-                    style={{ paddingHorizontal: spacing[3] }}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
+        <TouchableOpacity>
           <View row style={styles.balanceWrapper}>
             <Icon icon="wallet" color={colorStyles.placeholder} containerStyle={styles.walletIcon} />
             <View>
@@ -86,28 +101,28 @@ export function AccountDetail({ onCloseModal }: AccountDetailProps) {
               </View>
             </View>
           </View>
-          <View style={styles.body}>
-            {LIST_ACTIONS.map((item) => {
-              return (
-                <TouchableOpacity key={item.id} onPress={() => null}>
-                  <View row alignCenter style={{ marginVertical: spacing[2] }}>
-                    <Icon
-                      icon={item.icon}
-                      color={colorStyles.label}
-                      size={24}
-                      containerStyle={{ marginHorizontal: spacing[4] }}
-                    />
-                    <Text text={item.text} color={colorStyles.label} style={{ paddingTop: spacing[2] }} />
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
-          <View style={styles.divider} />
-          <View row alignCenter justifySpaceBetween style={{ paddingTop: spacing[4], paddingHorizontal: spacing[4] }}>
-            <Text preset="mediumBold" text="Dark mode" />
-            <Switch value={darkMode} />
-          </View>
+        </TouchableOpacity>
+        <View style={styles.body}>
+          {LIST_ACTIONS.map((item) => {
+            return (
+              <TouchableOpacity key={item.id} style={{ paddingVertical: spacing[1] }} onPress={() => null}>
+                <View row alignCenter style={{ marginVertical: spacing[2] }}>
+                  <Icon
+                    icon={item.icon}
+                    color={colorStyles.label}
+                    size={24}
+                    containerStyle={{ marginHorizontal: spacing[4] }}
+                  />
+                  <Text text={item.text} color={colorStyles.label} style={{ paddingTop: spacing[1] }} />
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+        <View style={styles.divider} />
+        <View row alignCenter justifySpaceBetween style={{ paddingTop: spacing[4], paddingHorizontal: spacing[4] }}>
+          <Text preset="mediumBold" text="Dark mode" />
+          <Switch value={darkMode} onToggle={setDarkMode} />
         </View>
       </View>
     </SafeAreaView>
@@ -133,13 +148,14 @@ const lightStyles = StyleSheet.create({
   circle: {
     backgroundColor: colors.white,
     borderRadius: 99,
-    width: 42,
-    height: 42,
+    width: CIRCLE_SIZE,
+    height: CIRCLE_SIZE,
     alignSelf: "flex-end",
-    marginRight: 56,
-    marginTop: 4,
+    marginRight: HeaderLogoSpecs.position.right,
+    marginTop: 5,
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: 4,
   },
   modal: {
     minHeight: 400,
