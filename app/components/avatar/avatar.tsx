@@ -12,6 +12,7 @@ const { AVT_SIZE } = constants;
 export interface AvatarProps {
   hasSource?: boolean;
   active?: boolean;
+  presetLinearColors?: "primary" | "secondary" | "accent";
   source?: ImageRequireSource | ImageURISource;
   size?: "small" | "normal" | "medium" | "large";
   containerStyle?: ViewStyle;
@@ -30,6 +31,12 @@ const AVT_SIZES = {
 };
 const DOT_SIZE = 14;
 
+const LINEAR_GRADIENT_COLORS = {
+  secondary: [colors.gradient.secondary.from, colors.gradient.secondary.to],
+  primary: [colors.gradient.primary.from, colors.gradient.primary.to],
+  accent: [colors.gradient.accent.from, colors.gradient.accent.to],
+};
+
 export function Avatar({
   active = false,
   hasSource = false,
@@ -41,6 +48,7 @@ export function Avatar({
   preset = "col",
   title = "",
   statusText = "",
+  presetLinearColors = "secondary",
 }: AvatarProps) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
@@ -53,6 +61,7 @@ export function Avatar({
   const textboxStyle = { marginLeft: 8 } as ViewStyle;
   const dotStyle = [styles.dot, isDarkMode && darkStyles.dot, dotStyles[size]];
   const statusTextColor = isDarkMode ? colors.offWhite : colors.placeholder;
+  const linearGradientColors = LINEAR_GRADIENT_COLORS[presetLinearColors];
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -62,7 +71,7 @@ export function Avatar({
             {hasSource && <Image source={source} style={[styles.image, imgStyle]} />}
             {!hasSource && (
               <LinearGradient
-                colors={[colors.gradient.secondary.from, colors.gradient.secondary.to]}
+                colors={linearGradientColors}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0.9 }}
                 style={[styles.linearBox, imgStyle]}

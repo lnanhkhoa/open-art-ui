@@ -13,7 +13,7 @@ export const TextFieldScreen = observer(function TextFieldScreen() {
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
         <Text preset="largeBold" text="Header" />
         <View style={styles.box}>
-          <HeaderLogo onPressMenu={onPressMenu} />
+          <HeaderLogo />
           <TextField placeholder="Name" />
         </View>
       </Screen>

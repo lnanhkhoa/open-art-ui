@@ -1,10 +1,10 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle, FlatList, ScrollView } from "react-native";
+import { StyleSheet, Image, useColorScheme, Modal } from "react-native";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import {
   Text,
   TextPresets,
-  TextField,
   HeaderLogo,
   SearchBar,
   View,
@@ -15,68 +15,41 @@ import {
   TouchableOpacity,
   SmallListItem,
   DotIcon,
-  HeaderLogoSpecs,
 } from "../../components";
-import {
-  Footer,
-  TitleButton,
-  FollowButton,
-  TagNameButton,
-  EditButton,
-  AccountDetail,
-  Notification,
-} from "../components";
-// import { useNavigation } from "@react-navigation/native";
+import { Footer, FollowButton } from "../components";
+import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles, createColorStyles } from "../../utils/function";
-import { LIST_AVATARS, LIST_CARDS } from "./schema";
-import { IconTypes } from "../../components/icon/icons";
 
-const { VIEWABILITY_CONFIG: viewabilityConfig, SCREEN_WIDTH, AVT_SIZE } = constants;
+const { SCREEN_WIDTH, AVT_SIZE } = constants;
 
-const MODE = {
-  EMPTY: "EMPTY",
-  EDIT: "EDIT",
-};
-
-export const AccountScreen = observer(function AccountScreen(props) {
+export const ProfileCreatorScreen = observer(function ProfileCreatorScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  // const navigation = useNavigation();
-  const [mode, setMode] = useState(MODE.EDIT);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [visibleItemIndex, setVisibleItemIndex] = useState(0);
-  const [visibleModal, setVisibleModal] = useState(true);
+  const navigation = useNavigation();
 
-  const onViewableItemsChanged = useCallback(({ viewableItems, changed }) => {
-    if (changed && changed.length > 0) {
-      setVisibleItemIndex(changed[0].index);
-    }
-  }, []);
-
-  //
-  const viewabilityConfigCallbackPairs = useRef([{ viewabilityConfig, onViewableItemsChanged }]);
-  const onPressMenu = () => null;
-  const onPressSearch = () => null;
+  // 
   const onPressCopy = () => null;
-  const onOpenModal = () => setVisibleModal(true);
-  const onCloseModal = () => setVisibleModal(false);
   //
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
   const colorStyles = createColorStyles(isDarkMode);
 
   return (
-    <SafeAreaView>
-      <HeaderLogo rightIcon="search" onRightPress={onOpenModal} />
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}
-      >
+    <SafeAreaView style={{ flex: 1 }}>
+      <HeaderLogo rightIcon="search" />
+      <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: spacing[7] }}>
         <View style={{ width: "100%", minHeight: 160 }}>
           <Image source={assets.header} style={{ width: SCREEN_WIDTH, minHeight: 160 }} />
         </View>
-        <View alignCenter style={styles.avtImageWrapper}>
+        <View
+          alignCenter
+          style={{
+            paddingHorizontal: spacing[2],
+            marginTop: -AVT_SIZE.LARGER * 0.5,
+            marginBottom: spacing[2],
+          }}
+        >
           <Image source={assets.avatar9} style={styles.avtImage} />
           <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} style={{ padding: spacing[1] }} />
           <TouchableOpacity onPress={onPressCopy}>
@@ -86,7 +59,8 @@ export const AccountScreen = observer(function AccountScreen(props) {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={styles.body}>
+        {/* basic info */}
+        <View style={styles.basicInfo}>
           <View style={{ position: "absolute", right: 12, top: 12 }}>
             <Icon
               icon="edit"
@@ -145,18 +119,51 @@ export const AccountScreen = observer(function AccountScreen(props) {
           </View>
           <Text preset="small" text="Member since  2021" color={colorStyles.label} style={{ alignSelf: "center" }} />
         </View>
+
+        <View style={styles.body}>
+          {/* List Item */}
+          <Text preset="headerSmallBold" text="My Items" style={{ paddingHorizontal: spacing[4] }} />
+          <View style={styles.listitems}>
+            <View style={styles.box}>
+              <ListItem
+                source={assets.card2}
+                avtSource={assets.avatar2}
+                isActive
+                title="Silent Color"
+                subtitle="Pawel Czerwinski"
+                status="Creator"
+              />
+              <TouchableOpacity style={styles.buttonSold} onPress={() => null}>
+                <Text color={colorStyles.label} style={{ marginVertical: spacing[4] }}>
+                  <Text preset={"large"} text="Sold For" />
+                  <Text text=" " />
+                  <Text preset="headerSmallBold" text="2.00 ETH" />
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <Button
+            preset="secondary"
+            text="Load more"
+            textStyle={{ paddingVertical: spacing[2] }}
+            containerStyle={{ marginHorizontal: spacing[4], marginTop: spacing[5] }}
+          />
+        </View>
+        <View style={styles.bottom}>
+          <Footer />
+        </View>
       </ScrollView>
-      <Modal animationType="fade" transparent={true} visible={visibleModal}>
-        <AccountDetail onCloseModal={onCloseModal} iconName="people" iconIndex={0} />
-      </Modal>
     </SafeAreaView>
   );
 });
 
-
 const darkStyles = StyleSheet.create({
   container: {
     backgroundColor: colors.titleActive,
+  },
+  viewBid: {
+    backgroundColor: colors.body,
+    borderColor: colors.transparent,
   },
   buttonSold: {
     backgroundColor: colors.body,
@@ -165,15 +172,6 @@ const darkStyles = StyleSheet.create({
   btnAction: {
     backgroundColor: colors.titleActive,
   },
-  btnUpload: {
-    backgroundColor: colors.body,
-  },
-  btnLinking: {
-    backgroundColor: colors.body,
-  },
-  divider: {
-    backgroundColor: colors.offWhite,
-  },
 });
 
 const lightStyles = StyleSheet.create({
@@ -181,12 +179,11 @@ const lightStyles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   header: {
-    paddingHorizontal: 16,
+    paddingHorizontal: spacing[4],
   },
-  avtImageWrapper: {
-    paddingHorizontal: spacing[2],
-    marginTop: -AVT_SIZE.LARGER * 0.5,
-    marginBottom: spacing[2],
+  headerTitle: {
+    alignItems: "center",
+    paddingVertical: spacing[4],
   },
   avtImage: {
     height: AVT_SIZE.LARGER,
@@ -199,6 +196,35 @@ const lightStyles = StyleSheet.create({
     height: AVT_SIZE.SMALL,
     borderRadius: 99,
   },
+
+  basicInfo: {
+    backgroundColor: colors.white,
+    paddingHorizontal: spacing[4],
+    paddingVertical: spacing[4],
+    margin: spacing[4],
+    borderRadius: 32,
+  },
+
+  body: {
+    paddingTop: spacing[6],
+  },
+  listitems: {
+    paddingHorizontal: spacing[4],
+  },
+  box: {
+    paddingVertical: spacing[4],
+  },
+  bottom: {
+    paddingVertical: spacing[7],
+  },
+  buttonSold: {
+    backgroundColor: colors.offWhite,
+    borderColor: colors.background,
+    borderWidth: 2,
+    borderRadius: 50,
+    marginVertical: spacing[3],
+    alignItems: "center",
+  },
   btnAction: {
     width: 40,
     height: 40,
@@ -209,13 +235,6 @@ const lightStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 6,
-  },
-  body: {
-    backgroundColor: colors.white,
-    paddingHorizontal: spacing[4],
-    paddingVertical: spacing[4],
-    margin: spacing[4],
-    borderRadius: 32,
   },
   btnEdit: {
     width: 48,
@@ -233,10 +252,5 @@ const lightStyles = StyleSheet.create({
     paddingVertical: spacing[2],
     paddingHorizontal: spacing[3],
     marginHorizontal: spacing[2],
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: colors.woodsmoke,
-    opacity: 0.08,
   },
 });

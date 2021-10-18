@@ -11,6 +11,7 @@
  */
 import "./i18n";
 import "./utils/ignore-warnings";
+import "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 import { AppearanceProvider } from "react-native-appearance";
 import { SafeAreaProvider, initialWindowMetrics } from "react-native-safe-area-context";
@@ -18,16 +19,6 @@ import { initFonts } from "./theme/fonts"; // expo
 import * as storage from "./utils/storage";
 import { useBackButtonHandler, AppNavigator, canExit, useNavigationPersistence } from "./navigators";
 import { RootStore, RootStoreProvider, setupRootStore } from "./models";
-import {
-  HomeScreen,
-  ItemsDetailScreen,
-  DiscoverCreatorScreen,
-  TextFieldScreen,
-  UserProfileScreen,
-  AccountScreen,
-  EditProfileScreen,
-  AboutScreen,
-} from "./screens";
 import { ToggleStorybook } from "../storybook/toggle-storybook";
 
 // This puts screens in a native ViewController or Activity. If you want fully native
@@ -74,11 +65,11 @@ function App() {
         {/* <RootStoreProvider value={rootStore}> */}
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
           {/* <HomeScreen /> */}
-          <AccountScreen />
-          {/* <AppNavigator
-            initialState={initialNavigationState}
-            onStateChange={onNavigationStateChange}
-          /> */}
+          {/* <SearchResultScreen /> */}
+          <AppNavigator
+          // initialState={initialNavigationState}
+          // onStateChange={onNavigationStateChange}
+          />
         </SafeAreaProvider>
       </AppearanceProvider>
       {/* </RootStoreProvider> */}

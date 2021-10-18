@@ -8,8 +8,22 @@ import React from "react";
 import { useColorScheme } from "react-native";
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { WelcomeScreen } from "../screens";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { navigationRef } from "./navigation-utilities";
+import {
+  HomeScreen,
+  ItemsDetailScreen,
+  DiscoverCreatorScreen,
+  TextFieldScreen,
+  UserProfileScreen,
+  AccountScreen,
+  EditProfileScreen,
+  AboutScreen,
+  UploadArtworkScreen,
+  SearchScreen,
+  SearchResultScreen,
+  ProfileCreatorScreen,
+} from "../screens";
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -29,21 +43,38 @@ export type NavigatorParamList = {
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>();
+const Drawer = createDrawerNavigator();
 
-const AppStack = () => {
+const DrawerStack = () => {
   return (
-    <Stack.Navigator
+    <Drawer.Navigator
+      defaultStatus="closed"
       screenOptions={{
-        headerShown: false,
+        header: () => null,
+        drawerPosition: "right",
+        swipeEnabled: false,
       }}
-      initialRouteName="welcome"
     >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
-      {/* <Stack.Screen name="demo" component={DemoScreen} />
-      <Stack.Screen name="demoList" component={DemoListScreen} /> */}
-    </Stack.Navigator>
+      <Drawer.Screen name="UploadArtworkScreen" component={UploadArtworkScreen} />
+      <Drawer.Screen name="AboutScreen" component={AboutScreen} />
+    </Drawer.Navigator>
   );
 };
+
+// const AppStack = () => {
+//   return (
+//     <Stack.Navigator
+//       screenOptions={{
+//         headerShown: false,
+//       }}
+//       initialRouteName="welcome"
+//     >
+//       <Stack.Screen name="welcome" component={WelcomeScreen} />
+//       {/* <Stack.Screen name="demo" component={DemoScreen} />
+//       <Stack.Screen name="demoList" component={DemoListScreen} /> */}
+//     </Stack.Navigator>
+//   );
+// };
 
 interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
@@ -51,7 +82,7 @@ export const AppNavigator = (props: NavigationProps) => {
   const colorScheme = useColorScheme();
   return (
     <NavigationContainer ref={navigationRef} theme={colorScheme === "dark" ? DarkTheme : DefaultTheme} {...props}>
-      <AppStack />
+      <DrawerStack />
     </NavigationContainer>
   );
 };

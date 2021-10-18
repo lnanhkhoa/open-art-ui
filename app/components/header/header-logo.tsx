@@ -1,5 +1,7 @@
 import React from "react";
 import { ViewStyle, StyleSheet, Image, useColorScheme } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import { Icon } from "../icon/icon";
 import { IconTypes } from "../icon/icons";
 import { TouchableOpacity, View } from "../view";
@@ -35,14 +37,24 @@ export function HeaderLogo(props: HeaderProps) {
     onLeftPress,
     onRightPress,
     rightIcon,
-    onPressMenu = () => null,
+    onPressMenu,
     containerStyle: containerStyleOverride,
   } = props;
+  const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
+  //
   const logoSrc = isDarkMode ? assets.logoDark : assets.logo;
-
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
+  const colorIcon = isDarkMode ? colors.offWhite : colors.titleActive;
+
+  const onHandlePressMenu = () => {
+    if (onPressMenu) {
+      onPressMenu();
+    } else {
+      navigation?.openDrawer();
+    }
+  };
 
   return (
     <View style={[styles.container, containerStyleOverride]}>
@@ -51,16 +63,22 @@ export function HeaderLogo(props: HeaderProps) {
       </TouchableOpacity>
       <View row>
         {leftIcon ? (
-          <Icon icon={leftIcon} size={24} onPress={onLeftPress} style={{ margin: 10 }} />
+          <Icon icon={leftIcon} size={24} color={colorIcon} onPress={onLeftPress} style={{ margin: 10 }} />
         ) : (
           <View style={styles.rightEmpty} />
         )}
         {rightIcon ? (
-          <Icon icon={rightIcon} size={24} onPress={onRightPress} style={{ margin: 10 }} />
+          <Icon icon={rightIcon} size={24} color={colorIcon} onPress={onRightPress} style={{ margin: 10 }} />
         ) : (
           <View style={styles.rightEmpty} />
         )}
-        <Icon icon={"menu"} size={24} onPress={onPressMenu} style={{ margin: 10, marginRight: 0 }} />
+        <Icon
+          icon={"menu"}
+          size={24}
+          color={colorIcon}
+          onPress={onHandlePressMenu}
+          style={{ margin: 10, marginRight: 0 }}
+        />
       </View>
     </View>
   );

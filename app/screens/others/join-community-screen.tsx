@@ -48,7 +48,7 @@ export const JoinCommunityScreen = observer(function JoinCommunityScreen(props) 
 
   return (
     <SafeAreaView>
-      <HeaderLogo rightIcon="search" onRightPress={onPressSearch} onPressMenu={onPressMenu} />
+      <HeaderLogo rightIcon="search" onRightPress={onPressSearch} />
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}

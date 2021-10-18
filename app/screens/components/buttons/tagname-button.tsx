@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, useColorScheme, ViewStyle } from "react-native";
-import { Avatar, View, Text, TouchableOpacity, Icon } from "../../components";
-import { IconTypes } from "../../components/icon/icons";
-import { spacing, shadow, colors } from "../../theme";
+import { Avatar, View, Text, TouchableOpacity, Icon } from "../../../components";
+import { IconTypes } from "../../../components/icon/icons";
+import { spacing, shadow, colors } from "../../../theme";
 
 interface TagNameButtonProps {
   onPress: () => void;

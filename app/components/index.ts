@@ -16,3 +16,4 @@ export * from "./search-bar/search-bar";
 export * from "./list-item";
 export * from "./header/header-logo";
 export * from "./dot/dot";
+export * from "./slider/slider";

@@ -40,6 +40,8 @@ export const icons = {
   wallet: require("./wallet.png"),
   hide: require("./hide.png"),
   scroll: require("./scroll.png"),
+  down: require("./down.png"),
+  up: require("./up.png"),
 };
 
 export type IconTypes = keyof typeof icons;

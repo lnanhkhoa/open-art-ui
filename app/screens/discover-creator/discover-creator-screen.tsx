@@ -27,8 +27,18 @@ const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 function HeaderTitle({ selectedIndex, onSelectIndex = (e: number) => null }) {
   return (
     <View row alignCenter style={{ paddingHorizontal: spacing[4], justifyContent: "center" }}>
-      <TitleButton title="Feature Creator" isActive={selectedIndex === 0} onPress={() => onSelectIndex(0)} />
-      <TitleButton title="All Creator" isActive={selectedIndex === 1} onPress={() => onSelectIndex(1)} />
+      <TitleButton
+        title="Feature Creator"
+        isActive={selectedIndex === 0}
+        onPress={() => onSelectIndex(0)}
+        style={{ minWidth: 123 }}
+      />
+      <TitleButton
+        title="All Creator"
+        isActive={selectedIndex === 1}
+        onPress={() => onSelectIndex(1)}
+        style={{ minWidth: 123 }}
+      />
     </View>
   );
 }
@@ -56,12 +66,7 @@ export const DiscoverCreatorScreen = observer(function DiscoverCreatorScreen(pro
 
   return (
     <SafeAreaView>
-      <HeaderLogo
-        rightIcon={"search"}
-        onRightPress={onPressSearch}
-        onPressMenu={onPressMenu}
-        containerStyle={styles.header}
-      />
+      <HeaderLogo rightIcon={"search"} onRightPress={onPressSearch} containerStyle={styles.header} />
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}

@@ -9,7 +9,6 @@ export interface CheckboxProps {
   outlineStyle?: StyleProp<ViewStyle>;
   fillStyle?: StyleProp<ViewStyle>;
   value?: boolean;
-  text?: string;
   tx?: TxKeyPath;
   onToggle?: (newValue: boolean) => void;
   isActive?: boolean;

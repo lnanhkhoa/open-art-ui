@@ -6,3 +6,4 @@ export * from "./items-detail";
 export * from "./discover-creator";
 export * from "./profile";
 export * from "./others";
+export * from "./search";

@@ -44,11 +44,7 @@ export function ListItem({ source, avtSource, title, subtitle, status, isActive,
           title={subtitle}
           statusText={status}
         />
-        <Icon
-          icon="heart"
-          color={reacted ? colorStyles.reacted : colorStyles.rightIcon}
-          onPress={onPressHeart}
-        />
+        <Icon icon="heart" color={reacted ? colorStyles.reacted : colorStyles.rightIcon} onPress={onPressHeart} />
       </View>
     </View>
   );

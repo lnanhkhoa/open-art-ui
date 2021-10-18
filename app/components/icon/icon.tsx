@@ -30,7 +30,7 @@ export function Icon(props: IconProps) {
 
   //
   const sizeStyles = { width: size, height: size } as ImageStyle;
-  const colorStyles = { tintColor: color } as ImageStyle;
+  const colorStyles = color ? ({ tintColor: color } as ImageStyle) : undefined;
   //
   return (
     <TouchableOpacity disabled={!onPress} onPress={onPress} style={[styles.container, containerStyle]}>

@@ -17,7 +17,7 @@ import {
   DotIcon,
 } from "../../components";
 import { Footer } from "../components";
-// import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
@@ -45,7 +45,7 @@ const HOT_BID_LIST = [
 export const HomeScreen = observer(function HomeScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   const [visibleItemIndex, setVisibleItemIndex] = useState(0);
 
   const onViewableItemsChanged = useCallback(({ viewableItems, changed }) => {
@@ -56,7 +56,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
   const viewabilityConfigCallbackPairs = useRef([{ viewabilityConfig, onViewableItemsChanged }]);
 
   const hotbidRef = useRef(null);
-  const onPressMenu = () => null;
+  // const onPressMenu = () => navigation.openDrawer();
   const onPressLeft = () => {
     const nextItemIndex = Math.max(visibleItemIndex - 1, 0);
     hotbidRef.current.scrollToIndex({
@@ -80,7 +80,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <HeaderLogo onPressMenu={onPressMenu} />
+      <HeaderLogo />
       <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: spacing[7] }}>
         <View style={styles.header}>
           <View style={styles.headerTitle}>

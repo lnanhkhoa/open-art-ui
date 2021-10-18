@@ -41,7 +41,7 @@ export function CreatorItem({
             <Text text=" " />
             <Text text="Followers" />
           </Text>
-          <FollowButton onPress={onPressFollow}/>
+          <FollowButton onPress={onPressFollow} />
         </View>
       </View>
     </View>

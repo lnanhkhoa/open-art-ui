@@ -117,7 +117,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
   const colorStyles = createColorStyles(isDarkMode);
   return (
     <SafeAreaView>
-      <HeaderLogo onPressMenu={onPressMenu} />
+      <HeaderLogo />
       <ScrollView style={styles.container} contentContainerStyle={{ paddingVertical: spacing[7] }}>
         <View style={styles.imageBox}>
           <Image source={assets.card7} style={styles.image} />

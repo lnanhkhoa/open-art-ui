@@ -28,6 +28,9 @@ export default {
   scard2: require("../../assets/images/scard/scard2.png"),
   scard3: require("../../assets/images/scard/scard3.png"),
   scard4: require("../../assets/images/scard/scard4.png"),
+  scard5: require("../../assets/images/scard/scard5.png"),
+  scard6: require("../../assets/images/scard/scard6.png"),
+  scard7: require("../../assets/images/scard/scard7.png"),
   etherscan: require("../../assets/images/etherscan/etherscan.png"),
   star: require("../../assets/images/star/star.png"),
   "connect-wallet": require("../../assets/images/connect-wallet/connect-wallet.png"),
@@ -40,4 +43,7 @@ export default {
   processor: require("../../assets/images/processor/processor.png"),
   trust: require("../../assets/images/trust/trust.png"),
   triangle: require("../../assets/images/triangle/triangle.png"),
+  //
+  "line-slider": require("../../assets/images/slider/line-slider.png"),
+  "thumb-slider": require("../../assets/images/slider/thumb-slider.png"),
 };
