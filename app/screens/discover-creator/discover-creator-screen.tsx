@@ -26,7 +26,7 @@ import { LIST_CREATORS } from "./shema";
 const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 function HeaderTitle({ selectedIndex, onSelectIndex = (e: number) => null }) {
   return (
-    <View row alignCenter style={{ paddingHorizontal: spacing[4], justifyContent: "center" }}>
+    <View classNames={["row", "alignCenter", 'justifyCenter']} style={{ paddingHorizontal: spacing[4]}}>
       <TitleButton
         title="Feature Creator"
         isActive={selectedIndex === 0}
@@ -71,7 +71,7 @@ export const DiscoverCreatorScreen = observer(function DiscoverCreatorScreen(pro
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}
       >
-        <View alignCenter style={{ paddingHorizontal: spacing[8] }}>
+        <View classNames={["alignCenter"]} style={{ paddingHorizontal: spacing[8] }}>
           <Text preset="largeBold" text="Discover creator" />
           <Text
             preset="medium"

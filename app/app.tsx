@@ -64,11 +64,7 @@ function App() {
       <AppearanceProvider>
         {/* <RootStoreProvider value={rootStore}> */}
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          {/* <HomeScreen /> */}
-          {/* <SearchResultScreen /> */}
           <AppNavigator
-          // initialState={initialNavigationState}
-          // onStateChange={onNavigationStateChange}
           />
         </SafeAreaProvider>
       </AppearanceProvider>

@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { StyleSheet, Image, useColorScheme, ImageRequireSource, ImageURISource, Modal } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-import { Text, HeaderLogo, View, Icon, Button, SafeAreaView, TouchableOpacity, Avatar } from "../../components";
-import { IconTypes } from "../../components/icon/icons";
+import {
+  Text,
+  HeaderLogo,
+  View,
+  Icon,
+  Button,
+  SafeAreaView,
+  TouchableOpacity,
+  Avatar,
+  IconTypes,
+} from "../../components";
 import { Footer, TagNameButton, PlaceABid, ConnectWallet } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
@@ -122,9 +131,12 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
         <View style={styles.imageBox}>
           <Image source={assets.card7} style={styles.image} />
         </View>
-        <View row alignCenter justifySpaceBetween style={{ paddingHorizontal: spacing[6], paddingTop: spacing[4] }}>
+        <View
+          classNames={["row", "alignCenter", "justifySpaceBetween"]}
+          style={{ paddingHorizontal: spacing[6], paddingTop: spacing[4] }}
+        >
           <Text preset="headerSmallBold" color={colorStyles.bold} text="Silent Color" />
-          <View row>
+          <View classNames={["row"]}>
             <Icon
               icon="heart"
               size={20}
@@ -149,7 +161,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
             style={{ lineHeight: 20, paddingVertical: spacing[2] }}
             color={colorStyles.label}
           />
-          <View row>
+          <View classNames={["row"]}>
             {HASHTAG_NAMES.map((name) => {
               return (
                 <TouchableOpacity key={name} disabled>
@@ -166,15 +178,15 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
           {TOUCH_ACTIONS.map((item) => {
             return (
               <TouchableOpacity key={item.text} onPress={() => null}>
-                <View row alignCenter justifySpaceBetween style={styles.btnAction}>
-                  <View alignCenter style={{ minWidth: 60 }}>
+                <View classNames={["row", "alignCenter", "justifySpaceBetween"]} style={styles.btnAction}>
+                  <View classNames={["alignCenter"]} style={{ minWidth: 60 }}>
                     {item.isImage ? (
                       <Image source={item.image} style={{ width: 28, height: 28 }} />
                     ) : (
                       <Icon icon={item.icon} size={24} color={colorStyles.bold} />
                     )}
                   </View>
-                  <View flexible>
+                  <View classNames={["flexible"]}>
                     <Text preset="mediumBold" text={item.text} color={colorStyles.bold} />
                   </View>
                   <Icon icon="external" color={colorStyles.placeholder} />
@@ -197,7 +209,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
                 <Text text="  " />
                 <Text preset="mediumBold" text="$2,683.73" color={colorStyles.placeholder} />
               </Text>
-              <View row style={{ paddingVertical: spacing[3] }}>
+              <View classNames={["row"]} style={{ paddingVertical: spacing[3] }}>
                 <Text preset="large" text="Owner by" />
                 <TagNameButton title="D" text="@david" onPress={onPressTagName} />
               </View>
@@ -237,7 +249,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
               <Text preset="mediumBold" text="$2,683.73" color={colorStyles.placeholder} />
             </Text>
             <Text preset="large" color={colorStyles.bold} text="Auction ending in" style={{ lineHeight: 20 }} />
-            <View row style={{ paddingTop: spacing[4], paddingBottom: spacing[5] }}>
+            <View classNames={["row"]} style={{ paddingTop: spacing[4], paddingBottom: spacing[5] }}>
               <View style={{ paddingRight: spacing[4] }}>
                 <Text text="12" preset="headerSmallBold" />
                 <Text text="hours" preset="small" />
@@ -272,7 +284,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
               return (
                 <TouchableOpacity onPress={item.onPress}>
                   <View style={styles.activityBtn}>
-                    <View row justifySpaceBetween alignCenter>
+                    <View classNames={["row", 'justifySpaceBetween', 'alignCenter']} >
                       <Avatar
                         title={`${item.title} ${item.name}`}
                         hasSource={item.isAvtImage}

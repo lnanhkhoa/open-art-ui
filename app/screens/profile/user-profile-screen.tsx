@@ -1,25 +1,12 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle, FlatList, ScrollView } from "react-native";
-import {
-  Text,
-  TextPresets,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-} from "../../components";
-import { Footer, TitleButton, FollowButton, TagNameButton } from "../components";
+import { StyleSheet, Image, useColorScheme, FlatList, ScrollView } from "react-native";
+import { Text, HeaderLogo, View, Icon, ListItem, Button, SafeAreaView, TouchableOpacity } from "../../components";
+import { Footer, FollowButton, TagNameButton } from "../components";
 // import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
-import { assets, constants } from "../../config";
+import { colors, spacing, createColorStyles } from "../../theme";
 import { createStyles } from "../../utils/function";
+import { assets, constants } from "../../config";
 import { LIST_AVATARS, LIST_CARDS } from "./schema";
 
 const { VIEWABILITY_CONFIG: viewabilityConfig, SCREEN_WIDTH, AVT_SIZE } = constants;
@@ -84,14 +71,14 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
         <View style={{ width: "100%", minHeight: 160 }}>
           <Image source={assets.header5} style={{ width: SCREEN_WIDTH, minHeight: 160 }} />
           <View style={{ position: "absolute", flex: 1, right: spacing[4], top: 8 }}>
-            <View row>
+            <View classNames={["row"]}>
               <Icon icon="more" color={colorStyles.body} containerStyle={styles.btnAction} size={20} />
               <Icon icon="export" color={colorStyles.body} containerStyle={styles.btnAction} size={20} />
             </View>
           </View>
         </View>
         <View
-          alignCenter
+          classNames={["alignCenter"]}
           style={{
             paddingHorizontal: spacing[2],
             marginTop: -AVT_SIZE.LARGER * 0.5,
@@ -101,28 +88,28 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
           <Image source={assets.avatar8} style={styles.avtImage} />
           <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} style={{ padding: spacing[1] }} />
           <TouchableOpacity onPress={onPressCopy}>
-            <View row alignCenter>
+            <View classNames={["row", "alignCenter"]}>
               <Text preset="medium" text="52fs5ge5g45sov45a" />
               <Icon icon="copy" color={colorStyles.placeholder} size={14} style={{ paddingHorizontal: spacing[3] }} />
             </View>
           </TouchableOpacity>
         </View>
-        <View row style={{ paddingHorizontal: spacing[4] }}>
-          <View flexible>
+        <View classNames={["row"]} style={{ paddingHorizontal: spacing[4] }}>
+          <View classNames={["flexible"]}>
             <Text preset="headerMediumBold" text="150" color={colorStyles.black} />
             <Text preset="mediumBold" color={colorStyles.label} text="Following" />
           </View>
-          <View flexible>
+          <View classNames={["flexible"]}>
             <Text preset="headerMediumBold" text="2024" color={colorStyles.black} />
             <Text preset="mediumBold" color={colorStyles.label} text="Followers" />
           </View>
-          <View flexible>
+          <View classNames={["flexible"]}>
             <FollowButton onPress={() => null} />
           </View>
         </View>
         <View style={{ paddingVertical: spacing[4], paddingHorizontal: spacing[4] }}>
           <Text preset="large" text="Followed by" />
-          <View row style={{ paddingVertical: spacing[3] }}>
+          <View classNames={["row"]} style={{ paddingVertical: spacing[3] }}>
             {LIST_AVATARS.map((avtSrc, index) => (
               <View
                 key={String(index)}
@@ -145,7 +132,7 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
           />
           <Text preset="medium" color={colorStyles.bold} text="Member since  2021" />
         </View>
-        <View row style={{ paddingHorizontal: spacing[4], flexWrap: "wrap" }}>
+        <View classNames={["row"]} style={{ paddingHorizontal: spacing[4], flexWrap: "wrap" }}>
           <TagNameButton
             isIcon
             iconName="twitter"
@@ -176,7 +163,7 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <ListCard item={item} />}
           ListHeaderComponent={() => (
-            <View row>
+            <View classNames={["row"]}>
               <TouchableOpacity style={styles.tabTitle} onPress={() => onPressTabTitle(0)}>
                 <Text
                   preset="headerSmallBold"
@@ -205,14 +192,6 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
   );
 });
 
-const createColorStyles = (isDarkMode) => ({
-  black: isDarkMode ? colors.offWhite : colors.black,
-  bold: isDarkMode ? colors.offWhite : colors.titleActive,
-  body: isDarkMode ? colors.offWhite : colors.body,
-  label: isDarkMode ? colors.offWhite : colors.label,
-  input: isDarkMode ? colors.offWhite : colors.bgInput,
-  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
-});
 
 const darkStyles = StyleSheet.create({
   container: {

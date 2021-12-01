@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, ViewStyle, useColorScheme } from "react-native";
+import { TouchableOpacity, ViewStyle, useColorScheme, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIndicator } from "react-native-indicators";
 import { View } from "../view";
@@ -18,8 +18,8 @@ export function Button({
   presetText = "largeBold",
   tx,
   text,
-  style: styleOverride,
-  textStyle: textStyleOverride,
+  style: _styleOverride,
+  textStyle: _textStyleOverride,
   containerStyle,
   children,
   onPressIn,
@@ -35,6 +35,8 @@ export function Button({
   const [touching, setTouching] = useState(false);
 
   //
+  const styleOverride = StyleSheet.flatten(_styleOverride);
+  const textStyleOverride = StyleSheet.flatten(_textStyleOverride);
   const disabledViewStyle = { opacity: 0.4 } as ViewStyle;
   const viewStyle: ViewStyle = viewPresets[preset] || viewPresets.primary;
   const viewStyles: ViewStyle[] = [viewStyle, disabled && disabledViewStyle, styleOverride];

@@ -1,28 +1,22 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle, FlatList, ScrollView } from "react-native";
+import { StyleSheet, Image, useColorScheme, ScrollView } from "react-native";
 import {
   Text,
-  TextPresets,
   TextField,
   HeaderLogo,
-  SearchBar,
   View,
   Icon,
-  ListItem,
   Button,
   SafeAreaView,
   TouchableOpacity,
-  SmallListItem,
-  DotIcon,
+  IconTypes,
 } from "../../components";
-import { Footer, TitleButton, FollowButton, TagNameButton, EditButton } from "../components";
-// import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
+import { Footer, EditButton } from "../components";
+import { useNavigation } from "@react-navigation/native";
+import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
-import { LIST_AVATARS, LIST_CARDS } from "./schema";
-import { IconTypes } from "../../components/icon/icons";
 
 const { VIEWABILITY_CONFIG: viewabilityConfig, SCREEN_WIDTH, AVT_SIZE } = constants;
 
@@ -94,17 +88,17 @@ export const EditProfileScreen = observer(function EditProfileScreen(props) {
         <View style={{ width: "100%", minHeight: 160 }}>
           <Image source={assets.header5} style={{ width: SCREEN_WIDTH, minHeight: 160 }} />
           <View style={{ position: "absolute", flex: 1, right: spacing[4], top: 8 }}>
-            <View row>
+            <View classNames={["row"]}>
               <Icon icon="more" color={colorStyles.body} containerStyle={styles.btnAction} size={20} />
               <Icon icon="export" color={colorStyles.body} containerStyle={styles.btnAction} size={20} />
             </View>
           </View>
         </View>
-        <View alignCenter style={styles.avtImageWrapper}>
+        <View classNames={["alignCenter"]} style={styles.avtImageWrapper}>
           <Image source={assets.avatar8} style={styles.avtImage} />
           <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} style={{ padding: spacing[1] }} />
           <TouchableOpacity onPress={onPressCopy}>
-            <View row alignCenter>
+            <View classNames={["row", "alignCenter"]}>
               <Text preset="medium" text="52fs5ge5g45sov45a" />
               <Icon icon="copy" color={colorStyles.placeholder} size={14} style={{ paddingHorizontal: spacing[3] }} />
             </View>
@@ -112,16 +106,16 @@ export const EditProfileScreen = observer(function EditProfileScreen(props) {
         </View>
         {mode === MODE.EMPTY && (
           <>
-            <View row style={{ paddingHorizontal: spacing[4], paddingVertical: spacing[3] }}>
-              <View flexible style={{ paddingLeft: spacing[2] }}>
+            <View classNames={["row"]} style={{ paddingHorizontal: spacing[4], paddingVertical: spacing[3] }}>
+              <View classNames={["flexible"]} style={{ paddingLeft: spacing[2] }}>
                 <Text preset="headerMediumBold" text="150" color={colorStyles.black} />
                 <Text preset="mediumBold" color={colorStyles.label} text="Following" />
               </View>
-              <View flexible>
+              <View classNames={["flexible"]}>
                 <Text preset="headerMediumBold" text="2024" color={colorStyles.black} />
                 <Text preset="mediumBold" color={colorStyles.label} text="Followers" />
               </View>
-              <View flexible alignCenter>
+              <View classNames={["flexible", "alignCenter"]}>
                 <EditButton onPress={onPressEdit} />
               </View>
             </View>
@@ -131,7 +125,7 @@ export const EditProfileScreen = observer(function EditProfileScreen(props) {
               style={{ alignSelf: "center", paddingVertical: spacing[3] }}
             />
             {/* collection is empty */}
-            <View alignCenter style={{ padding: spacing[4] }}>
+            <View classNames={["alignCenter"]} style={{ padding: spacing[4] }}>
               <Text preset="largeBold" text="Your collection is empty." />
               <Text
                 preset="medium"
@@ -172,7 +166,7 @@ export const EditProfileScreen = observer(function EditProfileScreen(props) {
             <Text preset="large" text="Upload a profile image." />
             <TouchableOpacity style={styles.btnUpload} onPress={() => null}>
               <Icon icon="image" size={24} containerStyle={{ paddingTop: spacing[6] }} />
-              <View flexible style={{ paddingVertical: spacing[2] }}>
+              <View classNames={["flexible"]} style={{ paddingVertical: spacing[2] }}>
                 <Text preset="largeBold" text="Drag and drop or browce a file" />
                 <Text
                   preset="medium"
@@ -208,7 +202,7 @@ export const EditProfileScreen = observer(function EditProfileScreen(props) {
             />
             {SOCIAL_MEDIA_LINKS.map((item) => (
               <TouchableOpacity key={item.id} onPress={() => null}>
-                <View row alignCenter style={styles.btnLinking}>
+                <View classNames={["row", "alignCenter"]} style={styles.btnLinking}>
                   <Icon icon={item.icon} isKeepColor={false} />
                   <Text text={item.text} style={{ paddingHorizontal: spacing[2] }} />
                 </View>

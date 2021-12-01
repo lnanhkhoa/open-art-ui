@@ -10,8 +10,8 @@ import {
   HeaderLogoSpecs,
   Avatar,
   Switch,
+  IconTypes,
 } from "../../../components";
-import { IconTypes } from "../../../components/icon/icons";
 
 import { colors, spacing } from "../../../theme";
 import { createStyles } from "../../../utils/function";
@@ -88,7 +88,7 @@ export function Notification({ onCloseModal, iconName = "people", iconIndex = 0 
             renderItem={({ item }) => {
               return (
                 <TouchableOpacity onPress={onCloseModal}>
-                  <View row style={{ minHeight: 70 }}>
+                  <View classNames={["row",]} style={{ minHeight: 70 }}>
                     <View style={{ paddingRight: spacing[4] }}>
                       <Image source={item.image} style={styles.image} />
                     </View>

@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, useColorScheme, ViewStyle } from "react-native";
-import { Avatar, View, Text, TouchableOpacity, Icon } from "../../../components";
-import { IconTypes } from "../../../components/icon/icons";
+import { Avatar, View, Text, TouchableOpacity, Icon, IconTypes } from "../../../components";
 import { spacing, shadow, colors } from "../../../theme";
 
 interface TagNameButtonProps {
@@ -20,7 +19,7 @@ export function TagNameButton({ onPress, text, title, isIcon = false, iconName, 
   const containerStyles = [styles.container, isDarkMode && darkStyles.container, containerStyle];
   return (
     <TouchableOpacity onPress={onPress}>
-      <View row style={containerStyles}>
+      <View classNames={['row']} style={containerStyles}>
         {!isIcon ? (
           <Avatar
             text={title}

@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
 import { View, Screen, Text, Button, SearchBar, Icon } from "../../components";
 import { colors, spacing } from "../../theme";
-import { assets, constants } from "../../config";
 
 export const ButtonScreen = observer(function ButtonScreen() {
   return (
@@ -22,17 +21,17 @@ export const ButtonScreen = observer(function ButtonScreen() {
         </View>
         <Text preset="largeBold" text="Buttons" />
         <View style={styles.box}>
-          <View row>
+          <View classNames={["row"]}>
             <Button preset="primary" text="Button" containerStyle={styles.button} />
             <Button preset="primary" isLoading text="Button" containerStyle={styles.button} />
           </View>
           <Button preset="primary" text="Button" disabled containerStyle={styles.button} />
-          <View row>
+          <View classNames={["row"]}>
             <Button preset="secondary" text="Button" containerStyle={styles.button} />
             <Button preset="secondary" isLoading text="Button" containerStyle={styles.button} />
           </View>
           <Button preset="secondary" text="Button" disabled containerStyle={styles.button} />
-          <View row>
+          <View classNames={["row"]}>
             <Button preset="subtle" text="Button" containerStyle={styles.button} />
             <Button preset="subtle" isLoading text="Button" containerStyle={styles.button} />
           </View>

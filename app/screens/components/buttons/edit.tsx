@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, ViewStyle, useColorScheme } from "react-native";
-import { Text, TouchableOpacity, Icon } from "../../../components";
+import { TouchableOpacity, Icon } from "../../../components";
 import { colors, spacing, shadow } from "../../../theme";
 
 export function EditButton({ onPress, style }: { text?: string; onPress: () => void; style?: ViewStyle }) {

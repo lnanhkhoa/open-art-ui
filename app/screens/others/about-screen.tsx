@@ -1,22 +1,9 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle } from "react-native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
-import {
-  Text,
-  TextPresets,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-} from "../../components";
-import { Footer, TitleButton, CreatorItem } from "../components";
+import { StyleSheet, Image, useColorScheme } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { Text, HeaderLogo, View, SafeAreaView } from "../../components";
+import { Footer } from "../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, shadow, spacing } from "../../theme";
 import { assets, constants } from "../../config";
@@ -58,7 +45,7 @@ export const AboutScreen = observer(function AboutScreen(props) {
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}
       >
-        <View alignCenter style={{ paddingHorizontal: spacing[4] }}>
+        <View classNames={["alignCenter"]} style={{ paddingHorizontal: spacing[4] }}>
           <Text preset="largeBold" style={{ textAlign: "center" }} text="About OpenArt" />
           <Image
             source={assets.processor}
@@ -70,7 +57,7 @@ export const AboutScreen = observer(function AboutScreen(props) {
             style={{ textAlign: "center", padding: spacing[4], lineHeight: 22 }}
           />
         </View>
-        <View alignCenter style={{ paddingHorizontal: spacing[6], paddingVertical: spacing[4] }}>
+        <View classNames={["alignCenter"]} style={{ paddingHorizontal: spacing[6], paddingVertical: spacing[4] }}>
           <Text preset="largeBold" style={{ textAlign: "center" }} text="Crypto for Creative Communities" />
           <Text
             preset="medium"
@@ -80,7 +67,7 @@ export const AboutScreen = observer(function AboutScreen(props) {
         </View>
         <View style={{ paddingHorizontal: spacing[4] }}>
           <Text text="How it work" preset="largeBold" />
-          <View row alignCenter justifySpaceBetween style={{ paddingVertical: spacing[4] }}>
+          <View classNames={["row", "alignCenter", "justifySpaceBetween"]} style={{ paddingVertical: spacing[4] }}>
             <View style={styles.card}>
               <Image source={assets.globe} style={{ width: IMAGE_SIZE.MEDIUM, height: IMAGE_SIZE.MEDIUM }} />
               <Text preset="mediumBold" text="Build together" style={{ paddingVertical: spacing[4] }} />

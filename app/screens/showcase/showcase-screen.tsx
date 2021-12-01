@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Header, Screen, Text, Tag, Avatar, Checkbox, Button, TextField } from "../../components";
+import { View, Screen, Text, Tag, Avatar, Checkbox, Button, TextField } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
@@ -13,14 +13,14 @@ export const ShowCaseScreen = observer(function ShowCaseScreen() {
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
         {/* <Header headerText="Showcase" leftIcon="back" style={styles.header} titleStyle={styles.headerTitle} /> */}
         <Text preset="largeBold" text="Avatar" />
-        <View row style={styles.box}>
+        <View classNames={["row"]} style={styles.box}>
           <Avatar size="normal" text="H" containerStyle={styles.avatar} />
           <Avatar size="normal" text="H" containerStyle={styles.avatar} active />
           <Avatar hasSource source={assets.avatar} size="normal" containerStyle={styles.avatar} />
           <Avatar hasSource source={assets.avatar} size="normal" containerStyle={styles.avatar} active />
         </View>
         <View style={styles.box}>
-          <View row style={{ justifyContent: "space-between" }}>
+          <View classNames={["row", "justifySpaceBetween"]}>
             <Avatar
               hasSource
               source={assets.avatar}
@@ -51,7 +51,7 @@ export const ShowCaseScreen = observer(function ShowCaseScreen() {
           />
         </View>
         <Text preset="largeBold" text="Tag" />
-        <View row style={styles.box}>
+        <View classNames={["row"]} style={styles.box}>
           <Tag status="success" containerStyle={styles.tag} />
           <Tag status="alert" containerStyle={styles.tag} />
           <Tag status="warning" containerStyle={styles.tag} />
@@ -59,15 +59,15 @@ export const ShowCaseScreen = observer(function ShowCaseScreen() {
         </View>
         <Text preset="largeBold" text="CheckBox" />
         <View style={styles.box}>
-          <View row>
+          <View classNames={["row"]}>
             <Checkbox value={false} style={styles.checkbox} />
             <Checkbox value={true} style={styles.checkbox} />
           </View>
-          <View row>
+          <View classNames={["row"]}>
             <Checkbox value={false} style={styles.checkbox} onToggle={() => null} />
             <Checkbox value={true} style={styles.checkbox} onToggle={() => null} />
           </View>
-          <View row>
+          <View classNames={["row"]}>
             <Checkbox isActive value={false} style={styles.checkbox} onToggle={() => null} />
             <Checkbox isActive value={true} style={styles.checkbox} onToggle={() => null} />
           </View>

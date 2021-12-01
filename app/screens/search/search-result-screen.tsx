@@ -1,19 +1,9 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import {
-  StyleSheet,
-  Image,
-  useColorScheme,
-  RefreshControl,
-  Modal,
-  ViewStyle,
-  FlatList,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, useColorScheme, RefreshControl, FlatList, ScrollView } from "react-native";
 import {
   Text,
   TextPresets,
-  TextField,
   HeaderLogo,
   SearchBar,
   View,
@@ -22,27 +12,13 @@ import {
   Button,
   SafeAreaView,
   TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-  HeaderLogoSpecs,
-  Slider,
-  Avatar,
 } from "../../components";
-import {
-  Footer,
-  TitleButton,
-  FollowButton,
-  TagNameButton,
-  EditButton,
-  AccountDetail,
-  Notification,
-} from "../components";
+import { Footer, TitleButton } from "../components";
 import RNDropDownPicker, { ItemType } from "react-native-dropdown-picker";
 // import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
+import { colors, spacing, createColorStyles } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles, wait } from "../../utils/function";
-import { IconTypes } from "../../components/icon/icons";
 
 const { VIEWABILITY_CONFIG: viewabilityConfig, SCREEN_WIDTH, AVT_SIZE } = constants;
 
@@ -126,7 +102,7 @@ export const SearchResultScreen = observer(function SearchResultScreen(props) {
         }}
       >
         <Text preset="large" text="Type" style={{ paddingVertical: spacing[2] }} />
-        <View row style={{ flexWrap: "wrap", marginBottom: spacing[5] }}>
+        <View classNames={["row"]} style={{ flexWrap: "wrap", marginBottom: spacing[5] }}>
           <TitleButton title="All items" isActive={selectTypeIndex === 0} onPress={() => setSelectTypeIndex(0)} />
           <TitleButton title="Game" isActive={selectTypeIndex === 1} onPress={() => setSelectTypeIndex(1)} />
           <TitleButton title="Video" isActive={selectTypeIndex === 2} onPress={() => setSelectTypeIndex(2)} />
@@ -136,13 +112,13 @@ export const SearchResultScreen = observer(function SearchResultScreen(props) {
         <Text preset="large" text="Price range" />
         <View></View>
         <Text preset="large" text="Chains" />
-        <View row style={{ flexWrap: "wrap", marginBottom: spacing[5] }}>
+        <View classNames={["row"]} style={{ flexWrap: "wrap", marginBottom: spacing[5] }}>
           <TitleButton title="Ethereum" isActive={selectChainIndex === 0} onPress={() => setSelectChainIndex(0)} />
           <TitleButton title="Matic" isActive={selectChainIndex === 1} onPress={() => setSelectChainIndex(1)} />
           <TitleButton title="Klaytn" isActive={selectChainIndex === 2} onPress={() => setSelectChainIndex(2)} />
         </View>
         <Text preset="large" text="Onsale in" />
-        <View row style={{ flexWrap: "wrap", marginBottom: spacing[5] }}>
+        <View classNames={["row"]} style={{ flexWrap: "wrap", marginBottom: spacing[5] }}>
           <TitleButton title="ETH" isActive={selectSaleIndex === 0} onPress={() => setSelectSaleIndex(0)} />
           <TitleButton title="WETH" isActive={selectSaleIndex === 1} onPress={() => setSelectSaleIndex(1)} />
           <TitleButton title="0xBTC" isActive={selectSaleIndex === 2} onPress={() => setSelectSaleIndex(2)} />
@@ -213,15 +189,6 @@ export const SearchResultScreen = observer(function SearchResultScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
-
-const createColorStyles = (isDarkMode) => ({
-  black: isDarkMode ? colors.offWhite : colors.black,
-  bold: isDarkMode ? colors.offWhite : colors.titleActive,
-  body: isDarkMode ? colors.offWhite : colors.body,
-  label: isDarkMode ? colors.offWhite : colors.label,
-  input: isDarkMode ? colors.offWhite : colors.bgInput,
-  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
 });
 
 const darkStyles = StyleSheet.create({

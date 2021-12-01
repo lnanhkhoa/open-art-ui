@@ -1,27 +1,12 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle } from "react-native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
-import {
-  Text,
-  TextPresets,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-} from "../../components";
-import { Footer, TitleButton, CreatorItem } from "../components";
-// import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
+import { StyleSheet, Image, useColorScheme } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { Text, HeaderLogo, View, Button, SafeAreaView } from "../../components";
+import { Footer } from "../components";
+import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
-// import { LIST_CREATORS } from "./shema";
 
 const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 
@@ -53,7 +38,7 @@ export const JoinCommunityScreen = observer(function JoinCommunityScreen(props) 
         style={styles.container}
         contentContainerStyle={{ paddingTop: spacing[4], paddingBottom: spacing[7] }}
       >
-        <View alignCenter style={{ paddingHorizontal: spacing[4] }}>
+        <View classNames={["alignCenter"]} style={{ paddingHorizontal: spacing[4] }}>
           <Text
             preset="largeBold"
             style={{ textAlign: "center" }}
@@ -66,7 +51,7 @@ export const JoinCommunityScreen = observer(function JoinCommunityScreen(props) 
           />
         </View>
         <Button preset="primary" text="Join Community Upvote" containerStyle={{ paddingHorizontal: spacing[4] }} />
-        <View alignCenter style={{ paddingHorizontal: spacing[6] }}>
+        <View classNames={["alignCenter"]} style={{ paddingHorizontal: spacing[6] }}>
           <Image source={assets.globe} style={styles.img} />
           <Text
             preset="medium"

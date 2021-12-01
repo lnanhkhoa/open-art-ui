@@ -7,13 +7,14 @@ interface TitleButtonProps {
   isActive?: boolean;
   title: string;
   onPress?: () => void;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
 }
 
-export function TitleButton({ isActive = false, title, onPress = () => null, style: styleOverride }: TitleButtonProps) {
+export function TitleButton({ isActive = false, title, onPress = () => null, style: _styleOverride }: TitleButtonProps) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const inputColor = isDarkMode ? colors.body : colors.bgInput;
+  const styleOverride = StyleSheet.flatten(_styleOverride);
 
   return isActive ? (
     <Button

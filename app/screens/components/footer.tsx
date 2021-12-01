@@ -10,8 +10,8 @@ export function Footer() {
   const colorText = isDarkMode ? colors.offWhite : colors.titleActive;
   const logoSrc = isDarkMode ? assets.logo2Dark : assets.logo2;
   return (
-    <View flexible>
-      <View alignCenter>
+    <View classNames={['flexible']}>
+      <View classNames={['flexible']}>
         <Image source={logoSrc} />
         <Text style={{ paddingVertical: spacing[2] }}>
           <Text preset="headerSmall" color={colorText} text="The " style={{ fontFamily: typography.EpilogueLight }} />

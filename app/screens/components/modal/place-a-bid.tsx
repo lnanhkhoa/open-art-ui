@@ -1,8 +1,7 @@
 import React from "react";
 import { StyleSheet, useColorScheme } from "react-native";
 import { View, Text, Icon, Button } from "../../../components";
-
-import { colors, spacing } from "../../../theme";
+import { colors, spacing, createColorStyles } from "../../../theme";
 import { createStyles } from "../../../utils/function";
 
 interface PlaceABidProps {
@@ -17,11 +16,11 @@ export function PlaceABid({ onCloseModal, onPressConfirm }: PlaceABidProps) {
   const colorStyles = createColorStyles(isDarkMode);
 
   return (
-    <View flexible>
+    <View classNames={["flexible"]}>
       <View style={styles.overlay} />
-      <View flexible style={{ justifyContent: "center" }}>
+      <View classNames={["flexible"]} style={{ justifyContent: "center" }}>
         <View style={styles.modal}>
-          <View row justifySpaceBetween style={{ paddingVertical: spacing[2] }}>
+          <View classNames={["row", "justifySpaceBetween"]} style={{ paddingVertical: spacing[2] }}>
             <Text preset="headerSmallBold" color={colorStyles.body} text="Place a bid" />
             <Icon
               icon="close"
@@ -39,19 +38,19 @@ export function PlaceABid({ onCloseModal, onPressConfirm }: PlaceABidProps) {
                 text="Your bid"
                 style={{ paddingVertical: spacing[1] }}
               />
-              <View row justifySpaceBetween style={styles.line}>
+              <View classNames={["row", "justifySpaceBetween"]} style={styles.line}>
                 <Text preset="medium" color={colorStyles.body} text="Enter bid" />
                 <Text preset="mediumBold" color={colorStyles.body} text="ETH" />
               </View>
-              <View row justifySpaceBetween style={styles.line}>
+              <View classNames={["row", "justifySpaceBetween"]} style={styles.line}>
                 <Text preset="medium" color={colorStyles.body} text="Your balance" />
                 <Text preset="mediumBold" color={colorStyles.body} text="4.568 ETH" />
               </View>
-              <View row justifySpaceBetween style={styles.line}>
+              <View classNames={["row", "justifySpaceBetween"]} style={styles.line}>
                 <Text preset="medium" color={colorStyles.body} text="Service fee" />
                 <Text preset="mediumBold" color={colorStyles.body} text="0.001 ETH" />
               </View>
-              <View row justifySpaceBetween style={styles.line}>
+              <View classNames={["row", "justifySpaceBetween"]} style={styles.line}>
                 <Text preset="medium" color={colorStyles.body} text="Total" />
                 <Text preset="mediumBold" color={colorStyles.body} text="0.001 ETH" />
               </View>
@@ -79,13 +78,6 @@ export function PlaceABid({ onCloseModal, onPressConfirm }: PlaceABidProps) {
     </View>
   );
 }
-
-const createColorStyles = (isDarkMode) => ({
-  bold: isDarkMode ? colors.offWhite : colors.titleActive,
-  body: isDarkMode ? colors.offWhite : colors.body,
-  label: isDarkMode ? colors.offWhite : colors.label,
-  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
-});
 
 const styles = StyleSheet.create({
   overlay: {

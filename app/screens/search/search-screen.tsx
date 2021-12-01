@@ -1,55 +1,17 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import {
-  StyleSheet,
-  Image,
-  useColorScheme,
-  RefreshControl,
-  Modal,
-  ViewStyle,
-  FlatList,
-  ScrollView,
-} from "react-native";
-import {
-  Text,
-  TextPresets,
-  TextField,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-  HeaderLogoSpecs,
-  Slider,
-  Avatar,
-} from "../../components";
-import {
-  Footer,
-  TitleButton,
-  FollowButton,
-  TagNameButton,
-  EditButton,
-  AccountDetail,
-  Notification,
-} from "../components";
+import { StyleSheet, Image, useColorScheme, RefreshControl, ScrollView } from "react-native";
+import { Text, HeaderLogo, SearchBar, View, SafeAreaView, Avatar } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
+import { colors, spacing, createColorStyles } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles, wait } from "../../utils/function";
-import { IconTypes } from "../../components/icon/icons";
-
-const { VIEWABILITY_CONFIG: viewabilityConfig, SCREEN_WIDTH, AVT_SIZE } = constants;
+const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 
 export const SearchScreen = observer(function SearchScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [visibleItemIndex, setVisibleItemIndex] = useState(0);
   const [visibleModal, setVisibleModal] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -115,7 +77,7 @@ export const SearchScreen = observer(function SearchScreen(props) {
           containerStyle={{ paddingVertical: spacing[1] }}
         />
         <Text preset="large" text="Items" color={colorStyles.placeholder} style={{ paddingVertical: spacing[2] }} />
-        <View row>
+        <View classNames={["row"]}>
           <View style={{ padding: 12 }}>
             <Image source={assets.scard5} style={styles.item} />
           </View>
@@ -124,7 +86,7 @@ export const SearchScreen = observer(function SearchScreen(props) {
             <Text text="@lovetherobot" style={{ lineHeight: 22 }} />
           </View>
         </View>
-        <View row>
+        <View classNames={["row"]}>
           <View style={{ padding: 12 }}>
             <Image source={assets.scard6} style={styles.item} />
           </View>
@@ -133,7 +95,7 @@ export const SearchScreen = observer(function SearchScreen(props) {
             <Text text="@lovetherobot" style={{ lineHeight: 22 }} />
           </View>
         </View>
-        <View row>
+        <View classNames={["row"]}>
           <View style={{ padding: 12 }}>
             <Image source={assets.scard7} style={styles.item} />
           </View>
@@ -147,14 +109,6 @@ export const SearchScreen = observer(function SearchScreen(props) {
   );
 });
 
-const createColorStyles = (isDarkMode) => ({
-  black: isDarkMode ? colors.offWhite : colors.black,
-  bold: isDarkMode ? colors.offWhite : colors.titleActive,
-  body: isDarkMode ? colors.offWhite : colors.body,
-  label: isDarkMode ? colors.offWhite : colors.label,
-  input: isDarkMode ? colors.offWhite : colors.bgInput,
-  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
-});
 
 const darkStyles = StyleSheet.create({
   container: {

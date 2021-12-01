@@ -64,3 +64,13 @@ export const colors = {
     },
   },
 };
+
+
+export const createColorStyles = (isDarkMode) => ({
+  black: isDarkMode ? colors.offWhite : colors.black,
+  bold: isDarkMode ? colors.offWhite : colors.titleActive,
+  body: isDarkMode ? colors.offWhite : colors.body,
+  label: isDarkMode ? colors.offWhite : colors.label,
+  input: isDarkMode ? colors.offWhite : colors.bgInput,
+  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
+});

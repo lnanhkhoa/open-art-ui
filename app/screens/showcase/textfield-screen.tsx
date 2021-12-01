@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { observer } from "mobx-react-lite";
-import { View, Screen, Text, TextField, ListItem, HeaderLogo } from "../../components";
+import { View, Screen, Text, TextField, HeaderLogo } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 // import { assets, constants } from "../../config";

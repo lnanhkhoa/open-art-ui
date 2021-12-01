@@ -11,9 +11,9 @@ export interface ButtonProps extends TouchableOpacityProps {
   text?: string;
   leftIcon?: IconTypes;
   leftIconProps?: any;
-  style?: ViewStyle;
-  containerStyle?: ViewStyle;
-  textStyle?: TextStyle;
+  style?: ViewStyle | ViewStyle[];
+  containerStyle?: ViewStyle| ViewStyle[];
+  textStyle?: TextStyle | TextStyle[];
   presetText?: TextPresets;
   preset?: ButtonPresetNames;
   children?: React.ReactNode;

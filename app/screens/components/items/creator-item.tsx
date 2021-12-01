@@ -25,7 +25,7 @@ export function CreatorItem({
   return (
     <View style={styles.container}>
       <Image source={headerImg} style={styles.header} />
-      <View alignCenter style={styles.body}>
+      <View classNames={["alignCenter"]} style={styles.body}>
         <Image source={avtImg} style={styles.avtImage} />
         <Text preset="headerSmallBold" text={name} style={{ paddingVertical: spacing[2] }} />
         <Text
@@ -35,7 +35,7 @@ export function CreatorItem({
         />
       </View>
       <View style={styles.bottom}>
-        <View row alignCenter style={{ justifyContent: "space-between" }}>
+        <View classNames={["row", "alignCenter", "justifySpaceBetween"]}>
           <Text>
             <Text preset="headerMediumBold" text={String(followNumber)} color={colors.titleActive} />
             <Text text=" " />

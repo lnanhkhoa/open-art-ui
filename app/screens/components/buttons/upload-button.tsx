@@ -4,17 +4,14 @@ import { Icon, Text, View, TouchableOpacity } from "../../../components";
 import { colors, spacing } from "../../../theme";
 import { createStyles } from "../../../utils/function";
 
+const TITLE = "Drag and drop or browce a file";
+const DESCRIPTION = "Recommended size: JPG, PNG, GIF (1500x1500px, Max 10mb)";
 interface UploadButtonProps {
   onPress: () => void;
   title: string;
   description: string;
 }
-
-export function UploadButton({
-  title = "Drag and drop or browce a file",
-  description = "Recommended size: JPG, PNG, GIF (1500x1500px, Max 10mb)",
-  onPress,
-}: UploadButtonProps) {
+export function UploadButton({ title = TITLE, description = DESCRIPTION, onPress }: UploadButtonProps) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
@@ -22,7 +19,7 @@ export function UploadButton({
   return (
     <TouchableOpacity style={styles.btnUpload} onPress={onPress}>
       <Icon icon="image" size={24} containerStyle={{ paddingTop: spacing[6] }} />
-      <View flexible style={{ paddingVertical: spacing[2] }}>
+      <View classNames={["flexible"]} style={{ paddingVertical: spacing[2] }}>
         <Text preset="largeBold" text={title} />
         <Text preset="medium" style={{ textAlign: "center", paddingVertical: spacing[2] }} text={description} />
       </View>

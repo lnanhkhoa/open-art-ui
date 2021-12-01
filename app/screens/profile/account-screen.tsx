@@ -1,37 +1,12 @@
 import React, { useRef, useState, useCallback } from "react";
 import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle, FlatList, ScrollView } from "react-native";
-import {
-  Text,
-  TextPresets,
-  TextField,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-  HeaderLogoSpecs,
-} from "../../components";
-import {
-  Footer,
-  TitleButton,
-  FollowButton,
-  TagNameButton,
-  EditButton,
-  AccountDetail,
-  Notification,
-} from "../components";
+import { StyleSheet, Image, useColorScheme, Modal, ScrollView } from "react-native";
+import { Text, HeaderLogo, View, Icon, SafeAreaView, TouchableOpacity } from "../../components";
+import { AccountDetail } from "../components";
 // import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
+import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles, createColorStyles } from "../../utils/function";
-import { LIST_AVATARS, LIST_CARDS } from "./schema";
-import { IconTypes } from "../../components/icon/icons";
 
 const { VIEWABILITY_CONFIG: viewabilityConfig, SCREEN_WIDTH, AVT_SIZE } = constants;
 
@@ -45,7 +20,6 @@ export const AccountScreen = observer(function AccountScreen(props) {
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
   const [mode, setMode] = useState(MODE.EDIT);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [visibleItemIndex, setVisibleItemIndex] = useState(0);
   const [visibleModal, setVisibleModal] = useState(true);
 
@@ -76,11 +50,11 @@ export const AccountScreen = observer(function AccountScreen(props) {
         <View style={{ width: "100%", minHeight: 160 }}>
           <Image source={assets.header} style={{ width: SCREEN_WIDTH, minHeight: 160 }} />
         </View>
-        <View alignCenter style={styles.avtImageWrapper}>
+        <View classNames={["alignCenter"]} style={styles.avtImageWrapper}>
           <Image source={assets.avatar9} style={styles.avtImage} />
           <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} style={{ padding: spacing[1] }} />
           <TouchableOpacity onPress={onPressCopy}>
-            <View row alignCenter>
+            <View classNames={["alignCenter", "row"]}>
               <Text preset="medium" text="52fs5ge5g45sov45a" />
               <Icon icon="copy" color={colorStyles.placeholder} size={14} style={{ paddingHorizontal: spacing[3] }} />
             </View>
@@ -96,13 +70,13 @@ export const AccountScreen = observer(function AccountScreen(props) {
               onPress={() => null}
             />
           </View>
-          <View row alignCenter justifySpaceBetween>
-            <View row alignCenter>
+          <View classNames={["row", "alignCenter", "justifySpaceBetween"]}>
+            <View classNames={["row", "alignCenter"]}>
               <Icon icon="mail" size={20} containerStyle={{ padding: spacing[2] }} />
               <Text preset="small" text="Contact@OpenArt.design" />
             </View>
           </View>
-          <View row alignCenter>
+          <View classNames={["row", "alignCenter"]}>
             <Icon icon="card" color={colorStyles.label} size={20} containerStyle={{ padding: spacing[2] }} />
             <TouchableOpacity onPress={() => null}>
               <Text
@@ -113,17 +87,17 @@ export const AccountScreen = observer(function AccountScreen(props) {
               />
             </TouchableOpacity>
           </View>
-          <View row alignCenter>
+          <View classNames={["row", "alignCenter"]}>
             <Icon icon="call" color={colorStyles.label} size={20} containerStyle={{ padding: spacing[2] }} />
             <Text preset="small" color={colorStyles.label} text="(+60) 264 859 62" />
           </View>
-          <View row alignCenter>
+          <View classNames={["row", "alignCenter"]}>
             <Icon icon="link" color={colorStyles.label} size={20} containerStyle={{ padding: spacing[2] }} />
             <Text preset="small" color={colorStyles.label} text="OpenArt.design" />
           </View>
-          <View row style={{ paddingTop: spacing[6], paddingBottom: spacing[3], justifyContent: "center" }}>
+          <View classNames={["row", "justifyCenter"]} style={{ paddingTop: spacing[6], paddingBottom: spacing[3] }}>
             <TouchableOpacity onPress={() => null}>
-              <View row style={styles.btnFollow}>
+              <View classNames={['row']} style={styles.btnFollow}>
                 <Icon icon="heart" size={24} color={colorStyles.label} />
                 <Text preset="mediumBold" text="Follow" style={{ paddingHorizontal: spacing[2] }} />
               </View>
@@ -152,7 +126,6 @@ export const AccountScreen = observer(function AccountScreen(props) {
     </SafeAreaView>
   );
 });
-
 
 const darkStyles = StyleSheet.create({
   container: {

@@ -18,7 +18,7 @@ import {
 } from "../../components";
 import { Footer } from "../components";
 import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
+import { colors, spacing, createColorStyles } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
 
@@ -73,7 +73,6 @@ export const HomeScreen = observer(function HomeScreen(props) {
   };
 
   //
-
   const colorText = isDarkMode ? colors.offWhite : colors.label;
   const styles = createStyles(lightStyles, darkStyles, isDarkMode);
   const colorStyles = createColorStyles(isDarkMode);
@@ -168,9 +167,9 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 subtitle="Pawel Czerwinski"
                 status="Creator"
               />
-              <View row style={styles.viewBid}>
-                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
-                  <View row alignCenter>
+              <View classNames={["row"]} style={styles.viewBid}>
+                <View classNames={["flexible", "alignCenter"]} style={{ marginVertical: spacing[4] }}>
+                  <View classNames={["row", "alignCenter"]}>
                     <DotIcon status="success" />
                     <Text preset={"medium"} color={colorText} text="Current bid" />
                   </View>
@@ -181,7 +180,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                     style={{ paddingVertical: spacing[1] }}
                   />
                 </View>
-                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
+                <View classNames={["flexible", "alignCenter"]} style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Ending in" />
                   <Text
                     preset="largeBold"
@@ -201,8 +200,8 @@ export const HomeScreen = observer(function HomeScreen(props) {
                 subtitle="Pawel Czerwinski"
                 status="Creator"
               />
-              <View row style={styles.viewBid}>
-                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
+              <View classNames={["row"]} style={styles.viewBid}>
+                <View classNames={["flexible", "alignCenter"]} style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Current bid" />
                   <Text
                     preset="largeBold"
@@ -211,7 +210,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
                     style={{ paddingVertical: spacing[1] }}
                   />
                 </View>
-                <View flexible alignCenter style={{ marginVertical: spacing[4] }}>
+                <View classNames={["flexible", "alignCenter"]} style={{ marginVertical: spacing[4] }}>
                   <Text preset={"medium"} color={colorText} text="Ending in" />
                   <Text
                     preset="largeBold"
@@ -225,12 +224,12 @@ export const HomeScreen = observer(function HomeScreen(props) {
           </View>
           {/* Hot bid */}
           <View style={styles.hotBid}>
-            <View row alignCenter justifySpaceBetween>
-              <View row alignCenter style={{ paddingLeft: spacing[3] }}>
+            <View classNames={["row", "alignCenter", "justifySpaceBetween"]}>
+              <View classNames={["row", "alignCenter"]} style={{ paddingLeft: spacing[3] }}>
                 <Image source={assets.fire} style={{ width: 24, height: 24, marginRight: spacing[2] }} />
                 <Text text="Hot bid" preset="headerSmallBold" />
               </View>
-              <View row>
+              <View classNames={["row"]}>
                 <Icon icon="back-arrow" size={24} onPress={onPressLeft} containerStyle={{ padding: spacing[3] }} />
                 <Icon icon="forward-arrow" size={24} onPress={onPressRight} containerStyle={{ padding: spacing[3] }} />
               </View>
@@ -252,18 +251,12 @@ export const HomeScreen = observer(function HomeScreen(props) {
             containerStyle={{ marginHorizontal: spacing[4], marginTop: spacing[5] }}
           />
         </View>
-        <View style={styles.bottom}>
+        <View classNames={["flexible"]} style={styles.bottom}>
           <Footer />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-});
-
-const createColorStyles = (isDarkMode) => ({
-  bold: isDarkMode ? colors.offWhite : colors.titleActive,
-  label: isDarkMode ? colors.offWhite : colors.label,
-  placeholder: isDarkMode ? colors.offWhite : colors.placeholder,
 });
 
 const darkStyles = StyleSheet.create({

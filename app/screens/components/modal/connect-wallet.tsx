@@ -17,11 +17,11 @@ export function ConnectWallet({ onCloseModal, onPressConfirm }: ConnectWalletPro
   //
   const colorStyles = createColorStyles(isDarkMode);
   return (
-    <View flexible>
+    <View classNames={["flexible"]}>
       <View style={styles.overlay} />
-      <View flexible style={{ justifyContent: "center" }}>
+      <View classNames={["flexible", "justifyCenter"]}>
         <View style={styles.modal}>
-          <View row justifySpaceBetween style={{ paddingVertical: spacing[2] }}>
+          <View classNames={["row", "justifySpaceBetween"]} style={{ paddingVertical: spacing[2] }}>
             <Text preset="headerSmallBold" color={colorStyles.body} text="Connect Wallet" />
             <Icon
               icon="close"
@@ -31,7 +31,7 @@ export function ConnectWallet({ onCloseModal, onPressConfirm }: ConnectWalletPro
             />
           </View>
           <View style={{ paddingRight: spacing[2] }}>
-            <View alignCenter style={{ paddingHorizontal: spacing[2] }}>
+            <View classNames={['alignCenter']} style={{ paddingHorizontal: spacing[2] }}>
               <Image source={assets["connect-wallet"]} />
               <Text preset="medium" color={colorStyles.body} style={{ textAlign: "center", lineHeight: 22 }}>
                 By connecting your wallet, you agree to our <Text preset="mediumBold" text="Terms of Service" /> and our{" "}
@@ -46,7 +46,7 @@ export function ConnectWallet({ onCloseModal, onPressConfirm }: ConnectWalletPro
                 style={{ paddingVertical: spacing[3] }}
                 onPress={onPressConfirm}
               />
-              <View alignCenter>
+              <View classNames={["alignCenter"]}>
                 <Text preset="medium" text="Learn more about wallets" style={{ paddingVertical: spacing[3] }} />
               </View>
             </View>

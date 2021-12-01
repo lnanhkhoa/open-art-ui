@@ -10,8 +10,8 @@ import {
   Avatar,
   Switch,
   HeaderLogoSpecs,
+  IconTypes,
 } from "../../../components";
-import { IconTypes } from "../../../components/icon/icons";
 
 import { colors, spacing } from "../../../theme";
 import { createStyles } from "../../../utils/function";
@@ -71,14 +71,14 @@ export function AccountDetail({ onCloseModal, iconIndex = 0, iconName = "people"
         </TouchableOpacity>
       </View>
       <View style={styles.modal}>
-        <View row alignCenter style={styles.avtImageWrapper}>
+        <View classNames={["row", "alignCenter"]} style={styles.avtImageWrapper}>
           <TouchableOpacity onPress={() => null}>
             <Avatar hasSource size="large" source={assets.avatar9} containerStyle={styles.avtImage} />
           </TouchableOpacity>
           <View>
             <Text preset="mediumBold" text="Gift Habeshaw" color={colorStyles.black} />
             <TouchableOpacity onPress={onPressCopy}>
-              <View row alignCenter>
+              <View classNames={["row", "alignCenter"]}>
                 <Text preset="medium" text="52fs5ge5g45sov45a" />
                 <Icon icon="copy" color={colorStyles.placeholder} size={14} style={{ paddingHorizontal: spacing[3] }} />
               </View>
@@ -86,11 +86,11 @@ export function AccountDetail({ onCloseModal, iconIndex = 0, iconName = "people"
           </View>
         </View>
         <TouchableOpacity>
-          <View row style={styles.balanceWrapper}>
+          <View classNames={["row"]} style={styles.balanceWrapper}>
             <Icon icon="wallet" color={colorStyles.placeholder} containerStyle={styles.walletIcon} />
             <View>
               <Text text="Balance" color={colorStyles.label} />
-              <View row>
+              <View classNames={["row"]}>
                 <Text preset="headerSmallBold" text="5.000 ETH" color={colorStyles.bold} />
                 <Icon
                   icon="hide"
@@ -106,7 +106,7 @@ export function AccountDetail({ onCloseModal, iconIndex = 0, iconName = "people"
           {LIST_ACTIONS.map((item) => {
             return (
               <TouchableOpacity key={item.id} style={{ paddingVertical: spacing[1] }} onPress={() => null}>
-                <View row alignCenter style={{ marginVertical: spacing[2] }}>
+                <View classNames={["row", "alignCenter"]} style={{ marginVertical: spacing[2] }}>
                   <Icon
                     icon={item.icon}
                     color={colorStyles.label}
@@ -120,7 +120,10 @@ export function AccountDetail({ onCloseModal, iconIndex = 0, iconName = "people"
           })}
         </View>
         <View style={styles.divider} />
-        <View row alignCenter justifySpaceBetween style={{ paddingTop: spacing[4], paddingHorizontal: spacing[4] }}>
+        <View
+          classNames={["row", "alignCenter", "justifySpaceBetween"]}
+          style={{ paddingTop: spacing[4], paddingHorizontal: spacing[4] }}
+        >
           <Text preset="mediumBold" text="Dark mode" />
           <Switch value={darkMode} onToggle={setDarkMode} />
         </View>
