@@ -8,37 +8,26 @@ export function View({
   backgroundColor: bgColor,
   children,
   style: styleOverride,
-  flexible,
-  alignCenter,
-  justifySpaceBetween,
-  row,
+  classNames=[],
   intensity,
   tint,
   ...rest
 }: ViewProps) {
   const backgroundColor = bgColor || colors.transparent;
-  const rowStyles = { flexDirection: "row", alignItems: "center" } as ViewStyle;
-
   const styles = [
-    {
-      backgroundColor,
-      flex: flexible ? 1 : undefined,
-    },
-    alignCenter && ({ alignItems: "center" } as ViewStyle),
-    justifySpaceBetween && ({ justifyContent: "space-between" } as ViewStyle),
-    row && rowStyles,
+    { backgroundColor, flex: classNames.includes("flexible") ? 1 : undefined },
+    classNames.includes("alignCenter") && ({ alignItems: "center" } as ViewStyle),
+    classNames.includes("justifySpaceBetween") && ({ justifyContent: "space-between" } as ViewStyle),
+    classNames.includes("justifyCenter") && ({ justifyContent: "center" } as ViewStyle),
+    classNames.includes("row") && ({ flexDirection: "row", alignItems: "center" } as ViewStyle),
     styleOverride,
   ];
 
-  if (intensity) {
-    return (
-      <BlurView intensity={intensity} tint={tint} style={styles}>
-        {children}
-      </BlurView>
-    );
-  }
-
-  return (
+  return intensity ? (
+    <BlurView intensity={intensity} tint={tint} style={styles}>
+      {children}
+    </BlurView>
+  ) : (
     <RNView {...rest} style={styles}>
       {children}
     </RNView>

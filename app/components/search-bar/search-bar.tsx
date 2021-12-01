@@ -62,8 +62,8 @@ export function SearchBar({
   const colorStyles = createColorStyles(isDarkMode);
 
   return (
-    <View row alignCenter style={[styles.wrapper, containerStyle]}>
-      <View alignCenter style={styles.container}>
+    <View classNames={['row', 'alignCenter']} style={[styles.wrapper, containerStyle]}>
+      <View classNames={['alignCenter']} style={styles.container}>
         <Icon icon="search" size={16} containerStyle={styles.searchIcon} color={colorStyles.inkBase} />
         <TextInput
           ref={inputRef}

@@ -7,15 +7,20 @@ import {
 } from "react-native";
 import { BlurTint } from "expo-blur";
 
+const CLASS_NAMES = [
+  "flexible" as const,
+  "alignCenter" as const,
+  "justifySpaceBetween" as const,
+  "justifyCenter" as const,
+  "row" as const,
+  "" as const, // for calc
+];
+
 export interface ViewProps extends RNViewProps {
   backgroundColor?: string;
   children?: ReactNode;
   style?: ViewStyle | ViewStyle[];
-  flexible?: boolean;
-  row?: boolean;
-  alignCenter?: boolean;
-  justifySpaceBetween?: boolean;
-
+  classNames?: typeof CLASS_NAMES;
   // blur props
   tint?: BlurTint;
   intensity?: number;

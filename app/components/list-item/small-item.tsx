@@ -28,7 +28,7 @@ export function SmallListItem({
 }: SmallListItemProps) {
   return (
     <View style={StyleSheet.flatten([styles.container, containerStyle])}>
-      <View alignCenter style={{ marginVertical: spacing[3] }}>
+      <View classNames={["alignCenter"]} style={{ marginVertical: spacing[3] }}>
         <Image source={source} style={styles.image} resizeMode="contain" />
         <View style={styles.avatarBox}>
           {avtSources.map((avtSrc, index) => {
@@ -38,7 +38,7 @@ export function SmallListItem({
         </View>
       </View>
       <View style={styles.bottom}>
-        <View row style={{ justifyContent: "center" }}>
+        <View classNames={["row", "justifyCenter"]}>
           <Text text={title} preset="mediumBold" />
           <View style={styles.price}>
             <Text text={price} preset="mediumBold" />

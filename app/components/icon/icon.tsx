@@ -12,6 +12,7 @@ export interface IconProps {
   isKeepColor?: boolean;
   onPress?: () => void;
 }
+export { IconTypes };
 
 const DEFAULT_SIZE = 24;
 export function Icon(props: IconProps) {

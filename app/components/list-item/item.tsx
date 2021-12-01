@@ -30,11 +30,11 @@ export function ListItem({ source, avtSource, title, subtitle, status, isActive,
 
   return (
     <View style={containerStyles}>
-      <View alignCenter style={{ marginVertical: spacing[3] }}>
+      <View classNames={['alignCenter']} style={{ marginVertical: spacing[3] }}>
         <Image source={source} style={styles.image} resizeMode="contain" />
       </View>
       <Text text={title} preset="headerSmallBold" style={{ paddingHorizontal: spacing[4], paddingTop: spacing[2] }} />
-      <View row style={styles.bottom}>
+      <View classNames={['row']} style={styles.bottom}>
         <Avatar
           preset="row"
           active={isActive}

@@ -13,8 +13,7 @@ import {
 import { Text } from "../text/text";
 import { View } from "../view/view";
 import { presets as TextPresets } from "../text/text.presets";
-import { Icon } from "../icon/icon";
-import { IconTypes } from "../icon/icons";
+import { Icon, IconTypes } from "../icon/icon";
 //
 import { translate, TxKeyPath } from "../../i18n";
 import { colors, spacing, typography } from "../../theme";

@@ -1,41 +1,13 @@
 import React from "react";
-import { StyleSheet, ViewStyle, Image, ImageRequireSource, ImageURISource, useColorScheme } from "react-native";
+import { StyleSheet, ViewStyle, Image, useColorScheme } from "react-native";
+//
 import { LinearGradient } from "expo-linear-gradient";
 import { View } from "../view";
 import { Text } from "../text/text";
-import { TextPresets } from "../text/text.presets";
-import { constants } from "../../config";
-import { colors, spacing, shadow } from "../../theme";
-
-const { AVT_SIZE } = constants;
-
-export interface AvatarProps {
-  hasSource?: boolean;
-  active?: boolean;
-  presetLinearColors?: "primary" | "secondary" | "accent";
-  source?: ImageRequireSource | ImageURISource;
-  size?: "small" | "normal" | "medium" | "large";
-  containerStyle?: ViewStyle;
-  text?: string;
-  presetText?: TextPresets;
-  preset?: "col" | "row";
-  title?: string;
-  statusText?: string;
-}
-
-const AVT_SIZES = {
-  small: AVT_SIZE.SMALL,
-  normal: AVT_SIZE.NORMAL,
-  large: AVT_SIZE.LARGE,
-  medium: AVT_SIZE.MEDIUM,
-};
-const DOT_SIZE = 14;
-
-const LINEAR_GRADIENT_COLORS = {
-  secondary: [colors.gradient.secondary.from, colors.gradient.secondary.to],
-  primary: [colors.gradient.primary.from, colors.gradient.primary.to],
-  accent: [colors.gradient.accent.from, colors.gradient.accent.to],
-};
+import { colors, spacing } from "../../theme";
+//
+import { AvatarProps } from "./avatar.props";
+import { AVT_SIZES, DOT_SIZE, LINEAR_GRADIENT_COLORS } from "./avatar.constant";
 
 export function Avatar({
   active = false,
@@ -65,7 +37,7 @@ export function Avatar({
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <View row={isPresetRow} alignCenter>
+      <View classNames={[isPresetRow && "row", "alignCenter"]}>
         <View style={styles.wrapper}>
           <View style={styles.imageBox}>
             {hasSource && <Image source={source} style={[styles.image, imgStyle]} />}

@@ -1,39 +1,16 @@
-import React, { useState, useEffect } from "react";
-import {
-  TouchableOpacity,
-  TextStyle,
-  TouchableOpacityProps,
-  ViewStyle,
-  GestureResponderEvent,
-  useColorScheme,
-  StyleSheet,
-} from "react-native";
+import React, { useState } from "react";
+import { TouchableOpacity, ViewStyle, useColorScheme } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIndicator } from "react-native-indicators";
-// import MaskedView from "@react-native-community/masked-view";
 import { View } from "../view";
-import { IconTypes } from "../icon/icons";
 import { Text } from "../text/text";
-import { TextPresets, presets } from "../text/text.presets";
-import { viewPresets, colorTextPresets, ButtonPresetNames } from "./button.presets";
-import { TxKeyPath } from "../../i18n";
+//
+import { ButtonProps } from "./button.props";
+import { presets } from "../text/text.presets";
+import { viewPresets, colorTextPresets } from "./button.presets";
+//
 import { colors, spacing } from "../../theme";
 import { Icon } from "../icon/icon";
-export interface ButtonProps extends TouchableOpacityProps {
-  disabled?: boolean;
-  isLoading?: boolean;
-  tx?: TxKeyPath;
-  text?: string;
-  leftIcon?: IconTypes;
-  leftIconProps?: any;
-  style?: ViewStyle;
-  containerStyle?: ViewStyle;
-  textStyle?: TextStyle;
-  presetText?: TextPresets;
-  preset?: ButtonPresetNames;
-  children?: React.ReactNode;
-}
-
 const LINEAR_COLORS = [colors.gradient.accent.from, colors.gradient.accent.to];
 
 export function Button({
@@ -67,7 +44,7 @@ export function Button({
   const content =
     children ||
     (isLoading || leftIcon ? (
-      <View row>
+      <View classNames={["row"]}>
         {leftIcon ? (
           <Icon icon={leftIcon} size={24} {...leftIconProps} />
         ) : (
@@ -154,11 +131,6 @@ export function Button({
       </LinearGradient>
     </TouchableOpacity>
   );
-}
-
-interface MaskedButtonProps extends TouchableOpacityProps {
-  children: React.ReactElement;
-  onPress?: (event: GestureResponderEvent) => void;
 }
 
 // function MaskedButton({ children }: MaskedButtonProps) {

@@ -41,7 +41,6 @@ export type NavigatorParamList = {
   welcome: undefined;
 };
 
-// Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>();
 const Drawer = createDrawerNavigator();
 
@@ -77,7 +76,6 @@ const DrawerStack = () => {
 // };
 
 interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
-
 export const AppNavigator = (props: NavigationProps) => {
   const colorScheme = useColorScheme();
   return (

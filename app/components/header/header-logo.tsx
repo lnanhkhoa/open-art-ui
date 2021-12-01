@@ -2,8 +2,7 @@ import React from "react";
 import { ViewStyle, StyleSheet, Image, useColorScheme } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { Icon } from "../icon/icon";
-import { IconTypes } from "../icon/icons";
+import { Icon, IconTypes } from "../icon/icon";
 import { TouchableOpacity, View } from "../view";
 //
 import { colors, spacing } from "../../theme";
@@ -11,7 +10,7 @@ import assets from "../../config/assets";
 import { SCREEN_WIDTH, HEADER_HEIGHT } from "../../config/constants";
 import { createStyles } from "../../utils/function";
 
-export interface HeaderProps {
+export interface HeaderLogoProps {
   onLogoPress?: () => void;
   leftIcon?: IconTypes;
   onLeftPress?: () => void;
@@ -30,7 +29,7 @@ export const HeaderLogoSpecs = {
   },
 };
 
-export function HeaderLogo(props: HeaderProps) {
+export function HeaderLogo(props: HeaderLogoProps) {
   const {
     onLogoPress,
     leftIcon,
@@ -52,16 +51,17 @@ export function HeaderLogo(props: HeaderProps) {
     if (onPressMenu) {
       onPressMenu();
     } else {
+      // @ts-ignore
       navigation?.openDrawer();
     }
   };
 
   return (
-    <View style={[styles.container, containerStyleOverride]}>
+    <View classNames={["alignCenter", "justifySpaceBetween"]} style={[styles.container, containerStyleOverride]}>
       <TouchableOpacity onPress={onLogoPress}>
         <Image source={logoSrc} style={styles.logo} resizeMode="contain" />
       </TouchableOpacity>
-      <View row>
+      <View classNames={["row"]}>
         {leftIcon ? (
           <Icon icon={leftIcon} size={24} color={colorIcon} onPress={onLeftPress} style={{ margin: 10 }} />
         ) : (
@@ -93,9 +93,7 @@ const darkStyles = StyleSheet.create({
 const lightStyles = StyleSheet.create({
   container: {
     paddingVertical: spacing[2],
-    alignItems: "center",
     flexDirection: "row",
-    justifyContent: "space-between",
     backgroundColor: colors.background,
     height: HEADER_HEIGHT,
     paddingHorizontal: 16,
