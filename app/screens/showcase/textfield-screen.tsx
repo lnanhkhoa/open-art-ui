@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { observer } from "mobx-react-lite";
+
 import { View, Screen, Text, TextField, HeaderLogo } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 // import { assets, constants } from "../../config";
 
-export const TextFieldScreen = observer(function TextFieldScreen() {
+export const TextFieldScreen = function TextFieldScreen() {
   const onPressMenu = () => null;
   return (
     <View testID="TextFieldScreen" style={styles.full}>
@@ -19,7 +19,7 @@ export const TextFieldScreen = observer(function TextFieldScreen() {
       </Screen>
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   full: { flex: 1 },

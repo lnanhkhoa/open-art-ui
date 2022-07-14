@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { observer } from "mobx-react-lite";
+
 import { View, Screen, Text, Tag, Avatar, Checkbox, Button, TextField } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 
-export const ShowCaseScreen = observer(function ShowCaseScreen() {
+export const ShowCaseScreen = function ShowCaseScreen() {
   return (
     <View testID="ShowCaseScreen" style={styles.full}>
       {/* <GradientBackground colors={["#422443", "#281b34"]} /> */}
@@ -85,7 +85,7 @@ export const ShowCaseScreen = observer(function ShowCaseScreen() {
       </Screen>
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   full: { flex: 1 },

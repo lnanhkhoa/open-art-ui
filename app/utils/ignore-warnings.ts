@@ -7,5 +7,6 @@ import { LogBox } from "react-native";
 // prettier-ignore
 LogBox.ignoreLogs([
   "Require cycle:",
-  "never be nested"
+  "never be nested",
+  "ViewPropTypes"
 ]);

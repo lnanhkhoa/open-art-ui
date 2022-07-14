@@ -1,5 +1,5 @@
 import React from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Text, HeaderLogo, View, Icon, ListItem, Button, SafeAreaView, TouchableOpacity } from "../../components";
@@ -11,7 +11,7 @@ import { createStyles, createColorStyles } from "../../utils/function";
 
 const { SCREEN_WIDTH, AVT_SIZE } = constants;
 
-export const ProfileCreatorScreen = observer(function ProfileCreatorScreen(props) {
+export const ProfileCreatorScreen = function ProfileCreatorScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const navigation = useNavigation();
@@ -145,7 +145,7 @@ export const ProfileCreatorScreen = observer(function ProfileCreatorScreen(props
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const darkStyles = StyleSheet.create({
   container: {

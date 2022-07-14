@@ -1,6 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal } from "react-native";
+import { StyleSheet, Image, useColorScheme } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import {
   Text,
@@ -42,7 +41,7 @@ const HOT_BID_LIST = [
   },
 ];
 
-export const HomeScreen = observer(function HomeScreen(props) {
+export const HomeScreen = function HomeScreen() {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const navigation = useNavigation();
@@ -257,7 +256,7 @@ export const HomeScreen = observer(function HomeScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const darkStyles = StyleSheet.create({
   container: {

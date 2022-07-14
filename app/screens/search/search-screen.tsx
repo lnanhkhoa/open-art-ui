@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme, RefreshControl, ScrollView } from "react-native";
 import { Text, HeaderLogo, SearchBar, View, SafeAreaView, Avatar } from "../../components";
 // import { useNavigation } from "@react-navigation/native";
@@ -8,7 +8,7 @@ import { assets, constants } from "../../config";
 import { createStyles, wait } from "../../utils/function";
 const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 
-export const SearchScreen = observer(function SearchScreen(props) {
+export const SearchScreen = function SearchScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -107,7 +107,7 @@ export const SearchScreen = observer(function SearchScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 
 const darkStyles = StyleSheet.create({

@@ -3,10 +3,7 @@ import React from "react";
 import RangeSlider from "rn-range-slider";
 import { StyleSheet, ViewStyle } from "react-native";
 import { View } from "../view";
-import { Text } from "../text/text";
-import { constants, assets } from "../../config";
-import { colors } from "../../theme";
-const { STATUS, STATUS_COLORS } = constants;
+
 interface SliderProps {
   style?: ViewStyle;
   containerStyle?: ViewStyle | ViewStyle[];

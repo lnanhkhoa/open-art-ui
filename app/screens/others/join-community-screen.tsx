@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Text, HeaderLogo, View, Button, SafeAreaView } from "../../components";
@@ -10,7 +10,7 @@ import { createStyles } from "../../utils/function";
 
 const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 
-export const JoinCommunityScreen = observer(function JoinCommunityScreen(props) {
+export const JoinCommunityScreen = function JoinCommunityScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -67,7 +67,7 @@ export const JoinCommunityScreen = observer(function JoinCommunityScreen(props) 
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const createColorStyles = (isDarkMode) => ({
   bold: isDarkMode ? colors.offWhite : colors.titleActive,

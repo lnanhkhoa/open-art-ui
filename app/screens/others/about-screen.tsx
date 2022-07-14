@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Text, HeaderLogo, View, SafeAreaView } from "../../components";
@@ -17,7 +17,7 @@ const IMAGE_SIZE = {
   NORMAL: 94,
 };
 
-export const AboutScreen = observer(function AboutScreen(props) {
+export const AboutScreen = function AboutScreen() {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -101,7 +101,7 @@ export const AboutScreen = observer(function AboutScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const createColorStyles = (isDarkMode) => ({
   bold: isDarkMode ? colors.offWhite : colors.titleActive,

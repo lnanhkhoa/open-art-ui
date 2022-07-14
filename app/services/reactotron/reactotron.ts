@@ -1,10 +1,7 @@
 import { Tron } from "./tron";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ArgType } from "reactotron-core-client";
-import { RootStore } from "../../models/root-store/root-store";
-import { onSnapshot } from "mobx-state-tree";
 import { ReactotronConfig, DEFAULT_REACTOTRON_CONFIG } from "./reactotron-config";
-import { mst } from "reactotron-mst";
 import { clear } from "../../utils/storage";
 import { goBack, resetRoot, navigate } from "../../navigators/navigation-utilities";
 import { Platform } from "react-native";
@@ -80,34 +77,6 @@ export class Reactotron {
   }
 
   /**
-   * Hook into the root store for doing awesome state-related things.
-   *
-   * @param rootStore The root store
-   */
-  setRootStore(rootStore: any, initialData: any) {
-    if (__DEV__) {
-      rootStore = rootStore as RootStore; // typescript hack
-      this.rootStore = rootStore;
-
-      const { initial, snapshots } = this.config.state;
-      const name = "ROOT STORE";
-
-      // logging features
-      if (initial) {
-        console.tron.display({ name, value: initialData, preview: "Initial State" });
-      }
-      // log state changes?
-      if (snapshots) {
-        onSnapshot(rootStore, (snapshot) => {
-          console.tron.display({ name, value: snapshot, preview: "New State" });
-        });
-      }
-
-      console.tron.trackMstNode(rootStore);
-    }
-  }
-
-  /**
    * Configure reactotron based on the the config settings passed in, then connect if we need to.
    */
   async setup() {
@@ -128,16 +97,6 @@ export class Reactotron {
           asyncStorage: this.config.useAsyncStorage ? undefined : false,
         });
       }
-
-      // ignore some chatty `mobx-state-tree` actions
-      const RX = /postProcessSnapshot|@APPLY_SNAPSHOT/;
-
-      // hookup mobx-state-tree middleware
-      Tron.use(
-        mst({
-          filter: (event) => RX.test(event.name) === false,
-        }),
-      );
 
       // connect to the app
       Tron.connect();

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, useColorScheme, RefreshControl, FlatList, ScrollView } from "react-native";
 import {
   Text,
@@ -58,7 +58,7 @@ const DATA_ITEMS = [
   },
 ];
 
-export const SearchResultScreen = observer(function SearchResultScreen(props) {
+export const SearchResultScreen = function SearchResultScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -189,7 +189,7 @@ export const SearchResultScreen = observer(function SearchResultScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const darkStyles = StyleSheet.create({
   container: {

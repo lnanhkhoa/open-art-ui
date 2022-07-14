@@ -1,6 +1,8 @@
-# Welcome to your new ignited app!
+# Welcome to my open art UI!
+https://openui.design/
 
-[![CircleCI](https://circleci.com/gh/infinitered/ignite.svg?style=svg)](https://circleci.com/gh/infinitered/ignite)
+use React native to make it, written by [lnanhkhoa](https://github.com/lnanhkhoa)
+
 
 ## The latest and greatest boilerplate for Infinite Red opinions
 

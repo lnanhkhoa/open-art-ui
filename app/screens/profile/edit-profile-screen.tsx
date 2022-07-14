@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme, ScrollView } from "react-native";
 import {
   Text,
@@ -13,7 +13,6 @@ import {
   IconTypes,
 } from "../../components";
 import { Footer, EditButton } from "../components";
-import { useNavigation } from "@react-navigation/native";
 import { colors, spacing } from "../../theme";
 import { assets, constants } from "../../config";
 import { createStyles } from "../../utils/function";
@@ -53,7 +52,7 @@ const SOCIAL_MEDIA_LINKS = [
   },
 ];
 
-export const EditProfileScreen = observer(function EditProfileScreen(props) {
+export const EditProfileScreen = function EditProfileScreen() {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -224,7 +223,7 @@ export const EditProfileScreen = observer(function EditProfileScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const createColorStyles = (isDarkMode) => ({
   black: isDarkMode ? colors.offWhite : colors.black,

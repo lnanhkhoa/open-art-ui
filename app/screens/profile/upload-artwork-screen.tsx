@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, useColorScheme } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Text, HeaderLogo, View, SafeAreaView, Checkbox, TextField } from "../../components";
@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { colors, spacing, createColorStyles } from "../../theme";
 import { createStyles } from "../../utils/function";
 
-export const UploadArtworkScreen = observer(function UploadArtworkScreen(props) {
+export const UploadArtworkScreen = function UploadArtworkScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   const navigation = useNavigation();
@@ -101,7 +101,7 @@ export const UploadArtworkScreen = observer(function UploadArtworkScreen(props) 
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 const darkStyles = StyleSheet.create({
   container: {

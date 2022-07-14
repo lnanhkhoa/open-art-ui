@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import { observer } from "mobx-react-lite";
+
 import { View, Screen, Text, Button, SearchBar, Icon } from "../../components";
 import { colors, spacing } from "../../theme";
 
-export const ButtonScreen = observer(function ButtonScreen() {
+export const ButtonScreen = function ButtonScreen() {
   return (
     <View testID="ButtonScreen" style={styles.full}>
       <Screen style={styles.container} preset="scroll" backgroundColor={colors.transparent}>
@@ -40,7 +40,7 @@ export const ButtonScreen = observer(function ButtonScreen() {
       </Screen>
     </View>
   );
-});
+};
 
 const styles = StyleSheet.create({
   full: { flex: 1 },

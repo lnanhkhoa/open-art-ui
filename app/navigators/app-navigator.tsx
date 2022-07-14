@@ -7,7 +7,6 @@
 import React from "react";
 import { useColorScheme } from "react-native";
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { navigationRef } from "./navigation-utilities";
 import {
@@ -41,7 +40,6 @@ export type NavigatorParamList = {
   welcome: undefined;
 };
 
-const Stack = createNativeStackNavigator<NavigatorParamList>();
 const Drawer = createDrawerNavigator();
 
 const DrawerStack = () => {
@@ -51,29 +49,24 @@ const DrawerStack = () => {
       screenOptions={{
         header: () => null,
         drawerPosition: "right",
-        swipeEnabled: false,
+        swipeEnabled: true,
       }}
     >
+      <Drawer.Screen name="HomeScreen" component={HomeScreen} />
       <Drawer.Screen name="UploadArtworkScreen" component={UploadArtworkScreen} />
       <Drawer.Screen name="AboutScreen" component={AboutScreen} />
+      <Drawer.Screen name="ItemsDetailScreen" component={ItemsDetailScreen} />
+      <Drawer.Screen name="DiscoverCreatorScreen" component={DiscoverCreatorScreen} />
+      <Drawer.Screen name="TextFieldScreen" component={TextFieldScreen} />
+      <Drawer.Screen name="UserProfileScreen" component={UserProfileScreen} />
+      <Drawer.Screen name="AccountScreen" component={AccountScreen} />
+      <Drawer.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <Drawer.Screen name="SearchScreen" component={SearchScreen} />
+      <Drawer.Screen name="SearchResultScreen" component={SearchResultScreen} />
+      <Drawer.Screen name="ProfileCreatorScreen" component={ProfileCreatorScreen} />
     </Drawer.Navigator>
   );
 };
-
-// const AppStack = () => {
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{
-//         headerShown: false,
-//       }}
-//       initialRouteName="welcome"
-//     >
-//       <Stack.Screen name="welcome" component={WelcomeScreen} />
-//       {/* <Stack.Screen name="demo" component={DemoScreen} />
-//       <Stack.Screen name="demoList" component={DemoListScreen} /> */}
-//     </Stack.Navigator>
-//   );
-// };
 
 interface NavigationProps extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 export const AppNavigator = (props: NavigationProps) => {
@@ -96,5 +89,5 @@ AppNavigator.displayName = "AppNavigator";
  *
  * `canExit` is used in ./app/app.tsx in the `useBackButtonHandler` hook.
  */
-const exitRoutes = ["welcome"];
+const exitRoutes = ["HomeScreen"];
 export const canExit = (routeName: string) => exitRoutes.includes(routeName);

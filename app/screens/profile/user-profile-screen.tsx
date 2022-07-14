@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme, FlatList, ScrollView } from "react-native";
 import { Text, HeaderLogo, View, Icon, ListItem, Button, SafeAreaView, TouchableOpacity } from "../../components";
 import { Footer, FollowButton, TagNameButton } from "../components";
@@ -38,7 +38,7 @@ function ListCard({ item }) {
   );
 }
 
-export const UserProfileScreen = observer(function UserProfileScreen(props) {
+export const UserProfileScreen = function UserProfileScreen(props) {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -190,7 +190,7 @@ export const UserProfileScreen = observer(function UserProfileScreen(props) {
       </ScrollView>
     </SafeAreaView>
   );
-});
+};
 
 
 const darkStyles = StyleSheet.create({

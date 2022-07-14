@@ -1,32 +1,15 @@
-import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
-import { StyleSheet, Image, useColorScheme, Modal, ViewStyle } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, useColorScheme } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-import {
-  Text,
-  TextPresets,
-  HeaderLogo,
-  SearchBar,
-  View,
-  Icon,
-  ListItem,
-  Button,
-  SafeAreaView,
-  TouchableOpacity,
-  SmallListItem,
-  DotIcon,
-} from "../../components";
+import { Text, HeaderLogo, View, Button, SafeAreaView } from "../../components";
 import { Footer, TitleButton, CreatorItem } from "../components";
-// import { useNavigation } from "@react-navigation/native";
-import { colors, shadow, spacing } from "../../theme";
-import { assets, constants } from "../../config";
+import { colors, spacing } from "../../theme";
 import { createStyles } from "../../utils/function";
 import { LIST_CREATORS } from "./shema";
 
-const { VIEWABILITY_CONFIG: viewabilityConfig } = constants;
 function HeaderTitle({ selectedIndex, onSelectIndex = (e: number) => null }) {
   return (
-    <View classNames={["row", "alignCenter", 'justifyCenter']} style={{ paddingHorizontal: spacing[4]}}>
+    <View classNames={["row", "alignCenter", "justifyCenter"]} style={{ paddingHorizontal: spacing[4] }}>
       <TitleButton
         title="Feature Creator"
         isActive={selectedIndex === 0}
@@ -43,20 +26,11 @@ function HeaderTitle({ selectedIndex, onSelectIndex = (e: number) => null }) {
   );
 }
 
-export const DiscoverCreatorScreen = observer(function DiscoverCreatorScreen(props) {
+export function DiscoverCreatorScreen() {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
-  // const navigation = useNavigation();
-  const [visibleItemIndex, setVisibleItemIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const onViewableItemsChanged = useCallback(({ viewableItems, changed }) => {
-    if (changed && changed.length > 0) {
-      setVisibleItemIndex(changed[0].index);
-    }
-  }, []);
-  const viewabilityConfigCallbackPairs = useRef([{ viewabilityConfig, onViewableItemsChanged }]);
-  //
   const onPressMenu = () => null;
   const onPressSearch = () => null;
   const onPressFollow = () => null;
@@ -81,30 +55,33 @@ export const DiscoverCreatorScreen = observer(function DiscoverCreatorScreen(pro
         </View>
         <HeaderTitle selectedIndex={selectedIndex} onSelectIndex={setSelectedIndex} />
         {/*  */}
-        <FlatList
-          data={LIST_CREATORS}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={{ paddingHorizontal: spacing[4] }}
-          renderItem={({ item }) => (
-            <CreatorItem
-              name={item.name}
-              headerImg={item.headerImg}
-              avtImg={item.avtImg}
-              description={item.description}
-              followNumber={item.followNumber}
-              onPressFollow={onPressFollow}
-            />
-          )}
-          ListFooterComponentStyle={{ padding: spacing[5] }}
-          ListFooterComponent={() => <Button leftIcon="plus" preset="secondary" text="Load more" />}
-        />
+        <View>
+          <FlatList
+            nestedScrollEnabled
+            data={LIST_CREATORS}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={{ paddingHorizontal: spacing[4] }}
+            renderItem={({ item }) => (
+              <CreatorItem
+                name={item.name}
+                headerImg={item.headerImg}
+                avtImg={item.avtImg}
+                description={item.description}
+                followNumber={item.followNumber}
+                onPressFollow={onPressFollow}
+              />
+            )}
+            ListFooterComponentStyle={{ padding: spacing[5] }}
+            ListFooterComponent={() => <Button leftIcon="plus" preset="secondary" text="Load more" />}
+          />
+        </View>
         <View style={styles.bottom}>
           <Footer />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
-});
+}
 
 const createColorStyles = (isDarkMode) => ({
   bold: isDarkMode ? colors.offWhite : colors.titleActive,

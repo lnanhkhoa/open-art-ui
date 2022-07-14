@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { observer } from "mobx-react-lite";
 import { StyleSheet, Image, useColorScheme, ImageRequireSource, ImageURISource, Modal } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import {
@@ -105,7 +104,7 @@ const MODAL_CONTENT = {
   CONNET_WALLET: "CONNET_WALLET",
 };
 
-export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
+export const ItemsDetailScreen = function ItemsDetailScreen() {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   //
@@ -284,7 +283,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
               return (
                 <TouchableOpacity onPress={item.onPress}>
                   <View style={styles.activityBtn}>
-                    <View classNames={["row", 'justifySpaceBetween', 'alignCenter']} >
+                    <View classNames={["row", "justifySpaceBetween", "alignCenter"]}>
                       <Avatar
                         title={`${item.title} ${item.name}`}
                         hasSource={item.isAvtImage}
@@ -330,7 +329,7 @@ export const ItemsDetailScreen = observer(function ItemsDetailScreen(props) {
       </Modal>
     </SafeAreaView>
   );
-});
+};
 
 const createColorStyles = (isDarkMode) => ({
   bold: isDarkMode ? colors.offWhite : colors.titleActive,

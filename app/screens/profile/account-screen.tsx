@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { observer } from "mobx-react-lite";
+
 import { StyleSheet, Image, useColorScheme, Modal, ScrollView } from "react-native";
 import { Text, HeaderLogo, View, Icon, SafeAreaView, TouchableOpacity } from "../../components";
 import { AccountDetail } from "../components";
@@ -15,7 +15,7 @@ const MODE = {
   EDIT: "EDIT",
 };
 
-export const AccountScreen = observer(function AccountScreen(props) {
+export const AccountScreen = function AccountScreen() {
   const colorScheme = useColorScheme();
   const isDarkMode = colorScheme === "dark";
   // const navigation = useNavigation();
@@ -125,7 +125,7 @@ export const AccountScreen = observer(function AccountScreen(props) {
       </Modal>
     </SafeAreaView>
   );
-});
+} ;
 
 const darkStyles = StyleSheet.create({
   container: {
