@@ -1,7 +1,7 @@
 # Welcome to my app clone, made from open art UI!
 https://openui.design/
 
-use React native to make it, written by [lnanhkhoa](https://github.com/lnanhkhoa)
+Using React native to make it, written by [lnanhkhoa](https://github.com/lnanhkhoa)
 
 
 ## The latest and greatest boilerplate for Infinite Red opinions
