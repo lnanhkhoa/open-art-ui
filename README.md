@@ -1,4 +1,4 @@
-# Welcome to my open art UI!
+# Welcome to my app clone, made from open art UI!
 https://openui.design/
 
 use React native to make it, written by [lnanhkhoa](https://github.com/lnanhkhoa)
