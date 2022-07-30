@@ -42,7 +42,6 @@ ignite-project
 │   ├── __snapshots__
 │   ├── storyshots.test.ts.snap
 │   ├── mock-i18n.ts
-│   ├── mock-reactotron.ts
 │   ├── setup.ts
 │   ├── storyshots.test.ts
 ├── README.md
